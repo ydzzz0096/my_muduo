@@ -4,4 +4,9 @@
 add_library(base_lib STATIC
     Logger.cpp
     Timestamp.cpp
+    Thread.cpp
+)
+
+target_include_directories(base_lib INTERFACE 
+    ${CMAKE_SOURCE_DIR}
 )
