@@ -12,6 +12,10 @@ add_executable(test_lockqueue test_lockqueue.cpp)
 target_include_directories(test_lockqueue PRIVATE ${CMAKE_SOURCE_DIR})
 target_link_libraries(test_lockqueue PRIVATE Threads::Threads)
 
-
+# --- [新增部分] 添加线程的测试目标 ---
 add_executable(test_thread test_thread.cpp)
 target_link_libraries(test_thread PRIVATE base_lib)
+
+# --- [新增部分] 添加线程池的测试目标 ---
+add_executable(test_threadpool test_threadpool.cpp)
+target_link_libraries(test_threadpool PRIVATE base_lib)

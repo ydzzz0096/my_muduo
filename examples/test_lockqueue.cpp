@@ -1,16 +1,18 @@
 // examples/test_lockqueue.cpp
 
-#include "base/LockQueue.h" // 引入我们实现的头文件
+#include "base/LockQueue.h"
 #include <iostream>
 #include <thread>
 #include <string>
-#include <chrono> // for std::chrono::milliseconds
+#include <chrono>
+#include <optional> // 确保包含了 optional 头文件
 
-// 创建一个全局的队列实例
+// 全局队列实例 (保持不变)
 LockQueue<int> g_queue;
-// 创建一个全局的互斥锁，专门用来保护 cout
+// 全局互斥锁，保护 cout (保持不变)
 std::mutex g_cout_mutex;
 
+// 生产者函数 (保持不变)
 void producer()
 {
     for (int i = 0; i < 10; ++i)
@@ -20,23 +22,33 @@ void producer()
             std::lock_guard<std::mutex> lock(g_cout_mutex);
             std::cout << "Producer pushed: " << i << std::endl;
         }
-        // 稍作延时，让消费者有时间追赶，更好地观察交错执行
         std::this_thread::sleep_for(std::chrono::milliseconds(100)); 
     }
 }
 
+// 【核心修正】更新消费者函数
 void consumer()
 {
     for (int i = 0; i < 10; ++i)
     {
-        int data = g_queue.Pop();
+        // 1. Pop() 现在返回一个 optional 对象
+        std::optional<int> data_opt = g_queue.Pop();
+
+        // 2. 检查 optional 是否真的包含一个值
+        if (data_opt.has_value())
         {
-            std::lock_guard<std::mutex> lock(g_cout_mutex);
-            std::cout << "                Consumer popped: " << data << std::endl;
+            // 3. 如果有值，通过 .value() 方法取出它
+            int data = data_opt.value();
+            {
+                std::lock_guard<std::mutex> lock(g_cout_mutex);
+                std::cout << "                Consumer popped: " << data << std::endl;
+            }
         }
+        // 在这个简单的测试中，我们不处理队列关闭的情况，所以可以省略 else
     }
 }
 
+// main 函数 (保持不变)
 int main()
 {
     std::thread t1(producer);
