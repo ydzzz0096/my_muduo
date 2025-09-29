@@ -10,8 +10,8 @@ Logger& Logger::getInstance()
     return logger;
 }
 
-// 【核心修正】更新构造函数中的后台线程逻辑
-Logger::Logger()
+// 【核心重构】更新构造函数中的后台线程逻辑
+Logger::Logger() : m_logLevel(INFO)
 {
     m_writerThread = std::thread([this]() {
         while (true)
@@ -21,11 +21,10 @@ Logger::Logger()
 
             if (result.has_value())
             {
-                // 如果 optional 有值 (has_value() == true)，就取出值并打印
-                // .value() 方法可以获取 optional 中存储的实际值
+                // 如果 optional 有值，就取出值并打印
                 std::cout << result.value(); 
             }
-            else // 如果返回的是空 optional (std::nullopt)，说明队列已关闭且为空
+            else // 如果返回的是空 optional，说明队列已关闭且为空
             {
                 break; // 收到“下班”信号，退出循环
             }
@@ -33,10 +32,10 @@ Logger::Logger()
     });
 }
 
-// 【核心修正】更新析构函数以匹配新的 LockQueue 接口
+// 【核心重构】更新析构函数以匹配新的 LockQueue 接口
 Logger::~Logger()
 {
-    // 关闭队列，这将唤醒后台线程
+    // 只需调用队列的 Shutdown 方法
     m_logQueue.Shutdown();
     // 等待后台线程处理完所有剩余消息并安全退出
     if (m_writerThread.joinable())
@@ -74,4 +73,38 @@ LogStream::~LogStream()
 {
     m_buffer << "\n";
     Logger::getInstance().log(m_buffer.str());
+}
+
+
+// === Timestamp 的实现 (完全保持不变) ===
+#include "Timestamp.h"
+#include <chrono>
+#include <ctime>
+
+Timestamp::Timestamp() : m_microSecondsSinceEpoch(0) {}
+
+Timestamp::Timestamp(int64_t microSecondsSinceEpoch)
+    : m_microSecondsSinceEpoch(microSecondsSinceEpoch) {}
+
+Timestamp Timestamp::now()
+{
+    return Timestamp(std::chrono::duration_cast<std::chrono::microseconds>(
+        std::chrono::system_clock::now().time_since_epoch()).count());
+}
+
+std::string Timestamp::toString() const
+{
+    char buf[128] = {0};
+    time_t seconds = m_microSecondsSinceEpoch / 1000000;
+    tm tm_time;
+    localtime_r(&seconds, &tm_time);
+
+    snprintf(buf, 128, "%04d-%02d-%02d %02d:%02d:%02d",
+             tm_time.tm_year + 1900,
+             tm_time.tm_mon + 1,
+             tm_time.tm_mday,
+             tm_time.tm_hour,
+             tm_time.tm_min,
+             tm_time.tm_sec);
+    return buf;
 }
