@@ -2,8 +2,7 @@
 
 int main()
 {
-    LOG_INFO << "This is a test message.";
-    
+    LOG_INFO << "这是我们提供的API接口的中文注释。";
     int number = 42;
     LOG_ERROR << "An error occurred! Error code: " << number;
     
@@ -13,6 +12,8 @@ int main()
     #ifdef DEBUG
     LOG_DEBUG << "This is a debug message.";
     #endif
+
+    //std::this_thread::sleep_for(std::chrono::seconds(1));
 
     return 0;
 }
