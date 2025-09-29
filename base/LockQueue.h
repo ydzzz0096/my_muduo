@@ -6,7 +6,7 @@
 #include <queue>
 #include <mutex>
 #include <condition_variable>
-#include <optional> // 1. 引入 C++17 的 std::optional
+#include <optional> // 1. 引入 C++17 的 std::optional,nullopt
 
 template<typename T>
 class LockQueue
