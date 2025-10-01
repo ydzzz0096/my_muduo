@@ -48,7 +48,7 @@ void ThreadPool::addTask(Task task)
     m_taskQueue.Push(std::move(task));
 }
 
-// 【核心】修改工作线程的循环逻辑
+// 每个线程调用的不是一个简单的任务,而是这么一个流程,并且会因为while(true)一直工作
 void ThreadPool::threadFunc()
 {
     LOG_INFO << "Worker thread started in thread " << std::this_thread::get_id();

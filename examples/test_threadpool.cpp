@@ -24,7 +24,7 @@ int main()
 
     for (int i = 0; i < TASK_COUNT; ++i)
     {
-        // 我们让任务在完成时增加计数器
+        // 这里的参数就应该是Task类型,但是原函数有参数接收,所以要被包装
         pool.addTask([i, &completed_tasks]() { 
             print_task(i, completed_tasks); 
         });

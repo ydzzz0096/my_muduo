@@ -35,12 +35,12 @@ private:
     bool m_started;
     bool m_joined;
 
-    std::shared_ptr<std::thread> m_thread; // 使用智能指针管理 thread 对象
+    std::unique_ptr<std::thread> m_thread; // 使用智能指针管理 thread 对象
     pid_t m_tid;
     
     ThreadFunc m_func;
     std::string m_name;
-    static std::atomic<int> m_numCreated; // 统计创建的线程数量用来计数
+    static std::atomic<int> m_numCreated; // 统计创建的线程数量用来命名,并不是实时计数
 };
 
 #endif

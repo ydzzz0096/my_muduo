@@ -31,10 +31,10 @@ void Thread::start()
 {
     m_started = true;
     // 使用 a lambda to capture `this` pointer
-    m_thread = std::make_shared<std::thread>([this]() {
+    m_thread = std::make_unique<std::thread>([this]() {
         // 获取线程的 tid
         m_tid = syscall(SYS_gettid);
-        // 执行用户传入的线程函数
+        // 执行用户传入的线程函数,这个函数如果有返回值和参数会被lambda表达式包装后传入
         m_func();
     });
 }
