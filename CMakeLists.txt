@@ -12,5 +12,10 @@ find_package(Threads REQUIRED)
 # 将 base 子目录包含进来
 add_subdirectory(base)
 
+# 将 net 子目录包含进来
+add_subdirectory(net)
+
 # 将 examples 子目录包含进来
 add_subdirectory(examples)
+
+

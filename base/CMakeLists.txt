@@ -6,6 +6,7 @@ add_library(base_lib STATIC
     Timestamp.cpp
     Thread.cpp
     ThreadPool.cpp
+    CurrentThread.cpp
 )
 
 target_include_directories(base_lib INTERFACE 
