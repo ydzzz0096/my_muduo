@@ -19,3 +19,7 @@ target_link_libraries(test_thread PRIVATE base_lib)
 # --- [新增部分] 添加线程池的测试目标 ---
 add_executable(test_threadpool test_threadpool.cpp)
 target_link_libraries(test_threadpool PRIVATE base_lib)
+
+# 新增
+add_executable(test_eventloop_v1 test_eventloop_v1.cpp)
+target_link_libraries(test_eventloop_v1 PRIVATE net_lib)
