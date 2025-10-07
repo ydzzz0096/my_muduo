@@ -58,6 +58,7 @@ void Logger::log(const std::string& msg)
 
 // === LogStream 的实现 (完全保持不变) ===
 LogStream::LogStream(const char* file, int line, LogLevel level)
+    :m_level(level)
 {
     m_buffer << Timestamp::now().toString() << " ";
     switch (level)
@@ -74,4 +75,10 @@ LogStream::~LogStream()
 {
     m_buffer << "\n";
     Logger::getInstance().log(m_buffer.str());
+    
+    // 【新增】如果是 FATAL 级别，就终止程序
+    if (m_level == FATAL)
+    {
+        abort(); // abort() 会立刻终止程序
+    }
 }

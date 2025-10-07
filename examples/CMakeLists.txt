@@ -23,3 +23,7 @@ target_link_libraries(test_threadpool PRIVATE base_lib)
 # 新增
 add_executable(test_eventloop_v1 test_eventloop_v1.cpp)
 target_link_libraries(test_eventloop_v1 PRIVATE net_lib)
+
+
+add_executable(test_eventloop_v2 test_eventloop_v2.cpp)
+target_link_libraries(test_eventloop_v2 PRIVATE net_lib)
