@@ -58,6 +58,9 @@
         "thread": "cpp",
         "variant": "cpp",
         "format": "cpp",
-        "queue": "cpp"
+        "queue": "cpp",
+        "cstring": "cpp",
+        "map": "cpp",
+        "cerrno": "cpp"
     }
 }

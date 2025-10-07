@@ -55,6 +55,7 @@ public:
 
 private:
     std::ostringstream m_buffer;
+    LogLevel m_level;// 【新增】记录当前消息的级别
 };
 
 #define LOG_INFO  LogStream(__FILE__, __LINE__, INFO)
