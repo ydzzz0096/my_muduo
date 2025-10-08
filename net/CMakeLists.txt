@@ -5,6 +5,7 @@ add_library(net_lib STATIC
     EpollPoller.cpp
     InetAddress.cpp 
     Socket.cpp        
+    Acceptor.cpp
 )
 
 target_include_directories(net_lib INTERFACE ${CMAKE_SOURCE_DIR})
