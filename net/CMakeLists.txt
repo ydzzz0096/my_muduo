@@ -6,6 +6,7 @@ add_library(net_lib STATIC
     InetAddress.cpp 
     Socket.cpp        
     Acceptor.cpp
+    Buffer.cpp 
 )
 
 target_include_directories(net_lib INTERFACE ${CMAKE_SOURCE_DIR})
