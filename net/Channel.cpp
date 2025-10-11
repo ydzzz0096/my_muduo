@@ -12,10 +12,18 @@ Channel::Channel(EventLoop* loop, int fd)
       m_fd(fd),
       m_events(0),// 关心事件
       m_revents(0),// 活动事件
-      m_index(-1)
+      m_index(-1),
+      m_tied(false)
 {}
 
 Channel::~Channel() {}
+
+void Channel::tie(const std::shared_ptr<void>& obj)
+{
+    m_tie = obj; // 用 weak_ptr 观察 obj
+    m_tied = true;
+}
+
 
 void Channel::update()
 {
@@ -28,7 +36,28 @@ void Channel::remove()
     m_loop->removeChannel(this);
 }
 
+// 【核心修正】handleEvent 的实现
 void Channel::handleEvent(Timestamp receiveTime)
+{
+    // 如果已经绑定了对象
+    if (m_tied)
+    {
+        // 尝试将 weak_ptr 提升为 shared_ptr
+        std::shared_ptr<void> guard = m_tie.lock();
+        if (guard) // 提升成功，说明对象还活着
+        {
+            handleEventWithGuard(receiveTime);
+        }
+        // 如果提升失败，说明对象已经销毁，什么也不做
+    }
+    else // 如果没有绑定，直接处理
+    {
+        handleEventWithGuard(receiveTime);
+    }
+}
+
+// 【新增】真正处理事件的函数
+void Channel::handleEventWithGuard(Timestamp receiveTime)
 {
     if ((m_revents & EPOLLHUP) && !(m_revents & EPOLLIN))
     {
