@@ -24,6 +24,9 @@ public:
     void setCloseCallback(const EventCallback& cb) { m_closeCallback = cb; }
     void setErrorCallback(const EventCallback& cb) { m_errorCallback = cb; }
 
+    //将 Channel 绑定到一个对象上，防止在 handleEvent 中对象被销毁
+    void tie(const std::shared_ptr<void>&);
+
     int fd() const { return m_fd; }
     int events() const { return m_events; }
     void set_revents(int revt) { m_revents = revt; }
@@ -48,6 +51,9 @@ public:
 private:
     void update();
     
+     // 受保护的事件处理函数
+    void handleEventWithGuard(Timestamp receiveTime);
+
     static const int kNoneEvent;
     static const int kReadEvent;
     static const int kWriteEvent;
@@ -57,6 +63,10 @@ private:
     int m_events;// 关注的事件
     int m_revents;// 实际发生的事件
     int m_index; // used by Poller
+
+     // 用于管理生命周期的 weak_ptr
+    std::weak_ptr<void> m_tie;
+    bool m_tied;
 
     ReadEventCallback m_readCallback;
     EventCallback m_writeCallback;

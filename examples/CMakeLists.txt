@@ -30,3 +30,6 @@ target_link_libraries(test_eventloop_v2 PRIVATE net_lib)
 
 add_executable(test_acceptor test_acceptor.cpp)
 target_link_libraries(test_acceptor PRIVATE net_lib)
+
+add_executable(echoserver echoserver.cpp)
+target_link_libraries(echoserver PRIVATE net_lib)
