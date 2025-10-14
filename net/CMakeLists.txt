@@ -8,6 +8,9 @@ add_library(net_lib STATIC
     Acceptor.cpp
     Buffer.cpp 
     TcpConnection.cpp
+    EventLoopThreadPool.cpp
+    EventLoopThread.cpp
+    TcpServer.cpp
 )
 
 target_include_directories(net_lib INTERFACE ${CMAKE_SOURCE_DIR})
