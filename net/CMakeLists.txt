@@ -13,6 +13,8 @@ add_library(net_lib STATIC
     TcpServer.cpp
     Timer.cpp
     TimerQueue.cpp
+    Connector.cpp
+    TcpClient.cpp
 )
 
 target_include_directories(net_lib INTERFACE ${CMAKE_SOURCE_DIR})
