@@ -10,13 +10,11 @@
 #include <sstream>
 #include <functional>
 
-// 日志级别 (保持不变)
-enum LogLevel
-{
-    INFO,
-    ERROR,
-    FATAL,
-    DEBUG
+enum LogLevel {
+    DEBUG, // 0
+    INFO,  // 1
+    ERROR, // 2
+    FATAL, // 3
 };
 
 // 日志类 (单例)

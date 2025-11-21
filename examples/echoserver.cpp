@@ -24,7 +24,7 @@ public:
             std::bind(&EchoServer::onMessage, this,
                 std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
         
-        m_server.setThreadNum(3);
+        m_server.setThreadNum(10);
     }
 
     void start()
@@ -61,6 +61,8 @@ private:
 
 int main()
 {
+    Logger::getInstance().setLogLevel(ERROR);
+    
     EventLoop loop;
     InetAddress addr(8000);
     EchoServer server(&loop, addr, "EchoServer-01");
