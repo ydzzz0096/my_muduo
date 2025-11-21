@@ -36,3 +36,6 @@ target_link_libraries(echoserver PRIVATE net_lib)
 
 add_executable(test_timer test_timer.cpp)
 target_link_libraries(test_timer PRIVATE net_lib)
+
+add_executable(test_client test_client.cpp)
+target_link_libraries(test_client PRIVATE net_lib)
