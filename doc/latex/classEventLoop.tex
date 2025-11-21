@@ -1,0 +1,446 @@
+\hypertarget{classEventLoop}{}\doxysection{Event\+Loop Class Reference}
+\label{classEventLoop}\index{EventLoop@{EventLoop}}
+
+
+{\ttfamily \#include $<$Event\+Loop.\+h$>$}
+
+
+
+Inheritance diagram for Event\+Loop\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=159pt]{classEventLoop__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Event\+Loop\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=159pt]{classEventLoop__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEventLoop_a33fa78d25c8dc23ece149c805e0f2d17}{Event\+Loop}} ()
+\item 
+\mbox{\hyperlink{classEventLoop_acd0f2fd1a93194d07d2c9fe0c855b6a8}{$\sim$\+Event\+Loop}} ()
+\item 
+void \mbox{\hyperlink{classEventLoop_a056f626b2c13db44d82dd4c0d4aad61d}{loop}} ()
+\item 
+void \mbox{\hyperlink{classEventLoop_af89a71fa29554e53b244a78b765e6259}{quit}} ()
+\item 
+void \mbox{\hyperlink{classEventLoop_a6556774fc2f98b676634ce3b17f75543}{run\+In\+Loop}} (std\+::function$<$ void()$>$ cb)
+\item 
+void \mbox{\hyperlink{classEventLoop_a333b03ec759dad8399da147822f99381}{queue\+In\+Loop}} (std\+::function$<$ void()$>$ cb)
+\item 
+void \mbox{\hyperlink{classEventLoop_ae103810008b58d64e641f9a7e136cfaa}{wakeup}} ()
+\item 
+void \mbox{\hyperlink{classEventLoop_a66b075c2fc9b6886f4ad663d05663b65}{update\+Channel}} (\mbox{\hyperlink{classChannel}{Channel}} $\ast$channel)
+\item 
+void \mbox{\hyperlink{classEventLoop_aa543e036c509b5b2b376bac134f777ab}{remove\+Channel}} (\mbox{\hyperlink{classChannel}{Channel}} $\ast$channel)
+\item 
+bool \mbox{\hyperlink{classEventLoop_a5f044036192a04f13a22605ec27843dc}{has\+Channel}} (\mbox{\hyperlink{classChannel}{Channel}} $\ast$channel)
+\item 
+bool \mbox{\hyperlink{classEventLoop_a3a7b79d0d7d4568de3b8d2fda49634bc}{is\+In\+Loop\+Thread}} () const
+\item 
+void \mbox{\hyperlink{classEventLoop_a023018c12b5ac17adf4c7bf2ca227458}{assert\+In\+Loop\+Thread}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classEventLoop_a4182e69fad4b1b30623d5de87dca759c}{Channel\+List}} = std\+::vector$<$ \mbox{\hyperlink{classChannel}{Channel}} $\ast$ $>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classEventLoop_a01aeec7f46ce30af1f89aee90889e8aa}{abort\+Not\+In\+Loop\+Thread}} ()
+\item 
+void \mbox{\hyperlink{classEventLoop_a65bd599a2b99d9158047ff5fea1c1216}{handle\+Read}} ()
+\item 
+void \mbox{\hyperlink{classEventLoop_a3e946887824bad93b371bf2ebd4fdb76}{do\+Pending\+Functors}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::atomic\+\_\+bool \mbox{\hyperlink{classEventLoop_a288686307b115cc7058ef4593da0e038}{m\+\_\+looping}}
+\item 
+std\+::atomic\+\_\+bool \mbox{\hyperlink{classEventLoop_a81ef60d8f778877c677414c37a325400}{m\+\_\+quit}}
+\item 
+const pid\+\_\+t \mbox{\hyperlink{classEventLoop_a5c5d71b29467c1cc1246478df7cbfa2c}{m\+\_\+thread\+Id}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classPoller}{Poller}} $>$ \mbox{\hyperlink{classEventLoop_acb7f5148c5321262495d515b5a58fbfc}{m\+\_\+poller}}
+\item 
+\mbox{\hyperlink{classEventLoop_a4182e69fad4b1b30623d5de87dca759c}{Channel\+List}} \mbox{\hyperlink{classEventLoop_a59e816e974dbe9ee72ed7df5ed4337c1}{m\+\_\+active\+Channels}}
+\item 
+int \mbox{\hyperlink{classEventLoop_a2e7472e671b771fdd215b17a3b33589f}{m\+\_\+wakeup\+Fd}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classChannel}{Channel}} $>$ \mbox{\hyperlink{classEventLoop_a660ff656d147f907f9616d5c1bba653a}{m\+\_\+wakeup\+Channel}}
+\item 
+std\+::atomic\+\_\+bool \mbox{\hyperlink{classEventLoop_a51b292cc098ea8e9bf887a22887fe2b7}{m\+\_\+calling\+Pending\+Functors}}
+\item 
+std\+::vector$<$ std\+::function$<$ void()$>$ $>$ \mbox{\hyperlink{classEventLoop_af2b57c4569cca4f1c1384ec72ef122d6}{m\+\_\+pending\+Functors}}
+\item 
+std\+::mutex \mbox{\hyperlink{classEventLoop_a5064c434802bfc2a67459a14bc6e03a7}{m\+\_\+mutex}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classEventLoop_a4182e69fad4b1b30623d5de87dca759c}\label{classEventLoop_a4182e69fad4b1b30623d5de87dca759c}} 
+\index{EventLoop@{EventLoop}!ChannelList@{ChannelList}}
+\index{ChannelList@{ChannelList}!EventLoop@{EventLoop}}
+\doxysubsubsection{\texorpdfstring{ChannelList}{ChannelList}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classEventLoop_a4182e69fad4b1b30623d5de87dca759c}{Event\+Loop\+::\+Channel\+List}} =  std\+::vector$<$\mbox{\hyperlink{classChannel}{Channel}}$\ast$$>$\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classEventLoop_a33fa78d25c8dc23ece149c805e0f2d17}\label{classEventLoop_a33fa78d25c8dc23ece149c805e0f2d17}} 
+\index{EventLoop@{EventLoop}!EventLoop@{EventLoop}}
+\index{EventLoop@{EventLoop}!EventLoop@{EventLoop}}
+\doxysubsubsection{\texorpdfstring{EventLoop()}{EventLoop()}}
+{\footnotesize\ttfamily Event\+Loop\+::\+Event\+Loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEventLoop_a33fa78d25c8dc23ece149c805e0f2d17_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classEventLoop_acd0f2fd1a93194d07d2c9fe0c855b6a8}\label{classEventLoop_acd0f2fd1a93194d07d2c9fe0c855b6a8}} 
+\index{EventLoop@{EventLoop}!````~EventLoop@{$\sim$EventLoop}}
+\index{````~EventLoop@{$\sim$EventLoop}!EventLoop@{EventLoop}}
+\doxysubsubsection{\texorpdfstring{$\sim$EventLoop()}{~EventLoop()}}
+{\footnotesize\ttfamily Event\+Loop\+::$\sim$\+Event\+Loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classEventLoop_a01aeec7f46ce30af1f89aee90889e8aa}\label{classEventLoop_a01aeec7f46ce30af1f89aee90889e8aa}} 
+\index{EventLoop@{EventLoop}!abortNotInLoopThread@{abortNotInLoopThread}}
+\index{abortNotInLoopThread@{abortNotInLoopThread}!EventLoop@{EventLoop}}
+\doxysubsubsection{\texorpdfstring{abortNotInLoopThread()}{abortNotInLoopThread()}}
+{\footnotesize\ttfamily void Event\+Loop\+::abort\+Not\+In\+Loop\+Thread (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEventLoop_a01aeec7f46ce30af1f89aee90889e8aa_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEventLoop_a01aeec7f46ce30af1f89aee90889e8aa_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classEventLoop_a023018c12b5ac17adf4c7bf2ca227458}\label{classEventLoop_a023018c12b5ac17adf4c7bf2ca227458}} 
+\index{EventLoop@{EventLoop}!assertInLoopThread@{assertInLoopThread}}
+\index{assertInLoopThread@{assertInLoopThread}!EventLoop@{EventLoop}}
+\doxysubsubsection{\texorpdfstring{assertInLoopThread()}{assertInLoopThread()}}
+{\footnotesize\ttfamily void Event\+Loop\+::assert\+In\+Loop\+Thread (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEventLoop_a023018c12b5ac17adf4c7bf2ca227458_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEventLoop_a023018c12b5ac17adf4c7bf2ca227458_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classEventLoop_a3e946887824bad93b371bf2ebd4fdb76}\label{classEventLoop_a3e946887824bad93b371bf2ebd4fdb76}} 
+\index{EventLoop@{EventLoop}!doPendingFunctors@{doPendingFunctors}}
+\index{doPendingFunctors@{doPendingFunctors}!EventLoop@{EventLoop}}
+\doxysubsubsection{\texorpdfstring{doPendingFunctors()}{doPendingFunctors()}}
+{\footnotesize\ttfamily void Event\+Loop\+::do\+Pending\+Functors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEventLoop_a3e946887824bad93b371bf2ebd4fdb76_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classEventLoop_a65bd599a2b99d9158047ff5fea1c1216}\label{classEventLoop_a65bd599a2b99d9158047ff5fea1c1216}} 
+\index{EventLoop@{EventLoop}!handleRead@{handleRead}}
+\index{handleRead@{handleRead}!EventLoop@{EventLoop}}
+\doxysubsubsection{\texorpdfstring{handleRead()}{handleRead()}}
+{\footnotesize\ttfamily void Event\+Loop\+::handle\+Read (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEventLoop_a65bd599a2b99d9158047ff5fea1c1216_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classEventLoop_a5f044036192a04f13a22605ec27843dc}\label{classEventLoop_a5f044036192a04f13a22605ec27843dc}} 
+\index{EventLoop@{EventLoop}!hasChannel@{hasChannel}}
+\index{hasChannel@{hasChannel}!EventLoop@{EventLoop}}
+\doxysubsubsection{\texorpdfstring{hasChannel()}{hasChannel()}}
+{\footnotesize\ttfamily bool Event\+Loop\+::has\+Channel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classChannel}{Channel}} $\ast$}]{channel }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEventLoop_a5f044036192a04f13a22605ec27843dc_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classEventLoop_a3a7b79d0d7d4568de3b8d2fda49634bc}\label{classEventLoop_a3a7b79d0d7d4568de3b8d2fda49634bc}} 
+\index{EventLoop@{EventLoop}!isInLoopThread@{isInLoopThread}}
+\index{isInLoopThread@{isInLoopThread}!EventLoop@{EventLoop}}
+\doxysubsubsection{\texorpdfstring{isInLoopThread()}{isInLoopThread()}}
+{\footnotesize\ttfamily bool Event\+Loop\+::is\+In\+Loop\+Thread (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEventLoop_a3a7b79d0d7d4568de3b8d2fda49634bc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEventLoop_a3a7b79d0d7d4568de3b8d2fda49634bc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classEventLoop_a056f626b2c13db44d82dd4c0d4aad61d}\label{classEventLoop_a056f626b2c13db44d82dd4c0d4aad61d}} 
+\index{EventLoop@{EventLoop}!loop@{loop}}
+\index{loop@{loop}!EventLoop@{EventLoop}}
+\doxysubsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily void Event\+Loop\+::loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEventLoop_a056f626b2c13db44d82dd4c0d4aad61d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEventLoop_a056f626b2c13db44d82dd4c0d4aad61d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classEventLoop_a333b03ec759dad8399da147822f99381}\label{classEventLoop_a333b03ec759dad8399da147822f99381}} 
+\index{EventLoop@{EventLoop}!queueInLoop@{queueInLoop}}
+\index{queueInLoop@{queueInLoop}!EventLoop@{EventLoop}}
+\doxysubsubsection{\texorpdfstring{queueInLoop()}{queueInLoop()}}
+{\footnotesize\ttfamily void Event\+Loop\+::queue\+In\+Loop (\begin{DoxyParamCaption}\item[{std\+::function$<$ void()$>$}]{cb }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEventLoop_a333b03ec759dad8399da147822f99381_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEventLoop_a333b03ec759dad8399da147822f99381_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classEventLoop_af89a71fa29554e53b244a78b765e6259}\label{classEventLoop_af89a71fa29554e53b244a78b765e6259}} 
+\index{EventLoop@{EventLoop}!quit@{quit}}
+\index{quit@{quit}!EventLoop@{EventLoop}}
+\doxysubsubsection{\texorpdfstring{quit()}{quit()}}
+{\footnotesize\ttfamily void Event\+Loop\+::quit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEventLoop_af89a71fa29554e53b244a78b765e6259_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEventLoop_af89a71fa29554e53b244a78b765e6259_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classEventLoop_aa543e036c509b5b2b376bac134f777ab}\label{classEventLoop_aa543e036c509b5b2b376bac134f777ab}} 
+\index{EventLoop@{EventLoop}!removeChannel@{removeChannel}}
+\index{removeChannel@{removeChannel}!EventLoop@{EventLoop}}
+\doxysubsubsection{\texorpdfstring{removeChannel()}{removeChannel()}}
+{\footnotesize\ttfamily void Event\+Loop\+::remove\+Channel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classChannel}{Channel}} $\ast$}]{channel }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEventLoop_aa543e036c509b5b2b376bac134f777ab_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEventLoop_aa543e036c509b5b2b376bac134f777ab_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classEventLoop_a6556774fc2f98b676634ce3b17f75543}\label{classEventLoop_a6556774fc2f98b676634ce3b17f75543}} 
+\index{EventLoop@{EventLoop}!runInLoop@{runInLoop}}
+\index{runInLoop@{runInLoop}!EventLoop@{EventLoop}}
+\doxysubsubsection{\texorpdfstring{runInLoop()}{runInLoop()}}
+{\footnotesize\ttfamily void Event\+Loop\+::run\+In\+Loop (\begin{DoxyParamCaption}\item[{std\+::function$<$ void()$>$}]{cb }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEventLoop_a6556774fc2f98b676634ce3b17f75543_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEventLoop_a6556774fc2f98b676634ce3b17f75543_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classEventLoop_a66b075c2fc9b6886f4ad663d05663b65}\label{classEventLoop_a66b075c2fc9b6886f4ad663d05663b65}} 
+\index{EventLoop@{EventLoop}!updateChannel@{updateChannel}}
+\index{updateChannel@{updateChannel}!EventLoop@{EventLoop}}
+\doxysubsubsection{\texorpdfstring{updateChannel()}{updateChannel()}}
+{\footnotesize\ttfamily void Event\+Loop\+::update\+Channel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classChannel}{Channel}} $\ast$}]{channel }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEventLoop_a66b075c2fc9b6886f4ad663d05663b65_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEventLoop_a66b075c2fc9b6886f4ad663d05663b65_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classEventLoop_ae103810008b58d64e641f9a7e136cfaa}\label{classEventLoop_ae103810008b58d64e641f9a7e136cfaa}} 
+\index{EventLoop@{EventLoop}!wakeup@{wakeup}}
+\index{wakeup@{wakeup}!EventLoop@{EventLoop}}
+\doxysubsubsection{\texorpdfstring{wakeup()}{wakeup()}}
+{\footnotesize\ttfamily void Event\+Loop\+::wakeup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEventLoop_ae103810008b58d64e641f9a7e136cfaa_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classEventLoop_a59e816e974dbe9ee72ed7df5ed4337c1}\label{classEventLoop_a59e816e974dbe9ee72ed7df5ed4337c1}} 
+\index{EventLoop@{EventLoop}!m\_activeChannels@{m\_activeChannels}}
+\index{m\_activeChannels@{m\_activeChannels}!EventLoop@{EventLoop}}
+\doxysubsubsection{\texorpdfstring{m\_activeChannels}{m\_activeChannels}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEventLoop_a4182e69fad4b1b30623d5de87dca759c}{Channel\+List}} Event\+Loop\+::m\+\_\+active\+Channels\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classEventLoop_a51b292cc098ea8e9bf887a22887fe2b7}\label{classEventLoop_a51b292cc098ea8e9bf887a22887fe2b7}} 
+\index{EventLoop@{EventLoop}!m\_callingPendingFunctors@{m\_callingPendingFunctors}}
+\index{m\_callingPendingFunctors@{m\_callingPendingFunctors}!EventLoop@{EventLoop}}
+\doxysubsubsection{\texorpdfstring{m\_callingPendingFunctors}{m\_callingPendingFunctors}}
+{\footnotesize\ttfamily std\+::atomic\+\_\+bool Event\+Loop\+::m\+\_\+calling\+Pending\+Functors\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classEventLoop_a288686307b115cc7058ef4593da0e038}\label{classEventLoop_a288686307b115cc7058ef4593da0e038}} 
+\index{EventLoop@{EventLoop}!m\_looping@{m\_looping}}
+\index{m\_looping@{m\_looping}!EventLoop@{EventLoop}}
+\doxysubsubsection{\texorpdfstring{m\_looping}{m\_looping}}
+{\footnotesize\ttfamily std\+::atomic\+\_\+bool Event\+Loop\+::m\+\_\+looping\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classEventLoop_a5064c434802bfc2a67459a14bc6e03a7}\label{classEventLoop_a5064c434802bfc2a67459a14bc6e03a7}} 
+\index{EventLoop@{EventLoop}!m\_mutex@{m\_mutex}}
+\index{m\_mutex@{m\_mutex}!EventLoop@{EventLoop}}
+\doxysubsubsection{\texorpdfstring{m\_mutex}{m\_mutex}}
+{\footnotesize\ttfamily std\+::mutex Event\+Loop\+::m\+\_\+mutex\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classEventLoop_af2b57c4569cca4f1c1384ec72ef122d6}\label{classEventLoop_af2b57c4569cca4f1c1384ec72ef122d6}} 
+\index{EventLoop@{EventLoop}!m\_pendingFunctors@{m\_pendingFunctors}}
+\index{m\_pendingFunctors@{m\_pendingFunctors}!EventLoop@{EventLoop}}
+\doxysubsubsection{\texorpdfstring{m\_pendingFunctors}{m\_pendingFunctors}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::function$<$void()$>$ $>$ Event\+Loop\+::m\+\_\+pending\+Functors\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classEventLoop_acb7f5148c5321262495d515b5a58fbfc}\label{classEventLoop_acb7f5148c5321262495d515b5a58fbfc}} 
+\index{EventLoop@{EventLoop}!m\_poller@{m\_poller}}
+\index{m\_poller@{m\_poller}!EventLoop@{EventLoop}}
+\doxysubsubsection{\texorpdfstring{m\_poller}{m\_poller}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classPoller}{Poller}}$>$ Event\+Loop\+::m\+\_\+poller\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classEventLoop_a81ef60d8f778877c677414c37a325400}\label{classEventLoop_a81ef60d8f778877c677414c37a325400}} 
+\index{EventLoop@{EventLoop}!m\_quit@{m\_quit}}
+\index{m\_quit@{m\_quit}!EventLoop@{EventLoop}}
+\doxysubsubsection{\texorpdfstring{m\_quit}{m\_quit}}
+{\footnotesize\ttfamily std\+::atomic\+\_\+bool Event\+Loop\+::m\+\_\+quit\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classEventLoop_a5c5d71b29467c1cc1246478df7cbfa2c}\label{classEventLoop_a5c5d71b29467c1cc1246478df7cbfa2c}} 
+\index{EventLoop@{EventLoop}!m\_threadId@{m\_threadId}}
+\index{m\_threadId@{m\_threadId}!EventLoop@{EventLoop}}
+\doxysubsubsection{\texorpdfstring{m\_threadId}{m\_threadId}}
+{\footnotesize\ttfamily const pid\+\_\+t Event\+Loop\+::m\+\_\+thread\+Id\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classEventLoop_a660ff656d147f907f9616d5c1bba653a}\label{classEventLoop_a660ff656d147f907f9616d5c1bba653a}} 
+\index{EventLoop@{EventLoop}!m\_wakeupChannel@{m\_wakeupChannel}}
+\index{m\_wakeupChannel@{m\_wakeupChannel}!EventLoop@{EventLoop}}
+\doxysubsubsection{\texorpdfstring{m\_wakeupChannel}{m\_wakeupChannel}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classChannel}{Channel}}$>$ Event\+Loop\+::m\+\_\+wakeup\+Channel\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classEventLoop_a2e7472e671b771fdd215b17a3b33589f}\label{classEventLoop_a2e7472e671b771fdd215b17a3b33589f}} 
+\index{EventLoop@{EventLoop}!m\_wakeupFd@{m\_wakeupFd}}
+\index{m\_wakeupFd@{m\_wakeupFd}!EventLoop@{EventLoop}}
+\doxysubsubsection{\texorpdfstring{m\_wakeupFd}{m\_wakeupFd}}
+{\footnotesize\ttfamily int Event\+Loop\+::m\+\_\+wakeup\+Fd\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+net/\mbox{\hyperlink{EventLoop_8h}{Event\+Loop.\+h}}\item 
+net/\mbox{\hyperlink{EventLoop_8cpp}{Event\+Loop.\+cpp}}\end{DoxyCompactItemize}

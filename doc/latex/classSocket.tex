@@ -1,0 +1,174 @@
+\hypertarget{classSocket}{}\doxysection{Socket Class Reference}
+\label{classSocket}\index{Socket@{Socket}}
+
+
+{\ttfamily \#include $<$Socket.\+h$>$}
+
+
+
+Inheritance diagram for Socket\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=159pt]{classSocket__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Socket\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=159pt]{classSocket__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSocket_ab33c4995631ab87b042f5e7ba5075e86}{Socket}} (int sockfd)
+\item 
+\mbox{\hyperlink{classSocket_aeac4eb6379a543d38ed88977d3b6630a}{$\sim$\+Socket}} ()
+\item 
+int \mbox{\hyperlink{classSocket_a8bc12c0f33b70b5827e2d8191914393d}{fd}} () const
+\item 
+void \mbox{\hyperlink{classSocket_af311d7583a7dbd8214ceedcd83aab518}{bind\+Address}} (const \mbox{\hyperlink{classInetAddress}{Inet\+Address}} \&localaddr)
+\item 
+void \mbox{\hyperlink{classSocket_af876dbd03caba60d16306a9b2a784500}{listen}} ()
+\item 
+int \mbox{\hyperlink{classSocket_a1692211c9536c49bf94ed0e7d53599e7}{accept}} (\mbox{\hyperlink{classInetAddress}{Inet\+Address}} $\ast$peeraddr)
+\item 
+void \mbox{\hyperlink{classSocket_adb67edbea2b0917aa4481ff678f8f1dd}{shutdown\+Write}} ()
+\item 
+void \mbox{\hyperlink{classSocket_ac3c6f8848ff049eb3e31b4fe190dd624}{set\+Tcp\+No\+Delay}} (bool on)
+\item 
+void \mbox{\hyperlink{classSocket_a3786c9fef3093f33e6e4c5c38ac02998}{set\+Reuse\+Addr}} (bool on)
+\item 
+void \mbox{\hyperlink{classSocket_ab05b88c5b7df39adb72b7837950b8faa}{set\+Reuse\+Port}} (bool on)
+\item 
+void \mbox{\hyperlink{classSocket_a9aa580ef897d00e6e4200657076bb769}{set\+Keep\+Alive}} (bool on)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const int \mbox{\hyperlink{classSocket_a7171e472f0dd2b46de04dcccf8efc54c}{m\+\_\+sockfd}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSocket_ab33c4995631ab87b042f5e7ba5075e86}\label{classSocket_ab33c4995631ab87b042f5e7ba5075e86}} 
+\index{Socket@{Socket}!Socket@{Socket}}
+\index{Socket@{Socket}!Socket@{Socket}}
+\doxysubsubsection{\texorpdfstring{Socket()}{Socket()}}
+{\footnotesize\ttfamily Socket\+::\+Socket (\begin{DoxyParamCaption}\item[{int}]{sockfd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classSocket_aeac4eb6379a543d38ed88977d3b6630a}\label{classSocket_aeac4eb6379a543d38ed88977d3b6630a}} 
+\index{Socket@{Socket}!````~Socket@{$\sim$Socket}}
+\index{````~Socket@{$\sim$Socket}!Socket@{Socket}}
+\doxysubsubsection{\texorpdfstring{$\sim$Socket()}{~Socket()}}
+{\footnotesize\ttfamily Socket\+::$\sim$\+Socket (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSocket_a1692211c9536c49bf94ed0e7d53599e7}\label{classSocket_a1692211c9536c49bf94ed0e7d53599e7}} 
+\index{Socket@{Socket}!accept@{accept}}
+\index{accept@{accept}!Socket@{Socket}}
+\doxysubsubsection{\texorpdfstring{accept()}{accept()}}
+{\footnotesize\ttfamily int Socket\+::accept (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classInetAddress}{Inet\+Address}} $\ast$}]{peeraddr }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{classSocket_a1692211c9536c49bf94ed0e7d53599e7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{classSocket_a1692211c9536c49bf94ed0e7d53599e7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSocket_af311d7583a7dbd8214ceedcd83aab518}\label{classSocket_af311d7583a7dbd8214ceedcd83aab518}} 
+\index{Socket@{Socket}!bindAddress@{bindAddress}}
+\index{bindAddress@{bindAddress}!Socket@{Socket}}
+\doxysubsubsection{\texorpdfstring{bindAddress()}{bindAddress()}}
+{\footnotesize\ttfamily void Socket\+::bind\+Address (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classInetAddress}{Inet\+Address}} \&}]{localaddr }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSocket_af311d7583a7dbd8214ceedcd83aab518_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSocket_a8bc12c0f33b70b5827e2d8191914393d}\label{classSocket_a8bc12c0f33b70b5827e2d8191914393d}} 
+\index{Socket@{Socket}!fd@{fd}}
+\index{fd@{fd}!Socket@{Socket}}
+\doxysubsubsection{\texorpdfstring{fd()}{fd()}}
+{\footnotesize\ttfamily int Socket\+::fd (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classSocket_af876dbd03caba60d16306a9b2a784500}\label{classSocket_af876dbd03caba60d16306a9b2a784500}} 
+\index{Socket@{Socket}!listen@{listen}}
+\index{listen@{listen}!Socket@{Socket}}
+\doxysubsubsection{\texorpdfstring{listen()}{listen()}}
+{\footnotesize\ttfamily void Socket\+::listen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSocket_af876dbd03caba60d16306a9b2a784500_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classSocket_a9aa580ef897d00e6e4200657076bb769}\label{classSocket_a9aa580ef897d00e6e4200657076bb769}} 
+\index{Socket@{Socket}!setKeepAlive@{setKeepAlive}}
+\index{setKeepAlive@{setKeepAlive}!Socket@{Socket}}
+\doxysubsubsection{\texorpdfstring{setKeepAlive()}{setKeepAlive()}}
+{\footnotesize\ttfamily void Socket\+::set\+Keep\+Alive (\begin{DoxyParamCaption}\item[{bool}]{on }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classSocket_a3786c9fef3093f33e6e4c5c38ac02998}\label{classSocket_a3786c9fef3093f33e6e4c5c38ac02998}} 
+\index{Socket@{Socket}!setReuseAddr@{setReuseAddr}}
+\index{setReuseAddr@{setReuseAddr}!Socket@{Socket}}
+\doxysubsubsection{\texorpdfstring{setReuseAddr()}{setReuseAddr()}}
+{\footnotesize\ttfamily void Socket\+::set\+Reuse\+Addr (\begin{DoxyParamCaption}\item[{bool}]{on }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classSocket_ab05b88c5b7df39adb72b7837950b8faa}\label{classSocket_ab05b88c5b7df39adb72b7837950b8faa}} 
+\index{Socket@{Socket}!setReusePort@{setReusePort}}
+\index{setReusePort@{setReusePort}!Socket@{Socket}}
+\doxysubsubsection{\texorpdfstring{setReusePort()}{setReusePort()}}
+{\footnotesize\ttfamily void Socket\+::set\+Reuse\+Port (\begin{DoxyParamCaption}\item[{bool}]{on }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classSocket_ac3c6f8848ff049eb3e31b4fe190dd624}\label{classSocket_ac3c6f8848ff049eb3e31b4fe190dd624}} 
+\index{Socket@{Socket}!setTcpNoDelay@{setTcpNoDelay}}
+\index{setTcpNoDelay@{setTcpNoDelay}!Socket@{Socket}}
+\doxysubsubsection{\texorpdfstring{setTcpNoDelay()}{setTcpNoDelay()}}
+{\footnotesize\ttfamily void Socket\+::set\+Tcp\+No\+Delay (\begin{DoxyParamCaption}\item[{bool}]{on }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classSocket_adb67edbea2b0917aa4481ff678f8f1dd}\label{classSocket_adb67edbea2b0917aa4481ff678f8f1dd}} 
+\index{Socket@{Socket}!shutdownWrite@{shutdownWrite}}
+\index{shutdownWrite@{shutdownWrite}!Socket@{Socket}}
+\doxysubsubsection{\texorpdfstring{shutdownWrite()}{shutdownWrite()}}
+{\footnotesize\ttfamily void Socket\+::shutdown\+Write (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classSocket_a7171e472f0dd2b46de04dcccf8efc54c}\label{classSocket_a7171e472f0dd2b46de04dcccf8efc54c}} 
+\index{Socket@{Socket}!m\_sockfd@{m\_sockfd}}
+\index{m\_sockfd@{m\_sockfd}!Socket@{Socket}}
+\doxysubsubsection{\texorpdfstring{m\_sockfd}{m\_sockfd}}
+{\footnotesize\ttfamily const int Socket\+::m\+\_\+sockfd\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+net/\mbox{\hyperlink{Socket_8h}{Socket.\+h}}\item 
+net/\mbox{\hyperlink{Socket_8cpp}{Socket.\+cpp}}\end{DoxyCompactItemize}

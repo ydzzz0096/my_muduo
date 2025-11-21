@@ -1,0 +1,13 @@
+<map id="TcpConnection::handleRead" name="TcpConnection::handleRead">
+<area shape="rect" id="node1" title=" " alt="" coords="5,103,207,130"/>
+<area shape="rect" id="node2" href="$classEventLoop.html#a023018c12b5ac17adf4c7bf2ca227458" title=" " alt="" coords="507,27,733,54"/>
+<area shape="rect" id="node5" href="$classTcpConnection.html#a40d75e60b1b0f4808592e95be97919ab" title=" " alt="" coords="255,78,459,105"/>
+<area shape="rect" id="node7" href="$classTcpConnection.html#a2443e7e6d3e04a6c27f148ada44c058a" title=" " alt="" coords="257,129,456,155"/>
+<area shape="rect" id="node8" href="$classBuffer.html#a267f8e6a5f2ca19f6c5cb1e83dcf8255" title=" " alt="" coords="299,179,414,206"/>
+<area shape="rect" id="node3" href="$classEventLoop.html#a01aeec7f46ce30af1f89aee90889e8aa" title=" " alt="" coords="781,5,980,47"/>
+<area shape="rect" id="node4" href="$classEventLoop.html#a3a7b79d0d7d4568de3b8d2fda49634bc" title=" " alt="" coords="782,71,979,98"/>
+<area shape="rect" id="node6" href="$classTcpConnection.html#a9531f4a7bc35a783fc9dd59a96eb9a4b" title=" " alt="" coords="531,78,709,105"/>
+<area shape="rect" id="node9" href="$classBuffer.html#a2a84cd2372a86df68c53156050130181" title=" " alt="" coords="561,129,679,155"/>
+<area shape="rect" id="node10" href="$classBuffer.html#a80f73594a16b8a025ffb7a48f9a08410" title=" " alt="" coords="811,143,951,170"/>
+<area shape="rect" id="node11" href="$classBuffer.html#a02ad281e8c8aa0335d9e081ffa4ac813" title=" " alt="" coords="541,230,699,257"/>
+</map>

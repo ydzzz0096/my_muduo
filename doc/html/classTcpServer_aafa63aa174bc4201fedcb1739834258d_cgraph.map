@@ -1,0 +1,9 @@
+<map id="TcpServer::removeConnection" name="TcpServer::removeConnection">
+<area shape="rect" id="node1" title=" " alt="" coords="5,53,221,80"/>
+<area shape="rect" id="node2" href="$classTcpServer.html#a43e65dd23b0bcda38336da1c77a8c1f4" title=" " alt="" coords="269,16,485,58"/>
+<area shape="rect" id="node7" href="$classEventLoop.html#a6556774fc2f98b676634ce3b17f75543" title=" " alt="" coords="296,82,459,109"/>
+<area shape="rect" id="node3" href="$classEventLoop.html#a023018c12b5ac17adf4c7bf2ca227458" title=" " alt="" coords="824,24,1051,50"/>
+<area shape="rect" id="node5" href="$classTcpConnection.html#a668a83b05dfe47b5b3d5ba111d58c1ac" title=" " alt="" coords="533,24,776,50"/>
+<area shape="rect" id="node6" href="$classEventLoop.html#a333b03ec759dad8399da147822f99381" title=" " alt="" coords="564,74,745,101"/>
+<area shape="rect" id="node4" href="$classEventLoop.html#a3a7b79d0d7d4568de3b8d2fda49634bc" title=" " alt="" coords="1099,74,1296,101"/>
+</map>

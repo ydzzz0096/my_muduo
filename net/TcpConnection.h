@@ -16,12 +16,13 @@
 class Channel;
 class EventLoop;
 class Socket;
-
+//为什么这么复杂 : Acceptor 的业务是**“一次性”的，而 TcpConnection 的业务是“全周期”,“有状态”**和存在异步部分的。
 /**
  * TcpConnection 是服务器与客户端之间连接的抽象。
  * 它负责管理 socket fd，并通过 Channel 将其注册到 EventLoop。
  * 它拥有 inputBuffer 和 outputBuffer，用于处理读写事件。
  * 它是 noncopyable 的，因为每个 TcpConnection 对象都代表一个唯一的连接。
+ * 生命周期需要关注,多方决定,可能被一个线程创建而被另一个线程销毁
  */
 // 安全的获取一个指向自己的 shared_ptr 
 class TcpConnection : noncopyable, public std::enable_shared_from_this<TcpConnection>
@@ -70,7 +71,7 @@ private:
     void sendInLoop(const void* data, size_t len);
     void shutdownInLoop();
 
-    EventLoop* m_loop; // 绝不是 subloop，TcpConnection 都是在 subloop 中管理的
+    EventLoop* m_loop;  
     const std::string m_name;
     std::atomic<StateE> m_state;
     bool m_reading;
@@ -83,7 +84,7 @@ private:
     const InetAddress m_localAddr;
     const InetAddress m_peerAddr;
 
-    ConnectionCallback m_connectionCallback; // 有新连接时的回调
+    ConnectionCallback m_connectionCallback; // 状态更新时的回调,是为了让应用层有机会更新(添加或删除连接)
     MessageCallback m_messageCallback;       // 有读写消息时的回调
     WriteCompleteCallback m_writeCompleteCallback; // 消息发送完成以后的回调
     HighWaterMarkCallback m_highWaterMarkCallback;

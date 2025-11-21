@@ -12,8 +12,8 @@ const int kDeleted = 2;
 
 EpollPoller::EpollPoller(EventLoop *loop)
     : Poller(loop),//此处调用父类构造函数
-      m_epollfd(::epoll_create1(EPOLL_CLOEXEC)),
-      m_events(kInitEventListSize)
+      m_epollfd(::epoll_create1(EPOLL_CLOEXEC)),//创建一个新的 Linux epoll 实例，并将返回的文件描述符 (fd) 赋值给成员变量 m_epollfd
+      m_events(kInitEventListSize)//预分配内存
 {
     if (m_epollfd < 0)
     {
@@ -28,6 +28,7 @@ EpollPoller::~EpollPoller()
 
 Timestamp EpollPoller::poll(int timeoutMs, ChannelList *activeChannels)
 {
+    // 第一个参数指定要等待哪个 epoll 实例上的事件。这个 fd 是我们之前通过 epoll_create1() 创建的那个“总机号码”
     int numEvents = ::epoll_wait(m_epollfd, &*m_events.begin(), static_cast<int>(m_events.size()), timeoutMs);
     int savedErrno = errno;
     Timestamp now(Timestamp::now());
@@ -57,6 +58,7 @@ Timestamp EpollPoller::poll(int timeoutMs, ChannelList *activeChannels)
 // 先在channel类调整m_events,然后调用这个函数调整底层关注的事件
 void EpollPoller::updateChannel(Channel *channel)
 {
+    assertInLoopThread();
     const int index = channel->index();
     if (index == kNew || index == kDeleted)
     {
@@ -85,6 +87,7 @@ void EpollPoller::updateChannel(Channel *channel)
 // 物理上的删除,断开连接时调用
 void EpollPoller::removeChannel(Channel *channel)
 {
+    assertInLoopThread();
     int fd = channel->fd();
     m_channels.erase(fd);
     int index = channel->index();
@@ -114,6 +117,7 @@ void EpollPoller::update(int operation, Channel *channel)
     event.events = channel->events();
     event.data.ptr = channel; // 关键：将 Channel 指针存入 epoll_event
 
+    // 第三个参数在我们的代码中，这个 fd 来自 channel->fd()，它可能是一个 listenfd、一个 connfd 或一个 eventfd。
     if (::epoll_ctl(m_epollfd, operation, fd, &event) < 0)
     {
         LOG_FATAL << "epoll_ctl error:" << operation;

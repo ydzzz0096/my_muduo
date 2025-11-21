@@ -28,7 +28,6 @@ public:
 
     void shutdown();
 
-    
 private:
     void threadFunc(); // 线程池中每个工作线程运行的函数
 

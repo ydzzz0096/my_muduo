@@ -1,0 +1,214 @@
+\hypertarget{classEpollPoller}{}\doxysection{Epoll\+Poller Class Reference}
+\label{classEpollPoller}\index{EpollPoller@{EpollPoller}}
+
+
+{\ttfamily \#include $<$Epoll\+Poller.\+h$>$}
+
+
+
+Inheritance diagram for Epoll\+Poller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=159pt]{classEpollPoller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Epoll\+Poller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{classEpollPoller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEpollPoller_ab40745abebde1c84c4aea4c6782d26be}{Epoll\+Poller}} (\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$loop)
+\item 
+\mbox{\hyperlink{classEpollPoller_a29f7471be817c80d73e525797f1ca166}{$\sim$\+Epoll\+Poller}} () override
+\item 
+\mbox{\hyperlink{classTimestamp}{Timestamp}} \mbox{\hyperlink{classEpollPoller_ac22317a7a8cdc656594a509a06806acd}{poll}} (int timeout\+Ms, \mbox{\hyperlink{classPoller_a0d6212e417eae8975cf3b66211bf3fd4}{Channel\+List}} $\ast$active\+Channels) override
+\item 
+void \mbox{\hyperlink{classEpollPoller_aa88c24cc8f60b7d3aca55d20c2bbec94}{update\+Channel}} (\mbox{\hyperlink{classChannel}{Channel}} $\ast$channel) override
+\item 
+void \mbox{\hyperlink{classEpollPoller_a80b36ef78842392c480fc98d146ab167}{remove\+Channel}} (\mbox{\hyperlink{classChannel}{Channel}} $\ast$channel) override
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classEpollPoller_a7c23e687ed41db54a8d67f95ee4c031b}{Event\+List}} = std\+::vector$<$ struct epoll\+\_\+event $>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classEpollPoller_a97f96ac53eadba9d6684174589cccc1c}{fill\+Active\+Channels}} (int num\+Events, \mbox{\hyperlink{classPoller_a0d6212e417eae8975cf3b66211bf3fd4}{Channel\+List}} $\ast$active\+Channels) const
+\item 
+void \mbox{\hyperlink{classEpollPoller_a385914cb5d3f51ce6c1e064155a274f7}{update}} (int operation, \mbox{\hyperlink{classChannel}{Channel}} $\ast$channel)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classEpollPoller_a70ac28840cd6b7588063e19e1ff8ed71}{m\+\_\+epollfd}}
+\item 
+\mbox{\hyperlink{classEpollPoller_a7c23e687ed41db54a8d67f95ee4c031b}{Event\+List}} \mbox{\hyperlink{classEpollPoller_a2221cbdff2233fca7ebd6650c7b6f794}{m\+\_\+events}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const int \mbox{\hyperlink{classEpollPoller_a39d1633f4056503f91bb4da5d50e0e89}{k\+Init\+Event\+List\+Size}} = 16
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classEpollPoller_a7c23e687ed41db54a8d67f95ee4c031b}\label{classEpollPoller_a7c23e687ed41db54a8d67f95ee4c031b}} 
+\index{EpollPoller@{EpollPoller}!EventList@{EventList}}
+\index{EventList@{EventList}!EpollPoller@{EpollPoller}}
+\doxysubsubsection{\texorpdfstring{EventList}{EventList}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classEpollPoller_a7c23e687ed41db54a8d67f95ee4c031b}{Epoll\+Poller\+::\+Event\+List}} =  std\+::vector$<$struct epoll\+\_\+event$>$\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classEpollPoller_ab40745abebde1c84c4aea4c6782d26be}\label{classEpollPoller_ab40745abebde1c84c4aea4c6782d26be}} 
+\index{EpollPoller@{EpollPoller}!EpollPoller@{EpollPoller}}
+\index{EpollPoller@{EpollPoller}!EpollPoller@{EpollPoller}}
+\doxysubsubsection{\texorpdfstring{EpollPoller()}{EpollPoller()}}
+{\footnotesize\ttfamily Epoll\+Poller\+::\+Epoll\+Poller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$}]{loop }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classEpollPoller_a29f7471be817c80d73e525797f1ca166}\label{classEpollPoller_a29f7471be817c80d73e525797f1ca166}} 
+\index{EpollPoller@{EpollPoller}!````~EpollPoller@{$\sim$EpollPoller}}
+\index{````~EpollPoller@{$\sim$EpollPoller}!EpollPoller@{EpollPoller}}
+\doxysubsubsection{\texorpdfstring{$\sim$EpollPoller()}{~EpollPoller()}}
+{\footnotesize\ttfamily Epoll\+Poller\+::$\sim$\+Epoll\+Poller (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classEpollPoller_a97f96ac53eadba9d6684174589cccc1c}\label{classEpollPoller_a97f96ac53eadba9d6684174589cccc1c}} 
+\index{EpollPoller@{EpollPoller}!fillActiveChannels@{fillActiveChannels}}
+\index{fillActiveChannels@{fillActiveChannels}!EpollPoller@{EpollPoller}}
+\doxysubsubsection{\texorpdfstring{fillActiveChannels()}{fillActiveChannels()}}
+{\footnotesize\ttfamily void Epoll\+Poller\+::fill\+Active\+Channels (\begin{DoxyParamCaption}\item[{int}]{num\+Events,  }\item[{\mbox{\hyperlink{classPoller_a0d6212e417eae8975cf3b66211bf3fd4}{Channel\+List}} $\ast$}]{active\+Channels }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEpollPoller_a97f96ac53eadba9d6684174589cccc1c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEpollPoller_a97f96ac53eadba9d6684174589cccc1c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classEpollPoller_ac22317a7a8cdc656594a509a06806acd}\label{classEpollPoller_ac22317a7a8cdc656594a509a06806acd}} 
+\index{EpollPoller@{EpollPoller}!poll@{poll}}
+\index{poll@{poll}!EpollPoller@{EpollPoller}}
+\doxysubsubsection{\texorpdfstring{poll()}{poll()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTimestamp}{Timestamp}} Epoll\+Poller\+::poll (\begin{DoxyParamCaption}\item[{int}]{timeout\+Ms,  }\item[{\mbox{\hyperlink{classPoller_a0d6212e417eae8975cf3b66211bf3fd4}{Channel\+List}} $\ast$}]{active\+Channels }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classPoller_a9d3ecdca4602b1fe6f6ad065199a8152}{Poller}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEpollPoller_ac22317a7a8cdc656594a509a06806acd_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classEpollPoller_a80b36ef78842392c480fc98d146ab167}\label{classEpollPoller_a80b36ef78842392c480fc98d146ab167}} 
+\index{EpollPoller@{EpollPoller}!removeChannel@{removeChannel}}
+\index{removeChannel@{removeChannel}!EpollPoller@{EpollPoller}}
+\doxysubsubsection{\texorpdfstring{removeChannel()}{removeChannel()}}
+{\footnotesize\ttfamily void Epoll\+Poller\+::remove\+Channel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classChannel}{Channel}} $\ast$}]{channel }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classPoller_a7820b92775aa9f5e13c6e7c11567c274}{Poller}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEpollPoller_a80b36ef78842392c480fc98d146ab167_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classEpollPoller_a385914cb5d3f51ce6c1e064155a274f7}\label{classEpollPoller_a385914cb5d3f51ce6c1e064155a274f7}} 
+\index{EpollPoller@{EpollPoller}!update@{update}}
+\index{update@{update}!EpollPoller@{EpollPoller}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Epoll\+Poller\+::update (\begin{DoxyParamCaption}\item[{int}]{operation,  }\item[{\mbox{\hyperlink{classChannel}{Channel}} $\ast$}]{channel }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=319pt]{classEpollPoller_a385914cb5d3f51ce6c1e064155a274f7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEpollPoller_a385914cb5d3f51ce6c1e064155a274f7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classEpollPoller_aa88c24cc8f60b7d3aca55d20c2bbec94}\label{classEpollPoller_aa88c24cc8f60b7d3aca55d20c2bbec94}} 
+\index{EpollPoller@{EpollPoller}!updateChannel@{updateChannel}}
+\index{updateChannel@{updateChannel}!EpollPoller@{EpollPoller}}
+\doxysubsubsection{\texorpdfstring{updateChannel()}{updateChannel()}}
+{\footnotesize\ttfamily void Epoll\+Poller\+::update\+Channel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classChannel}{Channel}} $\ast$}]{channel }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classPoller_a80b46252b5300a85946184406a883537}{Poller}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEpollPoller_aa88c24cc8f60b7d3aca55d20c2bbec94_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classEpollPoller_a39d1633f4056503f91bb4da5d50e0e89}\label{classEpollPoller_a39d1633f4056503f91bb4da5d50e0e89}} 
+\index{EpollPoller@{EpollPoller}!kInitEventListSize@{kInitEventListSize}}
+\index{kInitEventListSize@{kInitEventListSize}!EpollPoller@{EpollPoller}}
+\doxysubsubsection{\texorpdfstring{kInitEventListSize}{kInitEventListSize}}
+{\footnotesize\ttfamily const int Epoll\+Poller\+::k\+Init\+Event\+List\+Size = 16\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classEpollPoller_a70ac28840cd6b7588063e19e1ff8ed71}\label{classEpollPoller_a70ac28840cd6b7588063e19e1ff8ed71}} 
+\index{EpollPoller@{EpollPoller}!m\_epollfd@{m\_epollfd}}
+\index{m\_epollfd@{m\_epollfd}!EpollPoller@{EpollPoller}}
+\doxysubsubsection{\texorpdfstring{m\_epollfd}{m\_epollfd}}
+{\footnotesize\ttfamily int Epoll\+Poller\+::m\+\_\+epollfd\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classEpollPoller_a2221cbdff2233fca7ebd6650c7b6f794}\label{classEpollPoller_a2221cbdff2233fca7ebd6650c7b6f794}} 
+\index{EpollPoller@{EpollPoller}!m\_events@{m\_events}}
+\index{m\_events@{m\_events}!EpollPoller@{EpollPoller}}
+\doxysubsubsection{\texorpdfstring{m\_events}{m\_events}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEpollPoller_a7c23e687ed41db54a8d67f95ee4c031b}{Event\+List}} Epoll\+Poller\+::m\+\_\+events\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+net/\mbox{\hyperlink{EpollPoller_8h}{Epoll\+Poller.\+h}}\item 
+net/\mbox{\hyperlink{EpollPoller_8cpp}{Epoll\+Poller.\+cpp}}\end{DoxyCompactItemize}

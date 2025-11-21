@@ -1,0 +1,93 @@
+\hypertarget{test__eventloop__v2_8cpp}{}\doxysection{examples/test\+\_\+eventloop\+\_\+v2.cpp File Reference}
+\label{test__eventloop__v2_8cpp}\index{examples/test\_eventloop\_v2.cpp@{examples/test\_eventloop\_v2.cpp}}
+{\ttfamily \#include \char`\"{}net/\+Event\+Loop.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}base/\+Thread.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}base/\+Logger.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$mutex$>$}\newline
+{\ttfamily \#include $<$condition\+\_\+variable$>$}\newline
+Include dependency graph for test\+\_\+eventloop\+\_\+v2.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test__eventloop__v2_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{test__eventloop__v2_8cpp_ab5d95e2be7087fd86a4362fddccf42b3}{thread\+\_\+func}} ()
+\item 
+int \mbox{\hyperlink{test__eventloop__v2_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$ \mbox{\hyperlink{test__eventloop__v2_8cpp_ae117a9c6ebd3ef9a72b98b807cc6e71f}{g\+\_\+loop}} = nullptr
+\item 
+std\+::mutex \mbox{\hyperlink{test__eventloop__v2_8cpp_abf45c484c585bd82d2d892c29de4a0be}{g\+\_\+mutex}}
+\item 
+std\+::condition\+\_\+variable \mbox{\hyperlink{test__eventloop__v2_8cpp_a51c39d58e4726505e7c220301cb09189}{g\+\_\+cond}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{test__eventloop__v2_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{test__eventloop__v2_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{test\_eventloop\_v2.cpp@{test\_eventloop\_v2.cpp}!main@{main}}
+\index{main@{main}!test\_eventloop\_v2.cpp@{test\_eventloop\_v2.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test__eventloop__v2_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{test__eventloop__v2_8cpp_ab5d95e2be7087fd86a4362fddccf42b3}\label{test__eventloop__v2_8cpp_ab5d95e2be7087fd86a4362fddccf42b3}} 
+\index{test\_eventloop\_v2.cpp@{test\_eventloop\_v2.cpp}!thread\_func@{thread\_func}}
+\index{thread\_func@{thread\_func}!test\_eventloop\_v2.cpp@{test\_eventloop\_v2.cpp}}
+\doxysubsubsection{\texorpdfstring{thread\_func()}{thread\_func()}}
+{\footnotesize\ttfamily void thread\+\_\+func (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test__eventloop__v2_8cpp_ab5d95e2be7087fd86a4362fddccf42b3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{test__eventloop__v2_8cpp_ab5d95e2be7087fd86a4362fddccf42b3_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{test__eventloop__v2_8cpp_a51c39d58e4726505e7c220301cb09189}\label{test__eventloop__v2_8cpp_a51c39d58e4726505e7c220301cb09189}} 
+\index{test\_eventloop\_v2.cpp@{test\_eventloop\_v2.cpp}!g\_cond@{g\_cond}}
+\index{g\_cond@{g\_cond}!test\_eventloop\_v2.cpp@{test\_eventloop\_v2.cpp}}
+\doxysubsubsection{\texorpdfstring{g\_cond}{g\_cond}}
+{\footnotesize\ttfamily std\+::condition\+\_\+variable g\+\_\+cond}
+
+\mbox{\Hypertarget{test__eventloop__v2_8cpp_ae117a9c6ebd3ef9a72b98b807cc6e71f}\label{test__eventloop__v2_8cpp_ae117a9c6ebd3ef9a72b98b807cc6e71f}} 
+\index{test\_eventloop\_v2.cpp@{test\_eventloop\_v2.cpp}!g\_loop@{g\_loop}}
+\index{g\_loop@{g\_loop}!test\_eventloop\_v2.cpp@{test\_eventloop\_v2.cpp}}
+\doxysubsubsection{\texorpdfstring{g\_loop}{g\_loop}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEventLoop}{Event\+Loop}}$\ast$ g\+\_\+loop = nullptr}
+
+\mbox{\Hypertarget{test__eventloop__v2_8cpp_abf45c484c585bd82d2d892c29de4a0be}\label{test__eventloop__v2_8cpp_abf45c484c585bd82d2d892c29de4a0be}} 
+\index{test\_eventloop\_v2.cpp@{test\_eventloop\_v2.cpp}!g\_mutex@{g\_mutex}}
+\index{g\_mutex@{g\_mutex}!test\_eventloop\_v2.cpp@{test\_eventloop\_v2.cpp}}
+\doxysubsubsection{\texorpdfstring{g\_mutex}{g\_mutex}}
+{\footnotesize\ttfamily std\+::mutex g\+\_\+mutex}
+

@@ -1,11 +1,14 @@
 // base/Logger.cpp
 // 实现日志输出的逻辑就是靠logger实例不断Pop(),需要的时候就会调用loggerstream的构造函数,构造出头部 信息,靠析构函数调用log和<<把buffer的内容push到队列.
+// 异步日志系统：通过 LogStream (RAII, operator<<) 负责前端格式化并将日志提交给后端 Logger 单例，
+// 实现了日志产生（快）与 I/O 输出（慢）的分离，确保调用线程的低延迟。
 #include "Logger.h"
 #include <iostream>
 
 // === Logger 方法的实现 ===
 Logger& Logger::getInstance()
 {
+    //静态全局变量 保证唯一
     static Logger logger;
     return logger;
 }
@@ -18,7 +21,7 @@ Logger::Logger() : m_logLevel(INFO)
         while (true)
         {
             // Pop 现在返回一个 optional，可以判断是否有效
-            auto result = m_logQueue.Pop();
+            auto result = m_logQueue.Pop();//wait 阻塞等待
 
             if (result.has_value())
             {
@@ -37,6 +40,7 @@ Logger::Logger() : m_logLevel(INFO)
 Logger::~Logger()
 {
     // 只需调用队列的 Shutdown 方法
+    // 调用shutdown之后lockqueue会停止接受新消息,唤醒所有消费者对消息输出,如果为空并停止就会返回nullopt
     m_logQueue.Shutdown();
     // 等待后台线程处理完所有剩余消息并安全退出
     if (m_writerThread.joinable())

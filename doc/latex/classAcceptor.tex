@@ -1,0 +1,193 @@
+\hypertarget{classAcceptor}{}\doxysection{Acceptor Class Reference}
+\label{classAcceptor}\index{Acceptor@{Acceptor}}
+
+
+{\ttfamily \#include $<$Acceptor.\+h$>$}
+
+
+
+Inheritance diagram for Acceptor\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=159pt]{classAcceptor__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Acceptor\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classAcceptor__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classAcceptor_ac79bdfdad234bbc2ec8b66bc584957ab}{New\+Connection\+Callback}} = std\+::function$<$ void(int sockfd, const \mbox{\hyperlink{classInetAddress}{Inet\+Address}} \&)$>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classAcceptor_a74e5bbe878d950497185959fe61514bf}{Acceptor}} (\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$loop, const \mbox{\hyperlink{classInetAddress}{Inet\+Address}} \&listen\+Addr, bool reuseport)
+\item 
+\mbox{\hyperlink{classAcceptor_af9c2fbee57825eed5bbe3ec29abdb897}{$\sim$\+Acceptor}} ()
+\item 
+void \mbox{\hyperlink{classAcceptor_afbbec0d32863f77a8110f7378a4def93}{set\+New\+Connection\+Callback}} (const \mbox{\hyperlink{classAcceptor_ac79bdfdad234bbc2ec8b66bc584957ab}{New\+Connection\+Callback}} \&cb)
+\item 
+bool \mbox{\hyperlink{classAcceptor_a6e34ed670c0532a70402bfe771542892}{listening}} () const
+\item 
+void \mbox{\hyperlink{classAcceptor_af9accf28a769f74c05fb03797ab62182}{listen}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classAcceptor_a4b1591b257611ae9e16f3b04229857e5}{handle\+Read}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$ \mbox{\hyperlink{classAcceptor_a0e0b5fe0f26c033efab3991b97bab38f}{m\+\_\+loop}}
+\item 
+\mbox{\hyperlink{classSocket}{Socket}} \mbox{\hyperlink{classAcceptor_a92bfd0ff562c1740c978e4b032191b2a}{m\+\_\+accept\+Socket}}
+\item 
+\mbox{\hyperlink{classChannel}{Channel}} \mbox{\hyperlink{classAcceptor_ae85f27cc1872d0959f1e8ae89b724c03}{m\+\_\+accept\+Channel}}
+\item 
+\mbox{\hyperlink{classAcceptor_ac79bdfdad234bbc2ec8b66bc584957ab}{New\+Connection\+Callback}} \mbox{\hyperlink{classAcceptor_a49a99ce370d35aead3ef49f3579fe007}{m\+\_\+new\+Connection\+Callback}}
+\item 
+bool \mbox{\hyperlink{classAcceptor_a31dde0175c5dfd7ca2e6b2a19109fd6a}{m\+\_\+listening}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classAcceptor}{Acceptor}} 类的职责是封装服务器端的监听套接字。 它在构造时创建 socket，并设置 socket 选项。 它不拥有 Event\+Loop，而是通过指针使用。 
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classAcceptor_ac79bdfdad234bbc2ec8b66bc584957ab}\label{classAcceptor_ac79bdfdad234bbc2ec8b66bc584957ab}} 
+\index{Acceptor@{Acceptor}!NewConnectionCallback@{NewConnectionCallback}}
+\index{NewConnectionCallback@{NewConnectionCallback}!Acceptor@{Acceptor}}
+\doxysubsubsection{\texorpdfstring{NewConnectionCallback}{NewConnectionCallback}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classAcceptor_ac79bdfdad234bbc2ec8b66bc584957ab}{Acceptor\+::\+New\+Connection\+Callback}} =  std\+::function$<$void(int sockfd, const \mbox{\hyperlink{classInetAddress}{Inet\+Address}}\&)$>$}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classAcceptor_a74e5bbe878d950497185959fe61514bf}\label{classAcceptor_a74e5bbe878d950497185959fe61514bf}} 
+\index{Acceptor@{Acceptor}!Acceptor@{Acceptor}}
+\index{Acceptor@{Acceptor}!Acceptor@{Acceptor}}
+\doxysubsubsection{\texorpdfstring{Acceptor()}{Acceptor()}}
+{\footnotesize\ttfamily Acceptor\+::\+Acceptor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$}]{loop,  }\item[{const \mbox{\hyperlink{classInetAddress}{Inet\+Address}} \&}]{listen\+Addr,  }\item[{bool}]{reuseport }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classAcceptor_af9c2fbee57825eed5bbe3ec29abdb897}\label{classAcceptor_af9c2fbee57825eed5bbe3ec29abdb897}} 
+\index{Acceptor@{Acceptor}!````~Acceptor@{$\sim$Acceptor}}
+\index{````~Acceptor@{$\sim$Acceptor}!Acceptor@{Acceptor}}
+\doxysubsubsection{\texorpdfstring{$\sim$Acceptor()}{~Acceptor()}}
+{\footnotesize\ttfamily Acceptor\+::$\sim$\+Acceptor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classAcceptor_af9c2fbee57825eed5bbe3ec29abdb897_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classAcceptor_a4b1591b257611ae9e16f3b04229857e5}\label{classAcceptor_a4b1591b257611ae9e16f3b04229857e5}} 
+\index{Acceptor@{Acceptor}!handleRead@{handleRead}}
+\index{handleRead@{handleRead}!Acceptor@{Acceptor}}
+\doxysubsubsection{\texorpdfstring{handleRead()}{handleRead()}}
+{\footnotesize\ttfamily void Acceptor\+::handle\+Read (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classAcceptor_a4b1591b257611ae9e16f3b04229857e5_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classAcceptor_af9accf28a769f74c05fb03797ab62182}\label{classAcceptor_af9accf28a769f74c05fb03797ab62182}} 
+\index{Acceptor@{Acceptor}!listen@{listen}}
+\index{listen@{listen}!Acceptor@{Acceptor}}
+\doxysubsubsection{\texorpdfstring{listen()}{listen()}}
+{\footnotesize\ttfamily void Acceptor\+::listen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classAcceptor_af9accf28a769f74c05fb03797ab62182_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classAcceptor_af9accf28a769f74c05fb03797ab62182_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classAcceptor_a6e34ed670c0532a70402bfe771542892}\label{classAcceptor_a6e34ed670c0532a70402bfe771542892}} 
+\index{Acceptor@{Acceptor}!listening@{listening}}
+\index{listening@{listening}!Acceptor@{Acceptor}}
+\doxysubsubsection{\texorpdfstring{listening()}{listening()}}
+{\footnotesize\ttfamily bool Acceptor\+::listening (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classAcceptor_afbbec0d32863f77a8110f7378a4def93}\label{classAcceptor_afbbec0d32863f77a8110f7378a4def93}} 
+\index{Acceptor@{Acceptor}!setNewConnectionCallback@{setNewConnectionCallback}}
+\index{setNewConnectionCallback@{setNewConnectionCallback}!Acceptor@{Acceptor}}
+\doxysubsubsection{\texorpdfstring{setNewConnectionCallback()}{setNewConnectionCallback()}}
+{\footnotesize\ttfamily void Acceptor\+::set\+New\+Connection\+Callback (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classAcceptor_ac79bdfdad234bbc2ec8b66bc584957ab}{New\+Connection\+Callback}} \&}]{cb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=314pt]{classAcceptor_afbbec0d32863f77a8110f7378a4def93_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classAcceptor_ae85f27cc1872d0959f1e8ae89b724c03}\label{classAcceptor_ae85f27cc1872d0959f1e8ae89b724c03}} 
+\index{Acceptor@{Acceptor}!m\_acceptChannel@{m\_acceptChannel}}
+\index{m\_acceptChannel@{m\_acceptChannel}!Acceptor@{Acceptor}}
+\doxysubsubsection{\texorpdfstring{m\_acceptChannel}{m\_acceptChannel}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classChannel}{Channel}} Acceptor\+::m\+\_\+accept\+Channel\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classAcceptor_a92bfd0ff562c1740c978e4b032191b2a}\label{classAcceptor_a92bfd0ff562c1740c978e4b032191b2a}} 
+\index{Acceptor@{Acceptor}!m\_acceptSocket@{m\_acceptSocket}}
+\index{m\_acceptSocket@{m\_acceptSocket}!Acceptor@{Acceptor}}
+\doxysubsubsection{\texorpdfstring{m\_acceptSocket}{m\_acceptSocket}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classSocket}{Socket}} Acceptor\+::m\+\_\+accept\+Socket\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classAcceptor_a31dde0175c5dfd7ca2e6b2a19109fd6a}\label{classAcceptor_a31dde0175c5dfd7ca2e6b2a19109fd6a}} 
+\index{Acceptor@{Acceptor}!m\_listening@{m\_listening}}
+\index{m\_listening@{m\_listening}!Acceptor@{Acceptor}}
+\doxysubsubsection{\texorpdfstring{m\_listening}{m\_listening}}
+{\footnotesize\ttfamily bool Acceptor\+::m\+\_\+listening\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classAcceptor_a0e0b5fe0f26c033efab3991b97bab38f}\label{classAcceptor_a0e0b5fe0f26c033efab3991b97bab38f}} 
+\index{Acceptor@{Acceptor}!m\_loop@{m\_loop}}
+\index{m\_loop@{m\_loop}!Acceptor@{Acceptor}}
+\doxysubsubsection{\texorpdfstring{m\_loop}{m\_loop}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEventLoop}{Event\+Loop}}$\ast$ Acceptor\+::m\+\_\+loop\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classAcceptor_a49a99ce370d35aead3ef49f3579fe007}\label{classAcceptor_a49a99ce370d35aead3ef49f3579fe007}} 
+\index{Acceptor@{Acceptor}!m\_newConnectionCallback@{m\_newConnectionCallback}}
+\index{m\_newConnectionCallback@{m\_newConnectionCallback}!Acceptor@{Acceptor}}
+\doxysubsubsection{\texorpdfstring{m\_newConnectionCallback}{m\_newConnectionCallback}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classAcceptor_ac79bdfdad234bbc2ec8b66bc584957ab}{New\+Connection\+Callback}} Acceptor\+::m\+\_\+new\+Connection\+Callback\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+net/\mbox{\hyperlink{Acceptor_8h}{Acceptor.\+h}}\item 
+net/\mbox{\hyperlink{Acceptor_8cpp}{Acceptor.\+cpp}}\end{DoxyCompactItemize}

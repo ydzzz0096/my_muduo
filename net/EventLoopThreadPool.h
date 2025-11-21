@@ -21,7 +21,7 @@ public:
     ~EventLoopThreadPool();
 
     void setThreadNum(int numThreads) { m_numThreads = numThreads; }
-    void start(const ThreadInitCallback& cb = ThreadInitCallback());
+    void start(const ThreadInitCallback& cb = ThreadInitCallback());// ThreadInitCallback由tcpserver设定
 
     // 如果工作在多线程中，baseLoop_ 默认以轮询的方式分配 channel 给 subloop
     EventLoop* getNextLoop();
@@ -36,8 +36,7 @@ private:
     bool m_started;
     int m_numThreads;
     size_t m_next;
-    std::vector<std::unique_ptr<EventLoopThread>> m_threads;
-    std::vector<EventLoop*> m_loops;
+    std::vector<std::unique_ptr<EventLoopThread>> m_threads;// EventLoopThread拥有thread
+    std::vector<EventLoop*> m_loops;// 被子线程拥有所以需要单独一个表用来访问
 };
-
 #endif

@@ -25,10 +25,33 @@ TcpServer::TcpServer(EventLoop* loop,
 
 TcpServer::~TcpServer()
 {
+    // 只需要处理未销毁的连接
+    /*
+        main 线程绝对不能直接 delete 一个 TcpConnection 对象。因为这个对象内部的 Channel 等资源正被一个 subLoop 线程使用。如果 main 线程销毁了它，subLoop 线程在下一次 poll 返回时就会访问到悬空指针，导致程序崩溃
+    */
     for (auto& item : m_connections)
     {
+        // 1. 复制一份 shared_ptr,后续在子线程里被摧毁之后,不会立即消失,等到函数结束之后会自动消除
         TcpConnectionPtr conn(item.second);
+        
+        // 2. 从 map 中移除,如果没有上一步,这里会直接导致连接销毁,子线程里会变成空指针
         item.second.reset();
+        
+        // 3. 将“销毁”任务派发给 subLoop
+        /*
+            conn->getLoop():
+                TcpConnection 对象在创建时，就“记住”了自己属于哪个 subLoop 线程。
+                这个函数返回一个 EventLoop* 指针，指向那个子线程的 EventLoop 实例（我们称之为 subLoop_B）。
+
+            std::bind(&TcpConnection::connectDestroyed, conn):
+                打包任务: 我们使用 std::bind，创建了一个新的待办任务 (std::function)。
+                这个任务的内容是：“请在 conn 这个对象上，调用 connectDestroyed 方法”。
+                关键: std::bind 会再次拷贝 conn 这个 shared_ptr。现在，这个 TcpConnection 对象被这个新的**任务（std::function）**所持有。
+
+            ...->runInLoop( 任务 ):
+                主线程 (mainLoop 线程) 调用 subLoop_B 的 runInLoop 方法。
+                runInLoop 内部检查发现 isInLoopThread() 为 false（因为现在是主线程在调用子线程的 EventLoop），于是它不会直接执行任务。相反，它会调用 queueInLoop( 任务 )。
+        */
         conn->getLoop()->runInLoop(
             std::bind(&TcpConnection::connectDestroyed, conn));
     }
@@ -99,6 +122,15 @@ void TcpServer::newConnection(int sockfd, const InetAddress& peerAddr)
     ioLoop->runInLoop(std::bind(&TcpConnection::connectEstablished, conn));
 }
 
+/*
+    主线程和子线程没有数据竞争:
+    TcpServer (在 mainLoop) 负责从 map 中“除名”。
+    TcpConnection (在 subLoop) 负责清理自己的 Channel 和 Poller所以并不会产生数据竞争
+    操作不同的数据
+    
+    子线程内部绝对不会有数据竞争:
+    这是因为 subLoop (它是一个 EventLoop) 本身，就是一个天然的“任务串行化执行器” (Task Serializer)。它保证了所有派发给它的任务，都会排队并一个接一个地执行，永远不会并发。
+*/
 void TcpServer::removeConnection(const TcpConnectionPtr& conn)
 {
     m_loop->runInLoop(

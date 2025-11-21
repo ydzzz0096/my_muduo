@@ -1,0 +1,115 @@
+\hypertarget{classInetAddress}{}\doxysection{Inet\+Address Class Reference}
+\label{classInetAddress}\index{InetAddress@{InetAddress}}
+
+
+{\ttfamily \#include $<$Inet\+Address.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classInetAddress_a6a0423d704188281fda0d24b90b68d6a}{Inet\+Address}} (uint16\+\_\+t port=0, std\+::string ip=\char`\"{}127.\+0.\+0.\+1\char`\"{})
+\item 
+\mbox{\hyperlink{classInetAddress_a5d645e2029173b5499ec348e089d6c2f}{Inet\+Address}} (const sockaddr\+\_\+in \&addr)
+\item 
+std\+::string \mbox{\hyperlink{classInetAddress_a70e441b51cb2b3fa143dbb3beb25f514}{to\+Ip}} () const
+\item 
+std\+::string \mbox{\hyperlink{classInetAddress_ab3217fb582da1932adf6720955a8731a}{to\+Ip\+Port}} () const
+\item 
+uint16\+\_\+t \mbox{\hyperlink{classInetAddress_ab50481a245c73efbff010406eec7e965}{to\+Port}} () const
+\item 
+const sockaddr\+\_\+in $\ast$ \mbox{\hyperlink{classInetAddress_ae21ff666a767ae0521559a2e5cde95a4}{get\+Sock\+Addr}} () const
+\item 
+void \mbox{\hyperlink{classInetAddress_acf5824839648cf19a0eca9350dc5f68c}{set\+Sock\+Addr}} (const sockaddr\+\_\+in \&addr)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sockaddr\+\_\+in \mbox{\hyperlink{classInetAddress_a2a44c94f4affe16e85d0dcfb33f9e935}{m\+\_\+addr}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classInetAddress_a6a0423d704188281fda0d24b90b68d6a}\label{classInetAddress_a6a0423d704188281fda0d24b90b68d6a}} 
+\index{InetAddress@{InetAddress}!InetAddress@{InetAddress}}
+\index{InetAddress@{InetAddress}!InetAddress@{InetAddress}}
+\doxysubsubsection{\texorpdfstring{InetAddress()}{InetAddress()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Inet\+Address\+::\+Inet\+Address (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{port = {\ttfamily 0},  }\item[{std\+::string}]{ip = {\ttfamily \char`\"{}127.0.0.1\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{classInetAddress_a5d645e2029173b5499ec348e089d6c2f}\label{classInetAddress_a5d645e2029173b5499ec348e089d6c2f}} 
+\index{InetAddress@{InetAddress}!InetAddress@{InetAddress}}
+\index{InetAddress@{InetAddress}!InetAddress@{InetAddress}}
+\doxysubsubsection{\texorpdfstring{InetAddress()}{InetAddress()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Inet\+Address\+::\+Inet\+Address (\begin{DoxyParamCaption}\item[{const sockaddr\+\_\+in \&}]{addr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classInetAddress_ae21ff666a767ae0521559a2e5cde95a4}\label{classInetAddress_ae21ff666a767ae0521559a2e5cde95a4}} 
+\index{InetAddress@{InetAddress}!getSockAddr@{getSockAddr}}
+\index{getSockAddr@{getSockAddr}!InetAddress@{InetAddress}}
+\doxysubsubsection{\texorpdfstring{getSockAddr()}{getSockAddr()}}
+{\footnotesize\ttfamily const sockaddr\+\_\+in$\ast$ Inet\+Address\+::get\+Sock\+Addr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classInetAddress_ae21ff666a767ae0521559a2e5cde95a4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classInetAddress_acf5824839648cf19a0eca9350dc5f68c}\label{classInetAddress_acf5824839648cf19a0eca9350dc5f68c}} 
+\index{InetAddress@{InetAddress}!setSockAddr@{setSockAddr}}
+\index{setSockAddr@{setSockAddr}!InetAddress@{InetAddress}}
+\doxysubsubsection{\texorpdfstring{setSockAddr()}{setSockAddr()}}
+{\footnotesize\ttfamily void Inet\+Address\+::set\+Sock\+Addr (\begin{DoxyParamCaption}\item[{const sockaddr\+\_\+in \&}]{addr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classInetAddress_acf5824839648cf19a0eca9350dc5f68c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classInetAddress_a70e441b51cb2b3fa143dbb3beb25f514}\label{classInetAddress_a70e441b51cb2b3fa143dbb3beb25f514}} 
+\index{InetAddress@{InetAddress}!toIp@{toIp}}
+\index{toIp@{toIp}!InetAddress@{InetAddress}}
+\doxysubsubsection{\texorpdfstring{toIp()}{toIp()}}
+{\footnotesize\ttfamily std\+::string Inet\+Address\+::to\+Ip (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classInetAddress_ab3217fb582da1932adf6720955a8731a}\label{classInetAddress_ab3217fb582da1932adf6720955a8731a}} 
+\index{InetAddress@{InetAddress}!toIpPort@{toIpPort}}
+\index{toIpPort@{toIpPort}!InetAddress@{InetAddress}}
+\doxysubsubsection{\texorpdfstring{toIpPort()}{toIpPort()}}
+{\footnotesize\ttfamily std\+::string Inet\+Address\+::to\+Ip\+Port (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classInetAddress_ab3217fb582da1932adf6720955a8731a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classInetAddress_ab50481a245c73efbff010406eec7e965}\label{classInetAddress_ab50481a245c73efbff010406eec7e965}} 
+\index{InetAddress@{InetAddress}!toPort@{toPort}}
+\index{toPort@{toPort}!InetAddress@{InetAddress}}
+\doxysubsubsection{\texorpdfstring{toPort()}{toPort()}}
+{\footnotesize\ttfamily uint16\+\_\+t Inet\+Address\+::to\+Port (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classInetAddress_a2a44c94f4affe16e85d0dcfb33f9e935}\label{classInetAddress_a2a44c94f4affe16e85d0dcfb33f9e935}} 
+\index{InetAddress@{InetAddress}!m\_addr@{m\_addr}}
+\index{m\_addr@{m\_addr}!InetAddress@{InetAddress}}
+\doxysubsubsection{\texorpdfstring{m\_addr}{m\_addr}}
+{\footnotesize\ttfamily sockaddr\+\_\+in Inet\+Address\+::m\+\_\+addr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+net/\mbox{\hyperlink{InetAddress_8h}{Inet\+Address.\+h}}\item 
+net/\mbox{\hyperlink{InetAddress_8cpp}{Inet\+Address.\+cpp}}\end{DoxyCompactItemize}

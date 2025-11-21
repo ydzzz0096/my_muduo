@@ -1,0 +1,537 @@
+\hypertarget{classChannel}{}\doxysection{Channel Class Reference}
+\label{classChannel}\index{Channel@{Channel}}
+
+
+{\ttfamily \#include $<$Channel.\+h$>$}
+
+
+
+Inheritance diagram for Channel\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=159pt]{classChannel__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Channel\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{classChannel__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classChannel_a4c243e7b2baf0b728a1d840cc425dee5}{Event\+Callback}} = std\+::function$<$ void()$>$
+\item 
+using \mbox{\hyperlink{classChannel_a9deb57c05dbd5efaa3302d611dbfdfd0}{Read\+Event\+Callback}} = std\+::function$<$ void(\mbox{\hyperlink{classTimestamp}{Timestamp}})$>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classChannel_a1fe82be8102c00ad7cc4fc8b8b3bc6ed}{Channel}} (\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$loop, int \mbox{\hyperlink{classChannel_a5c5c301869726d0dabba8ebe084b2408}{fd}})
+\item 
+\mbox{\hyperlink{classChannel_a5f15ebd302464069f1a9e3f0ded14482}{$\sim$\+Channel}} ()
+\item 
+void \mbox{\hyperlink{classChannel_a43de4fa059e210848f3922d18aa5fc7d}{handle\+Event}} (\mbox{\hyperlink{classTimestamp}{Timestamp}} receive\+Time)
+\item 
+void \mbox{\hyperlink{classChannel_ae05866b11f3ca8274ac5ed5886933aa9}{set\+Read\+Callback}} (const \mbox{\hyperlink{classChannel_a9deb57c05dbd5efaa3302d611dbfdfd0}{Read\+Event\+Callback}} \&cb)
+\item 
+void \mbox{\hyperlink{classChannel_a94a8e9dd187036de24f44420010799ee}{set\+Write\+Callback}} (const \mbox{\hyperlink{classChannel_a4c243e7b2baf0b728a1d840cc425dee5}{Event\+Callback}} \&cb)
+\item 
+void \mbox{\hyperlink{classChannel_a4514173f419eeccf4e0017a3d8d53af8}{set\+Close\+Callback}} (const \mbox{\hyperlink{classChannel_a4c243e7b2baf0b728a1d840cc425dee5}{Event\+Callback}} \&cb)
+\item 
+void \mbox{\hyperlink{classChannel_a441a8069ef50c7f3de8e0a64264a3c58}{set\+Error\+Callback}} (const \mbox{\hyperlink{classChannel_a4c243e7b2baf0b728a1d840cc425dee5}{Event\+Callback}} \&cb)
+\item 
+void \mbox{\hyperlink{classChannel_af2333acfbc091e6cbc1732e7517aad97}{tie}} (const std\+::shared\+\_\+ptr$<$ void $>$ \&)
+\item 
+int \mbox{\hyperlink{classChannel_a5c5c301869726d0dabba8ebe084b2408}{fd}} () const
+\item 
+int \mbox{\hyperlink{classChannel_a11f8781b19728d88acb26ecea952ff12}{events}} () const
+\item 
+void \mbox{\hyperlink{classChannel_aed1079dacb9e8191dc272b7cecefc8b0}{set\+\_\+revents}} (int revt)
+\item 
+void \mbox{\hyperlink{classChannel_acc08365e0d0b3a7e4cf4e04443dbb03a}{enable\+Reading}} ()
+\item 
+void \mbox{\hyperlink{classChannel_aa259fc02d2e0d01beed04494b2d01e2e}{disable\+Reading}} ()
+\item 
+void \mbox{\hyperlink{classChannel_a60ef8a99073efa7b067af922bbcf85e0}{enable\+Writing}} ()
+\item 
+void \mbox{\hyperlink{classChannel_a68dda6f460ae3a36ba22bb8302758fb1}{disable\+Writing}} ()
+\item 
+void \mbox{\hyperlink{classChannel_a2ad2561fc06669eaf745a93b7738ee94}{disable\+All}} ()
+\item 
+bool \mbox{\hyperlink{classChannel_abd4994cbbb48cbb4335f21bb49cd731c}{is\+None\+Event}} () const
+\item 
+bool \mbox{\hyperlink{classChannel_a23761420a9df42954d568699a9f425ce}{is\+Writing}} () const
+\item 
+bool \mbox{\hyperlink{classChannel_a4f2f5c53461e30c5e602bac3135e860c}{is\+Reading}} () const
+\item 
+int \mbox{\hyperlink{classChannel_a3466f2cca40f99c569354b341cd44a90}{index}} () const
+\item 
+void \mbox{\hyperlink{classChannel_afb912c219b9cac1166134fdb6dc91e9a}{set\+\_\+index}} (int idx)
+\item 
+\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$ \mbox{\hyperlink{classChannel_a637d1b848c4429787d31186964a9db51}{owner\+Loop}} ()
+\item 
+void \mbox{\hyperlink{classChannel_afc437cc4a61112b217ab153ff1912468}{remove}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classChannel_a46a6b75a6034ebac72a4868ed943ad05}{update}} ()
+\item 
+void \mbox{\hyperlink{classChannel_a0b01c4f34de1590f2a718b8306cd5a08}{handle\+Event\+With\+Guard}} (\mbox{\hyperlink{classTimestamp}{Timestamp}} receive\+Time)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$ \mbox{\hyperlink{classChannel_a71bd307dab00f997cfc2d6a139a63771}{m\+\_\+loop}}
+\item 
+const int \mbox{\hyperlink{classChannel_a4c1965eca8ee35dd9321648202bad977}{m\+\_\+fd}}
+\item 
+int \mbox{\hyperlink{classChannel_aaccdf043de859105f7ac6e555490f340}{m\+\_\+events}}
+\item 
+int \mbox{\hyperlink{classChannel_ac99ed75cc1b90529ceb0076d11082bdb}{m\+\_\+revents}}
+\item 
+int \mbox{\hyperlink{classChannel_a79dfa42780fe81b83474710411258fb0}{m\+\_\+index}}
+\item 
+std\+::weak\+\_\+ptr$<$ void $>$ \mbox{\hyperlink{classChannel_ac7b50152fd3a0b088e10a060f2c75f2b}{m\+\_\+tie}}
+\item 
+bool \mbox{\hyperlink{classChannel_a597f77691f873f94ebe0f0d3dc1f1579}{m\+\_\+tied}}
+\item 
+\mbox{\hyperlink{classChannel_a9deb57c05dbd5efaa3302d611dbfdfd0}{Read\+Event\+Callback}} \mbox{\hyperlink{classChannel_a0c20cfc78ce597c93ff1dc8b50337014}{m\+\_\+read\+Callback}}
+\item 
+\mbox{\hyperlink{classChannel_a4c243e7b2baf0b728a1d840cc425dee5}{Event\+Callback}} \mbox{\hyperlink{classChannel_aca37695c49c857ca05fe5fc8b6bf573b}{m\+\_\+write\+Callback}}
+\item 
+\mbox{\hyperlink{classChannel_a4c243e7b2baf0b728a1d840cc425dee5}{Event\+Callback}} \mbox{\hyperlink{classChannel_af127560c2433796918d6122c68cf7b8e}{m\+\_\+close\+Callback}}
+\item 
+\mbox{\hyperlink{classChannel_a4c243e7b2baf0b728a1d840cc425dee5}{Event\+Callback}} \mbox{\hyperlink{classChannel_a282d0ab42a990c2ab701c434c98580ae}{m\+\_\+error\+Callback}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const int \mbox{\hyperlink{classChannel_a70761f0745723108829a896dfaf668b3}{k\+None\+Event}} = 0
+\item 
+static const int \mbox{\hyperlink{classChannel_a1751fd904820dc30ef498b42df124e6a}{k\+Read\+Event}} = EPOLLIN $\vert$ EPOLLPRI
+\item 
+static const int \mbox{\hyperlink{classChannel_ab2e442c2213208d213f34fa0bd153f7a}{k\+Write\+Event}} = EPOLLOUT
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classChannel_a4c243e7b2baf0b728a1d840cc425dee5}\label{classChannel_a4c243e7b2baf0b728a1d840cc425dee5}} 
+\index{Channel@{Channel}!EventCallback@{EventCallback}}
+\index{EventCallback@{EventCallback}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{EventCallback}{EventCallback}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classChannel_a4c243e7b2baf0b728a1d840cc425dee5}{Channel\+::\+Event\+Callback}} =  std\+::function$<$void()$>$}
+
+\mbox{\Hypertarget{classChannel_a9deb57c05dbd5efaa3302d611dbfdfd0}\label{classChannel_a9deb57c05dbd5efaa3302d611dbfdfd0}} 
+\index{Channel@{Channel}!ReadEventCallback@{ReadEventCallback}}
+\index{ReadEventCallback@{ReadEventCallback}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{ReadEventCallback}{ReadEventCallback}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classChannel_a9deb57c05dbd5efaa3302d611dbfdfd0}{Channel\+::\+Read\+Event\+Callback}} =  std\+::function$<$void(\mbox{\hyperlink{classTimestamp}{Timestamp}})$>$}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classChannel_a1fe82be8102c00ad7cc4fc8b8b3bc6ed}\label{classChannel_a1fe82be8102c00ad7cc4fc8b8b3bc6ed}} 
+\index{Channel@{Channel}!Channel@{Channel}}
+\index{Channel@{Channel}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{Channel()}{Channel()}}
+{\footnotesize\ttfamily Channel\+::\+Channel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$}]{loop,  }\item[{int}]{fd }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classChannel_a5f15ebd302464069f1a9e3f0ded14482}\label{classChannel_a5f15ebd302464069f1a9e3f0ded14482}} 
+\index{Channel@{Channel}!````~Channel@{$\sim$Channel}}
+\index{````~Channel@{$\sim$Channel}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{$\sim$Channel()}{~Channel()}}
+{\footnotesize\ttfamily Channel\+::$\sim$\+Channel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classChannel_a2ad2561fc06669eaf745a93b7738ee94}\label{classChannel_a2ad2561fc06669eaf745a93b7738ee94}} 
+\index{Channel@{Channel}!disableAll@{disableAll}}
+\index{disableAll@{disableAll}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{disableAll()}{disableAll()}}
+{\footnotesize\ttfamily void Channel\+::disable\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classChannel_a2ad2561fc06669eaf745a93b7738ee94_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{classChannel_a2ad2561fc06669eaf745a93b7738ee94_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classChannel_aa259fc02d2e0d01beed04494b2d01e2e}\label{classChannel_aa259fc02d2e0d01beed04494b2d01e2e}} 
+\index{Channel@{Channel}!disableReading@{disableReading}}
+\index{disableReading@{disableReading}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{disableReading()}{disableReading()}}
+{\footnotesize\ttfamily void Channel\+::disable\+Reading (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classChannel_aa259fc02d2e0d01beed04494b2d01e2e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classChannel_a68dda6f460ae3a36ba22bb8302758fb1}\label{classChannel_a68dda6f460ae3a36ba22bb8302758fb1}} 
+\index{Channel@{Channel}!disableWriting@{disableWriting}}
+\index{disableWriting@{disableWriting}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{disableWriting()}{disableWriting()}}
+{\footnotesize\ttfamily void Channel\+::disable\+Writing (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classChannel_a68dda6f460ae3a36ba22bb8302758fb1_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classChannel_acc08365e0d0b3a7e4cf4e04443dbb03a}\label{classChannel_acc08365e0d0b3a7e4cf4e04443dbb03a}} 
+\index{Channel@{Channel}!enableReading@{enableReading}}
+\index{enableReading@{enableReading}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{enableReading()}{enableReading()}}
+{\footnotesize\ttfamily void Channel\+::enable\+Reading (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classChannel_acc08365e0d0b3a7e4cf4e04443dbb03a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classChannel_acc08365e0d0b3a7e4cf4e04443dbb03a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classChannel_a60ef8a99073efa7b067af922bbcf85e0}\label{classChannel_a60ef8a99073efa7b067af922bbcf85e0}} 
+\index{Channel@{Channel}!enableWriting@{enableWriting}}
+\index{enableWriting@{enableWriting}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{enableWriting()}{enableWriting()}}
+{\footnotesize\ttfamily void Channel\+::enable\+Writing (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classChannel_a60ef8a99073efa7b067af922bbcf85e0_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classChannel_a11f8781b19728d88acb26ecea952ff12}\label{classChannel_a11f8781b19728d88acb26ecea952ff12}} 
+\index{Channel@{Channel}!events@{events}}
+\index{events@{events}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{events()}{events()}}
+{\footnotesize\ttfamily int Channel\+::events (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classChannel_a11f8781b19728d88acb26ecea952ff12_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classChannel_a5c5c301869726d0dabba8ebe084b2408}\label{classChannel_a5c5c301869726d0dabba8ebe084b2408}} 
+\index{Channel@{Channel}!fd@{fd}}
+\index{fd@{fd}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{fd()}{fd()}}
+{\footnotesize\ttfamily int Channel\+::fd (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classChannel_a5c5c301869726d0dabba8ebe084b2408_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classChannel_a43de4fa059e210848f3922d18aa5fc7d}\label{classChannel_a43de4fa059e210848f3922d18aa5fc7d}} 
+\index{Channel@{Channel}!handleEvent@{handleEvent}}
+\index{handleEvent@{handleEvent}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{handleEvent()}{handleEvent()}}
+{\footnotesize\ttfamily void Channel\+::handle\+Event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTimestamp}{Timestamp}}}]{receive\+Time }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classChannel_a43de4fa059e210848f3922d18aa5fc7d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classChannel_a0b01c4f34de1590f2a718b8306cd5a08}\label{classChannel_a0b01c4f34de1590f2a718b8306cd5a08}} 
+\index{Channel@{Channel}!handleEventWithGuard@{handleEventWithGuard}}
+\index{handleEventWithGuard@{handleEventWithGuard}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{handleEventWithGuard()}{handleEventWithGuard()}}
+{\footnotesize\ttfamily void Channel\+::handle\+Event\+With\+Guard (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTimestamp}{Timestamp}}}]{receive\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classChannel_a0b01c4f34de1590f2a718b8306cd5a08_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classChannel_a3466f2cca40f99c569354b341cd44a90}\label{classChannel_a3466f2cca40f99c569354b341cd44a90}} 
+\index{Channel@{Channel}!index@{index}}
+\index{index@{index}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{index()}{index()}}
+{\footnotesize\ttfamily int Channel\+::index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classChannel_a3466f2cca40f99c569354b341cd44a90_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classChannel_abd4994cbbb48cbb4335f21bb49cd731c}\label{classChannel_abd4994cbbb48cbb4335f21bb49cd731c}} 
+\index{Channel@{Channel}!isNoneEvent@{isNoneEvent}}
+\index{isNoneEvent@{isNoneEvent}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{isNoneEvent()}{isNoneEvent()}}
+{\footnotesize\ttfamily bool Channel\+::is\+None\+Event (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classChannel_abd4994cbbb48cbb4335f21bb49cd731c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classChannel_a4f2f5c53461e30c5e602bac3135e860c}\label{classChannel_a4f2f5c53461e30c5e602bac3135e860c}} 
+\index{Channel@{Channel}!isReading@{isReading}}
+\index{isReading@{isReading}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{isReading()}{isReading()}}
+{\footnotesize\ttfamily bool Channel\+::is\+Reading (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classChannel_a23761420a9df42954d568699a9f425ce}\label{classChannel_a23761420a9df42954d568699a9f425ce}} 
+\index{Channel@{Channel}!isWriting@{isWriting}}
+\index{isWriting@{isWriting}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{isWriting()}{isWriting()}}
+{\footnotesize\ttfamily bool Channel\+::is\+Writing (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classChannel_a637d1b848c4429787d31186964a9db51}\label{classChannel_a637d1b848c4429787d31186964a9db51}} 
+\index{Channel@{Channel}!ownerLoop@{ownerLoop}}
+\index{ownerLoop@{ownerLoop}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{ownerLoop()}{ownerLoop()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEventLoop}{Event\+Loop}}$\ast$ Channel\+::owner\+Loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classChannel_afc437cc4a61112b217ab153ff1912468}\label{classChannel_afc437cc4a61112b217ab153ff1912468}} 
+\index{Channel@{Channel}!remove@{remove}}
+\index{remove@{remove}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily void Channel\+::remove (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classChannel_afc437cc4a61112b217ab153ff1912468_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{classChannel_afc437cc4a61112b217ab153ff1912468_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classChannel_afb912c219b9cac1166134fdb6dc91e9a}\label{classChannel_afb912c219b9cac1166134fdb6dc91e9a}} 
+\index{Channel@{Channel}!set\_index@{set\_index}}
+\index{set\_index@{set\_index}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{set\_index()}{set\_index()}}
+{\footnotesize\ttfamily void Channel\+::set\+\_\+index (\begin{DoxyParamCaption}\item[{int}]{idx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classChannel_afb912c219b9cac1166134fdb6dc91e9a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classChannel_aed1079dacb9e8191dc272b7cecefc8b0}\label{classChannel_aed1079dacb9e8191dc272b7cecefc8b0}} 
+\index{Channel@{Channel}!set\_revents@{set\_revents}}
+\index{set\_revents@{set\_revents}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{set\_revents()}{set\_revents()}}
+{\footnotesize\ttfamily void Channel\+::set\+\_\+revents (\begin{DoxyParamCaption}\item[{int}]{revt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classChannel_aed1079dacb9e8191dc272b7cecefc8b0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classChannel_a4514173f419eeccf4e0017a3d8d53af8}\label{classChannel_a4514173f419eeccf4e0017a3d8d53af8}} 
+\index{Channel@{Channel}!setCloseCallback@{setCloseCallback}}
+\index{setCloseCallback@{setCloseCallback}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{setCloseCallback()}{setCloseCallback()}}
+{\footnotesize\ttfamily void Channel\+::set\+Close\+Callback (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classChannel_a4c243e7b2baf0b728a1d840cc425dee5}{Event\+Callback}} \&}]{cb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classChannel_a441a8069ef50c7f3de8e0a64264a3c58}\label{classChannel_a441a8069ef50c7f3de8e0a64264a3c58}} 
+\index{Channel@{Channel}!setErrorCallback@{setErrorCallback}}
+\index{setErrorCallback@{setErrorCallback}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{setErrorCallback()}{setErrorCallback()}}
+{\footnotesize\ttfamily void Channel\+::set\+Error\+Callback (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classChannel_a4c243e7b2baf0b728a1d840cc425dee5}{Event\+Callback}} \&}]{cb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classChannel_ae05866b11f3ca8274ac5ed5886933aa9}\label{classChannel_ae05866b11f3ca8274ac5ed5886933aa9}} 
+\index{Channel@{Channel}!setReadCallback@{setReadCallback}}
+\index{setReadCallback@{setReadCallback}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{setReadCallback()}{setReadCallback()}}
+{\footnotesize\ttfamily void Channel\+::set\+Read\+Callback (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classChannel_a9deb57c05dbd5efaa3302d611dbfdfd0}{Read\+Event\+Callback}} \&}]{cb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classChannel_a94a8e9dd187036de24f44420010799ee}\label{classChannel_a94a8e9dd187036de24f44420010799ee}} 
+\index{Channel@{Channel}!setWriteCallback@{setWriteCallback}}
+\index{setWriteCallback@{setWriteCallback}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{setWriteCallback()}{setWriteCallback()}}
+{\footnotesize\ttfamily void Channel\+::set\+Write\+Callback (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classChannel_a4c243e7b2baf0b728a1d840cc425dee5}{Event\+Callback}} \&}]{cb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classChannel_af2333acfbc091e6cbc1732e7517aad97}\label{classChannel_af2333acfbc091e6cbc1732e7517aad97}} 
+\index{Channel@{Channel}!tie@{tie}}
+\index{tie@{tie}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{tie()}{tie()}}
+{\footnotesize\ttfamily void Channel\+::tie (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ void $>$ \&}]{obj }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classChannel_a46a6b75a6034ebac72a4868ed943ad05}\label{classChannel_a46a6b75a6034ebac72a4868ed943ad05}} 
+\index{Channel@{Channel}!update@{update}}
+\index{update@{update}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Channel\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classChannel_a46a6b75a6034ebac72a4868ed943ad05_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classChannel_a46a6b75a6034ebac72a4868ed943ad05_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classChannel_a70761f0745723108829a896dfaf668b3}\label{classChannel_a70761f0745723108829a896dfaf668b3}} 
+\index{Channel@{Channel}!kNoneEvent@{kNoneEvent}}
+\index{kNoneEvent@{kNoneEvent}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{kNoneEvent}{kNoneEvent}}
+{\footnotesize\ttfamily const int Channel\+::k\+None\+Event = 0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classChannel_a1751fd904820dc30ef498b42df124e6a}\label{classChannel_a1751fd904820dc30ef498b42df124e6a}} 
+\index{Channel@{Channel}!kReadEvent@{kReadEvent}}
+\index{kReadEvent@{kReadEvent}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{kReadEvent}{kReadEvent}}
+{\footnotesize\ttfamily const int Channel\+::k\+Read\+Event = EPOLLIN $\vert$ EPOLLPRI\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classChannel_ab2e442c2213208d213f34fa0bd153f7a}\label{classChannel_ab2e442c2213208d213f34fa0bd153f7a}} 
+\index{Channel@{Channel}!kWriteEvent@{kWriteEvent}}
+\index{kWriteEvent@{kWriteEvent}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{kWriteEvent}{kWriteEvent}}
+{\footnotesize\ttfamily const int Channel\+::k\+Write\+Event = EPOLLOUT\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classChannel_af127560c2433796918d6122c68cf7b8e}\label{classChannel_af127560c2433796918d6122c68cf7b8e}} 
+\index{Channel@{Channel}!m\_closeCallback@{m\_closeCallback}}
+\index{m\_closeCallback@{m\_closeCallback}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{m\_closeCallback}{m\_closeCallback}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classChannel_a4c243e7b2baf0b728a1d840cc425dee5}{Event\+Callback}} Channel\+::m\+\_\+close\+Callback\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classChannel_a282d0ab42a990c2ab701c434c98580ae}\label{classChannel_a282d0ab42a990c2ab701c434c98580ae}} 
+\index{Channel@{Channel}!m\_errorCallback@{m\_errorCallback}}
+\index{m\_errorCallback@{m\_errorCallback}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{m\_errorCallback}{m\_errorCallback}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classChannel_a4c243e7b2baf0b728a1d840cc425dee5}{Event\+Callback}} Channel\+::m\+\_\+error\+Callback\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classChannel_aaccdf043de859105f7ac6e555490f340}\label{classChannel_aaccdf043de859105f7ac6e555490f340}} 
+\index{Channel@{Channel}!m\_events@{m\_events}}
+\index{m\_events@{m\_events}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{m\_events}{m\_events}}
+{\footnotesize\ttfamily int Channel\+::m\+\_\+events\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classChannel_a4c1965eca8ee35dd9321648202bad977}\label{classChannel_a4c1965eca8ee35dd9321648202bad977}} 
+\index{Channel@{Channel}!m\_fd@{m\_fd}}
+\index{m\_fd@{m\_fd}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{m\_fd}{m\_fd}}
+{\footnotesize\ttfamily const int Channel\+::m\+\_\+fd\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classChannel_a79dfa42780fe81b83474710411258fb0}\label{classChannel_a79dfa42780fe81b83474710411258fb0}} 
+\index{Channel@{Channel}!m\_index@{m\_index}}
+\index{m\_index@{m\_index}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{m\_index}{m\_index}}
+{\footnotesize\ttfamily int Channel\+::m\+\_\+index\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classChannel_a71bd307dab00f997cfc2d6a139a63771}\label{classChannel_a71bd307dab00f997cfc2d6a139a63771}} 
+\index{Channel@{Channel}!m\_loop@{m\_loop}}
+\index{m\_loop@{m\_loop}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{m\_loop}{m\_loop}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEventLoop}{Event\+Loop}}$\ast$ Channel\+::m\+\_\+loop\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classChannel_a0c20cfc78ce597c93ff1dc8b50337014}\label{classChannel_a0c20cfc78ce597c93ff1dc8b50337014}} 
+\index{Channel@{Channel}!m\_readCallback@{m\_readCallback}}
+\index{m\_readCallback@{m\_readCallback}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{m\_readCallback}{m\_readCallback}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classChannel_a9deb57c05dbd5efaa3302d611dbfdfd0}{Read\+Event\+Callback}} Channel\+::m\+\_\+read\+Callback\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classChannel_ac99ed75cc1b90529ceb0076d11082bdb}\label{classChannel_ac99ed75cc1b90529ceb0076d11082bdb}} 
+\index{Channel@{Channel}!m\_revents@{m\_revents}}
+\index{m\_revents@{m\_revents}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{m\_revents}{m\_revents}}
+{\footnotesize\ttfamily int Channel\+::m\+\_\+revents\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classChannel_ac7b50152fd3a0b088e10a060f2c75f2b}\label{classChannel_ac7b50152fd3a0b088e10a060f2c75f2b}} 
+\index{Channel@{Channel}!m\_tie@{m\_tie}}
+\index{m\_tie@{m\_tie}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{m\_tie}{m\_tie}}
+{\footnotesize\ttfamily std\+::weak\+\_\+ptr$<$void$>$ Channel\+::m\+\_\+tie\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classChannel_a597f77691f873f94ebe0f0d3dc1f1579}\label{classChannel_a597f77691f873f94ebe0f0d3dc1f1579}} 
+\index{Channel@{Channel}!m\_tied@{m\_tied}}
+\index{m\_tied@{m\_tied}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{m\_tied}{m\_tied}}
+{\footnotesize\ttfamily bool Channel\+::m\+\_\+tied\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classChannel_aca37695c49c857ca05fe5fc8b6bf573b}\label{classChannel_aca37695c49c857ca05fe5fc8b6bf573b}} 
+\index{Channel@{Channel}!m\_writeCallback@{m\_writeCallback}}
+\index{m\_writeCallback@{m\_writeCallback}!Channel@{Channel}}
+\doxysubsubsection{\texorpdfstring{m\_writeCallback}{m\_writeCallback}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classChannel_a4c243e7b2baf0b728a1d840cc425dee5}{Event\+Callback}} Channel\+::m\+\_\+write\+Callback\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+net/\mbox{\hyperlink{Channel_8h}{Channel.\+h}}\item 
+net/\mbox{\hyperlink{Channel_8cpp}{Channel.\+cpp}}\end{DoxyCompactItemize}

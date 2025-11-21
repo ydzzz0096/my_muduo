@@ -1,0 +1,19 @@
+<map id="EventLoop::abortNotInLoopThread" name="EventLoop::abortNotInLoopThread">
+<area shape="rect" id="node1" title=" " alt="" coords="843,353,1041,394"/>
+<area shape="rect" id="node2" href="$classEventLoop.html#a023018c12b5ac17adf4c7bf2ca227458" title=" " alt="" coords="568,360,795,387"/>
+<area shape="rect" id="node3" href="$classTcpConnection.html#a668a83b05dfe47b5b3d5ba111d58c1ac" title=" " alt="" coords="273,5,516,32"/>
+<area shape="rect" id="node4" href="$classTcpServer.html#a43e65dd23b0bcda38336da1c77a8c1f4" title=" " alt="" coords="5,23,221,65"/>
+<area shape="rect" id="node5" href="$classTcpConnection.html#a826b9bedbada31515c742ec84073692a" title=" " alt="" coords="269,107,520,133"/>
+<area shape="rect" id="node6" href="$classTcpServer.html#a565a1764c3d15d449211a57bbd75c973" title=" " alt="" coords="17,132,210,159"/>
+<area shape="rect" id="node7" href="$classTcpConnection.html#a40d75e60b1b0f4808592e95be97919ab" title=" " alt="" coords="293,208,497,235"/>
+<area shape="rect" id="node8" href="$classTcpConnection.html#ae3f3ddc5b8e4110394ba8368612b0613" title=" " alt="" coords="13,233,214,260"/>
+<area shape="rect" id="node9" href="$classAcceptor.html#a4b1591b257611ae9e16f3b04229857e5" title=" " alt="" coords="313,309,477,336"/>
+<area shape="rect" id="node10" href="$classTcpConnection.html#a54077990874b646067d5baaa9abd6e93" title=" " alt="" coords="12,512,215,539"/>
+<area shape="rect" id="node11" href="$classEventLoop.html#a5f044036192a04f13a22605ec27843dc" title=" " alt="" coords="307,411,482,437"/>
+<area shape="rect" id="node12" href="$classAcceptor.html#af9accf28a769f74c05fb03797ab62182" title=" " alt="" coords="333,461,456,488"/>
+<area shape="rect" id="node13" href="$classEventLoop.html#a056f626b2c13db44d82dd4c0d4aad61d" title=" " alt="" coords="331,512,458,539"/>
+<area shape="rect" id="node14" href="$classEventLoop.html#aa543e036c509b5b2b376bac134f777ab" title=" " alt="" coords="294,563,495,589"/>
+<area shape="rect" id="node15" href="$classTcpConnection.html#a83130b27e126cae22ce4442ae5479463" title=" " alt="" coords="295,613,494,640"/>
+<area shape="rect" id="node16" href="$classTcpConnection.html#a55c3ad795ef12107d1ddda9a6a0226c4" title=" " alt="" coords="279,664,510,691"/>
+<area shape="rect" id="node17" href="$classEventLoop.html#a66b075c2fc9b6886f4ad663d05663b65" title=" " alt="" coords="297,715,493,741"/>
+</map>

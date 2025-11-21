@@ -10,7 +10,8 @@ namespace CurrentThread
     {
         if (t_cachedTid == 0)
         {
-            // 通过 Linux 系统调用获取当前线程的 tid
+            //在不损失const 限定的前提下进行各种合法的类型转换
+            // 系统调用序号是SYS_gettid的命令,把返回值交给我
             t_cachedTid = static_cast<pid_t>(::syscall(SYS_gettid));
         }
     }

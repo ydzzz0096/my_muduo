@@ -1,0 +1,28 @@
+<map id="EventLoop::assertInLoopThread" name="EventLoop::assertInLoopThread">
+<area shape="rect" id="node1" title=" " alt="" coords="568,374,795,401"/>
+<area shape="rect" id="node2" href="$classTcpConnection.html#a668a83b05dfe47b5b3d5ba111d58c1ac" title=" " alt="" coords="273,70,516,97"/>
+<area shape="rect" id="node3" href="$classTcpServer.html#a43e65dd23b0bcda38336da1c77a8c1f4" title=" " alt="" coords="5,12,221,54"/>
+<area shape="rect" id="node5" href="$classTcpConnection.html#a826b9bedbada31515c742ec84073692a" title=" " alt="" coords="269,172,520,198"/>
+<area shape="rect" id="node6" href="$classTcpServer.html#a565a1764c3d15d449211a57bbd75c973" title=" " alt="" coords="17,150,210,177"/>
+<area shape="rect" id="node7" href="$classTcpConnection.html#a40d75e60b1b0f4808592e95be97919ab" title=" " alt="" coords="293,273,497,300"/>
+<area shape="rect" id="node8" href="$classTcpConnection.html#ae3f3ddc5b8e4110394ba8368612b0613" title=" " alt="" coords="13,248,214,274"/>
+<area shape="rect" id="node9" href="$classAcceptor.html#a4b1591b257611ae9e16f3b04229857e5" title=" " alt="" coords="313,324,477,350"/>
+<area shape="rect" id="node10" href="$classTcpConnection.html#a54077990874b646067d5baaa9abd6e93" title=" " alt="" coords="12,425,215,452"/>
+<area shape="rect" id="node11" href="$classEventLoop.html#a5f044036192a04f13a22605ec27843dc" title=" " alt="" coords="307,425,482,452"/>
+<area shape="rect" id="node12" href="$classAcceptor.html#af9accf28a769f74c05fb03797ab62182" title=" " alt="" coords="333,374,456,401"/>
+<area shape="rect" id="node15" href="$classEventLoop.html#a056f626b2c13db44d82dd4c0d4aad61d" title=" " alt="" coords="331,577,458,604"/>
+<area shape="rect" id="node19" href="$classEventLoop.html#aa543e036c509b5b2b376bac134f777ab" title=" " alt="" coords="294,653,495,680"/>
+<area shape="rect" id="node21" href="$classTcpConnection.html#a83130b27e126cae22ce4442ae5479463" title=" " alt="" coords="295,729,494,756"/>
+<area shape="rect" id="node23" href="$classTcpConnection.html#a55c3ad795ef12107d1ddda9a6a0226c4" title=" " alt="" coords="279,526,510,553"/>
+<area shape="rect" id="node25" href="$classEventLoop.html#a66b075c2fc9b6886f4ad663d05663b65" title=" " alt="" coords="297,780,493,806"/>
+<area shape="rect" id="node4" href="$classTcpServer.html#a728a9e31c53cf86887f1f6149b1c46dd" title=" " alt="" coords="30,78,197,105"/>
+<area shape="rect" id="node13" href="$test__acceptor_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="86,324,141,350"/>
+<area shape="rect" id="node14" href="$classTcpServer.html#ad8ecaed8c3a6188103381636c4367dba" title=" " alt="" coords="52,374,175,401"/>
+<area shape="rect" id="node16" href="$echoserver_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="86,628,141,654"/>
+<area shape="rect" id="node17" href="$test__eventloop__v1_8cpp.html#ab5d95e2be7087fd86a4362fddccf42b3" title=" " alt="" coords="64,526,163,553"/>
+<area shape="rect" id="node18" href="$classEventLoopThread.html#a6bf321e5b5e65e072b4a3a23ef4e0f19" title=" " alt="" coords="6,577,221,604"/>
+<area shape="rect" id="node20" href="$classChannel.html#afc437cc4a61112b217ab153ff1912468" title=" " alt="" coords="47,678,180,705"/>
+<area shape="rect" id="node22" href="$classTcpConnection.html#a539a01c981babafb87c3cdfd5fd2cf08" title=" " alt="" coords="36,729,191,756"/>
+<area shape="rect" id="node24" href="$classTcpConnection.html#a31045160bc889d5d7bdea5ae2e57896d" title=" " alt="" coords="20,476,207,502"/>
+<area shape="rect" id="node26" href="$classChannel.html#a46a6b75a6034ebac72a4868ed943ad05" title=" " alt="" coords="49,780,177,806"/>
+</map>

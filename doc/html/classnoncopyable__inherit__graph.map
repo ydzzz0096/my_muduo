@@ -1,0 +1,15 @@
+<map id="noncopyable" name="noncopyable">
+<area shape="rect" id="node1" title=" " alt="" coords="5,259,111,285"/>
+<area shape="rect" id="node2" href="$classAcceptor.html" title=" " alt="" coords="201,5,279,32"/>
+<area shape="rect" id="node3" href="$classChannel.html" title=" " alt="" coords="203,56,277,83"/>
+<area shape="rect" id="node4" href="$classEventLoop.html" title=" " alt="" coords="195,107,285,133"/>
+<area shape="rect" id="node5" href="$classEventLoopThread.html" title=" " alt="" coords="173,157,307,184"/>
+<area shape="rect" id="node6" href="$classEventLoopThreadPool.html" title=" " alt="" coords="159,208,321,235"/>
+<area shape="rect" id="node7" href="$classPoller.html" title=" " alt="" coords="211,259,269,285"/>
+<area shape="rect" id="node9" href="$classSocket.html" title=" " alt="" coords="207,309,273,336"/>
+<area shape="rect" id="node10" href="$classTcpConnection.html" title=" " alt="" coords="182,360,298,387"/>
+<area shape="rect" id="node11" href="$classTcpServer.html" title=" " alt="" coords="197,411,283,437"/>
+<area shape="rect" id="node12" href="$classThread.html" title=" " alt="" coords="207,461,273,488"/>
+<area shape="rect" id="node13" href="$classThreadPool.html" title=" " alt="" coords="193,512,287,539"/>
+<area shape="rect" id="node8" href="$classEpollPoller.html" title=" " alt="" coords="369,259,460,285"/>
+</map>

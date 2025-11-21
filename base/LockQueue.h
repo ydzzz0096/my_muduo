@@ -8,6 +8,7 @@
 #include <condition_variable>
 #include <optional> // 1. 引入 C++17 的 std::optional,nullopt
 
+// 一个模板化的线程安全阻塞队列，使用互斥锁和条件变量实现生产者-消费者模式，并支持优雅关闭。
 template<typename T>
 class LockQueue
 {
@@ -27,6 +28,7 @@ public:
     {
         std::unique_lock<std::mutex> lock(m_mutex);
         
+        // 被唤醒之后要再次检查是否为空或者队列是否已经关闭
         m_condvariable.wait(lock, [this] {
             return !m_queue.empty() || m_shutdown;
         });

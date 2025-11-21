@@ -1,0 +1,55 @@
+\hypertarget{EventLoop_8cpp}{}\doxysection{net/\+Event\+Loop.cpp File Reference}
+\label{EventLoop_8cpp}\index{net/EventLoop.cpp@{net/EventLoop.cpp}}
+{\ttfamily \#include \char`\"{}Event\+Loop.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}base/\+Logger.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Poller.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Channel.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$sys/eventfd.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$cerrno$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+Include dependency graph for Event\+Loop.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{EventLoop_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{EventLoop_8cpp_a33a7f3242fe4d0e7fab6e86927fffac0}{create\+Eventfd}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\+\_\+\+\_\+thread \mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$ \mbox{\hyperlink{EventLoop_8cpp_ac0505571a1805388d4cf5f8cd6cdf625}{t\+\_\+loop\+In\+This\+Thread}} = nullptr
+\item 
+const int \mbox{\hyperlink{EventLoop_8cpp_aadf64cafb3b17c5f9fd42db3c481210d}{k\+Poll\+Time\+Ms}} = 10000
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{EventLoop_8cpp_a33a7f3242fe4d0e7fab6e86927fffac0}\label{EventLoop_8cpp_a33a7f3242fe4d0e7fab6e86927fffac0}} 
+\index{EventLoop.cpp@{EventLoop.cpp}!createEventfd@{createEventfd}}
+\index{createEventfd@{createEventfd}!EventLoop.cpp@{EventLoop.cpp}}
+\doxysubsubsection{\texorpdfstring{createEventfd()}{createEventfd()}}
+{\footnotesize\ttfamily int create\+Eventfd (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{EventLoop_8cpp_aadf64cafb3b17c5f9fd42db3c481210d}\label{EventLoop_8cpp_aadf64cafb3b17c5f9fd42db3c481210d}} 
+\index{EventLoop.cpp@{EventLoop.cpp}!kPollTimeMs@{kPollTimeMs}}
+\index{kPollTimeMs@{kPollTimeMs}!EventLoop.cpp@{EventLoop.cpp}}
+\doxysubsubsection{\texorpdfstring{kPollTimeMs}{kPollTimeMs}}
+{\footnotesize\ttfamily const int k\+Poll\+Time\+Ms = 10000}
+
+\mbox{\Hypertarget{EventLoop_8cpp_ac0505571a1805388d4cf5f8cd6cdf625}\label{EventLoop_8cpp_ac0505571a1805388d4cf5f8cd6cdf625}} 
+\index{EventLoop.cpp@{EventLoop.cpp}!t\_loopInThisThread@{t\_loopInThisThread}}
+\index{t\_loopInThisThread@{t\_loopInThisThread}!EventLoop.cpp@{EventLoop.cpp}}
+\doxysubsubsection{\texorpdfstring{t\_loopInThisThread}{t\_loopInThisThread}}
+{\footnotesize\ttfamily \+\_\+\+\_\+thread \mbox{\hyperlink{classEventLoop}{Event\+Loop}}$\ast$ t\+\_\+loop\+In\+This\+Thread = nullptr}
+

@@ -13,7 +13,8 @@
 class Buffer
 {
 public:
-    static const size_t kCheapPrepend = 8;
+
+    static const size_t kCheapPrepend = 8;// 用于高效添加协议头
     static const size_t kInitialSize = 1024;
 
     explicit Buffer(size_t initialSize = kInitialSize)
@@ -79,9 +80,10 @@ public:
     const char* beginWrite() const { return begin() + m_writerIndex; }
 
     // 内核缓冲区和应用层缓冲区的通信
-    // 从 fd 读取数据到缓冲区
+    // 两个函数的上下文中，fd 指的都是“连接套接字” (connfd).谁传入的: TcpConnection 对象会持有它自己的 connfd
+    // 这个函数最终会被 TcpConnection::handleRead 调用。当 EventLoop 通知 TcpConnection “你的 socket 可读了”，TcpConnection 就会命令它的 inputBuffer 执行 readFd 来把数据收进来
     ssize_t readFd(int fd, int* savedErrno);
-    // 通过 fd 发送数据
+    // 这个函数最终会被 TcpConnection::handleWrite 或 TcpConnection::sendInLoop 调用
     ssize_t writeFd(int fd, int* savedErrno);
 
 private:

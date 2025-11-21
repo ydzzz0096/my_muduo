@@ -1,0 +1,122 @@
+\hypertarget{classLockQueue}{}\doxysection{Lock\+Queue$<$ T $>$ Class Template Reference}
+\label{classLockQueue}\index{LockQueue$<$ T $>$@{LockQueue$<$ T $>$}}
+
+
+{\ttfamily \#include $<$Lock\+Queue.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLockQueue_ad6c6c3daa2c938a6a3955260834298ff}{Lock\+Queue}} ()
+\item 
+void \mbox{\hyperlink{classLockQueue_accc5b7ca7059eece94cfa339e9a488e2}{Push}} (const T \&data)
+\item 
+std\+::optional$<$ T $>$ \mbox{\hyperlink{classLockQueue_ad0678b8b1e8ba8a8fc0745205da0793e}{Pop}} ()
+\item 
+void \mbox{\hyperlink{classLockQueue_a0cd528d94affb78ee1c2f93ea1113af4}{Shutdown}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::queue$<$ T $>$ \mbox{\hyperlink{classLockQueue_a63df248ce166649242495c4b14dd2014}{m\+\_\+queue}}
+\item 
+std\+::mutex \mbox{\hyperlink{classLockQueue_aad01fb76d17b18a77baa114a45592a5c}{m\+\_\+mutex}}
+\item 
+std\+::condition\+\_\+variable \mbox{\hyperlink{classLockQueue_ac0fcbf9ae75644e341e38fc6bc8b1880}{m\+\_\+condvariable}}
+\item 
+bool \mbox{\hyperlink{classLockQueue_a152ba53d764fc30501c1b111d6781212}{m\+\_\+shutdown}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classLockQueue_ad6c6c3daa2c938a6a3955260834298ff}\label{classLockQueue_ad6c6c3daa2c938a6a3955260834298ff}} 
+\index{LockQueue$<$ T $>$@{LockQueue$<$ T $>$}!LockQueue@{LockQueue}}
+\index{LockQueue@{LockQueue}!LockQueue$<$ T $>$@{LockQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{LockQueue()}{LockQueue()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classLockQueue}{Lock\+Queue}}$<$ T $>$\+::\mbox{\hyperlink{classLockQueue}{Lock\+Queue}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLockQueue_ad0678b8b1e8ba8a8fc0745205da0793e}\label{classLockQueue_ad0678b8b1e8ba8a8fc0745205da0793e}} 
+\index{LockQueue$<$ T $>$@{LockQueue$<$ T $>$}!Pop@{Pop}}
+\index{Pop@{Pop}!LockQueue$<$ T $>$@{LockQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Pop()}{Pop()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::optional$<$T$>$ \mbox{\hyperlink{classLockQueue}{Lock\+Queue}}$<$ T $>$\+::Pop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLockQueue_ad0678b8b1e8ba8a8fc0745205da0793e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classLockQueue_accc5b7ca7059eece94cfa339e9a488e2}\label{classLockQueue_accc5b7ca7059eece94cfa339e9a488e2}} 
+\index{LockQueue$<$ T $>$@{LockQueue$<$ T $>$}!Push@{Push}}
+\index{Push@{Push}!LockQueue$<$ T $>$@{LockQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Push()}{Push()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classLockQueue}{Lock\+Queue}}$<$ T $>$\+::Push (\begin{DoxyParamCaption}\item[{const T \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLockQueue_accc5b7ca7059eece94cfa339e9a488e2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classLockQueue_a0cd528d94affb78ee1c2f93ea1113af4}\label{classLockQueue_a0cd528d94affb78ee1c2f93ea1113af4}} 
+\index{LockQueue$<$ T $>$@{LockQueue$<$ T $>$}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!LockQueue$<$ T $>$@{LockQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void \mbox{\hyperlink{classLockQueue}{Lock\+Queue}}$<$ T $>$\+::Shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLockQueue_a0cd528d94affb78ee1c2f93ea1113af4_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classLockQueue_ac0fcbf9ae75644e341e38fc6bc8b1880}\label{classLockQueue_ac0fcbf9ae75644e341e38fc6bc8b1880}} 
+\index{LockQueue$<$ T $>$@{LockQueue$<$ T $>$}!m\_condvariable@{m\_condvariable}}
+\index{m\_condvariable@{m\_condvariable}!LockQueue$<$ T $>$@{LockQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{m\_condvariable}{m\_condvariable}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::condition\+\_\+variable \mbox{\hyperlink{classLockQueue}{Lock\+Queue}}$<$ T $>$\+::m\+\_\+condvariable\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classLockQueue_aad01fb76d17b18a77baa114a45592a5c}\label{classLockQueue_aad01fb76d17b18a77baa114a45592a5c}} 
+\index{LockQueue$<$ T $>$@{LockQueue$<$ T $>$}!m\_mutex@{m\_mutex}}
+\index{m\_mutex@{m\_mutex}!LockQueue$<$ T $>$@{LockQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{m\_mutex}{m\_mutex}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::mutex \mbox{\hyperlink{classLockQueue}{Lock\+Queue}}$<$ T $>$\+::m\+\_\+mutex\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classLockQueue_a63df248ce166649242495c4b14dd2014}\label{classLockQueue_a63df248ce166649242495c4b14dd2014}} 
+\index{LockQueue$<$ T $>$@{LockQueue$<$ T $>$}!m\_queue@{m\_queue}}
+\index{m\_queue@{m\_queue}!LockQueue$<$ T $>$@{LockQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{m\_queue}{m\_queue}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::queue$<$T$>$ \mbox{\hyperlink{classLockQueue}{Lock\+Queue}}$<$ T $>$\+::m\+\_\+queue\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classLockQueue_a152ba53d764fc30501c1b111d6781212}\label{classLockQueue_a152ba53d764fc30501c1b111d6781212}} 
+\index{LockQueue$<$ T $>$@{LockQueue$<$ T $>$}!m\_shutdown@{m\_shutdown}}
+\index{m\_shutdown@{m\_shutdown}!LockQueue$<$ T $>$@{LockQueue$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{m\_shutdown}{m\_shutdown}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool \mbox{\hyperlink{classLockQueue}{Lock\+Queue}}$<$ T $>$\+::m\+\_\+shutdown\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+base/\mbox{\hyperlink{LockQueue_8h}{Lock\+Queue.\+h}}\end{DoxyCompactItemize}

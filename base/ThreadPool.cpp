@@ -3,6 +3,11 @@
 #include "ThreadPool.h"
 #include "Logger.h"
 
+// 一个基于生产者-消费者模式的通用线程池，使用 LockQueue 存储任务，
+// 通过预创建一组 Thread 对象来复用线程，避免频繁创建和销毁
+// 实现任务的异步执行，解耦了addtask和执行, 并支持优雅关闭。
+// 对外接口简洁,只需要调用addtask就可以工作
+
 ThreadPool::ThreadPool(int threadNum, const std::string& name)
     : m_name(name),
       m_threadNum(threadNum),
@@ -27,12 +32,11 @@ ThreadPool::~ThreadPool()
 void ThreadPool::start()
 {
     m_started = true;
-    //找人进来
+    //招人进来,预留空间防止多次空间重新分配,重新分配可能要整体移动,开销太大
     m_threads.reserve(m_threadNum);
     //分配工作
     for (int i = 0; i < m_threadNum; ++i)
     {
-        // 将 std::bind 替换为了下面的 lambda 表达式
         //lambda表达式其实就是对要完成函数的一个包装
         m_threads.emplace_back(std::make_unique<Thread>(
             [this]() { threadFunc(); }, 

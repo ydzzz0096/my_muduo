@@ -36,7 +36,7 @@ void EventLoopThreadPool::start(const ThreadInitCallback& cb)
 // 如果工作在多线程中，baseLoop_ 默认以轮询的方式分配 channel 给 subloop
 EventLoop* EventLoopThreadPool::getNextLoop()
 {
-    EventLoop* loop = m_baseLoop;
+    EventLoop* loop = m_baseLoop;// 初始化,应对单线程情况
     if (!m_loops.empty()) // 通过轮询获取下一个处理事件的 loop
     {
         loop = m_loops[m_next];

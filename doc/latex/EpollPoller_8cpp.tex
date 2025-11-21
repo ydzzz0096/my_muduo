@@ -1,0 +1,46 @@
+\hypertarget{EpollPoller_8cpp}{}\doxysection{net/\+Epoll\+Poller.cpp File Reference}
+\label{EpollPoller_8cpp}\index{net/EpollPoller.cpp@{net/EpollPoller.cpp}}
+{\ttfamily \#include \char`\"{}Epoll\+Poller.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Channel.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}base/\+Logger.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$cerrno$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+Include dependency graph for Epoll\+Poller.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{EpollPoller_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const int \mbox{\hyperlink{EpollPoller_8cpp_ab5e42b80f196f7cc607d96bff646cc13}{k\+New}} = -\/1
+\item 
+const int \mbox{\hyperlink{EpollPoller_8cpp_a0ac79a6288b3e6f9239708bb243ad523}{k\+Added}} = 1
+\item 
+const int \mbox{\hyperlink{EpollPoller_8cpp_a89e2cf9e51f64226955fdb5fe6760324}{k\+Deleted}} = 2
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{EpollPoller_8cpp_a0ac79a6288b3e6f9239708bb243ad523}\label{EpollPoller_8cpp_a0ac79a6288b3e6f9239708bb243ad523}} 
+\index{EpollPoller.cpp@{EpollPoller.cpp}!kAdded@{kAdded}}
+\index{kAdded@{kAdded}!EpollPoller.cpp@{EpollPoller.cpp}}
+\doxysubsubsection{\texorpdfstring{kAdded}{kAdded}}
+{\footnotesize\ttfamily const int k\+Added = 1}
+
+\mbox{\Hypertarget{EpollPoller_8cpp_a89e2cf9e51f64226955fdb5fe6760324}\label{EpollPoller_8cpp_a89e2cf9e51f64226955fdb5fe6760324}} 
+\index{EpollPoller.cpp@{EpollPoller.cpp}!kDeleted@{kDeleted}}
+\index{kDeleted@{kDeleted}!EpollPoller.cpp@{EpollPoller.cpp}}
+\doxysubsubsection{\texorpdfstring{kDeleted}{kDeleted}}
+{\footnotesize\ttfamily const int k\+Deleted = 2}
+
+\mbox{\Hypertarget{EpollPoller_8cpp_ab5e42b80f196f7cc607d96bff646cc13}\label{EpollPoller_8cpp_ab5e42b80f196f7cc607d96bff646cc13}} 
+\index{EpollPoller.cpp@{EpollPoller.cpp}!kNew@{kNew}}
+\index{kNew@{kNew}!EpollPoller.cpp@{EpollPoller.cpp}}
+\doxysubsubsection{\texorpdfstring{kNew}{kNew}}
+{\footnotesize\ttfamily const int k\+New = -\/1}
+

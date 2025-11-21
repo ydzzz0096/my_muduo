@@ -6,6 +6,7 @@
 
 std::atomic<int> Thread::m_numCreated(0);
 
+// 创建和启动的解耦,创建只是起了个名字,要做的事(函数)还没分配
 Thread::Thread(ThreadFunc func, const std::string& name)
     : m_started(false),
       m_joined(false),
@@ -42,6 +43,7 @@ void Thread::start()
 void Thread::join()
 {
     m_joined = true;
+    // 检查已经启动并且可join
     if (m_thread && m_thread->joinable())
     {
         m_thread->join();
@@ -53,6 +55,7 @@ void Thread::setDefaultName()
     int num = m_numCreated;
     if (m_name.empty())
     {
+        // 追求性能,避免了任何堆内存 (heap) 的动态分配
         char buf[32] = {0};
         snprintf(buf, sizeof(buf), "Thread%d", num);
         m_name = buf;

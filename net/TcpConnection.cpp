@@ -124,15 +124,17 @@ void TcpConnection::sendInLoop(const void* data, size_t len)
     {
         // 目前发送缓冲区剩余的待发送数据的长度
         size_t oldLen = m_outputBuffer.readableBytes();
+        // 超过高水位线特殊处理
         if (oldLen + remaining >= m_highWaterMark && oldLen < m_highWaterMark && m_highWaterMarkCallback)
         {
             m_loop->queueInLoop(
                 std::bind(m_highWaterMarkCallback, shared_from_this(), oldLen + remaining));
         }
+        // 从刚刚没写完的地方开始写入 Writable 缓冲区
         m_outputBuffer.append((char*)data + nwrote, remaining);
         if (!m_channel->isWriting())
         {
-            m_channel->enableWriting(); // 这里一定要注册 channel 的写事件，否则 poller 不会给 channel 通知 epollout
+            m_channel->enableWriting(); // 这里一定要注册 channel 的写事件，否则 poller 不会给 channel 通知 epollout,通知的时候就说明可以写了
         }
     }
 }
@@ -151,6 +153,7 @@ void TcpConnection::shutdownInLoop()
 {
     m_loop->assertInLoopThread();
     if (!m_channel->isWriting()) // 说明 outputBuffer 中的数据已经全部发送完成
+                                 // isWriting函数代表对写事件感兴趣
     {
         m_socket->shutdownWrite(); // 关闭写端
     }
@@ -161,10 +164,10 @@ void TcpConnection::connectEstablished()
 {
     m_loop->assertInLoopThread();
     setState(kConnected);
-    m_channel->tie(shared_from_this());
+    m_channel->tie(shared_from_this());// 防止连接被异步的销毁而Eventloop不知道,加上这个机制channel会检测主人是否还健在
     m_channel->enableReading(); // 向 poller 注册 channel 的 epollin 事件
 
-    // 新连接建立，执行回调
+    // 新连接建立，执行回调,原来在这里调用啊
     m_connectionCallback(shared_from_this());
 }
 

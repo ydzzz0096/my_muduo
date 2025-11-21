@@ -5,18 +5,19 @@
 
 #include <functional>
 #include <thread>
-#include <memory>
+#include <memory>// 智能指针
 #include <string>
 #include <atomic>
-
 #include "noncopyable.h" // 稍后我们会创建这个辅助类
 
 // 线程类，封装 std::thread
 class Thread : noncopyable
 {
 public:
+    // 不接受参数不返回 为了泛用性
     using ThreadFunc = std::function<void()>;
 
+    // 禁止编译器进行隐式的类型转换
     explicit Thread(ThreadFunc, const std::string& name = std::string());
     ~Thread();
 

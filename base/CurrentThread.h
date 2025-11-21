@@ -3,8 +3,8 @@
 #ifndef CURRENTTHREAD_H
 #define CURRENTTHREAD_H
 
-#include <unistd.h>
-#include <sys/syscall.h>
+#include <unistd.h>//Linux/Unix 系统编程的基础，它提供了与操作系统底层功能交互所必需的大量接口。包含系统调用syscall()
+#include <sys/syscall.h>//不是为了声明 syscall() 函数本身（它通常在 unistd.h 里），而是为了获得 SYS_gettid 这个宏定义
 
 namespace CurrentThread
 {

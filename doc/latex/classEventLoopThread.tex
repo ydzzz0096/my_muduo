@@ -1,0 +1,174 @@
+\hypertarget{classEventLoopThread}{}\doxysection{Event\+Loop\+Thread Class Reference}
+\label{classEventLoopThread}\index{EventLoopThread@{EventLoopThread}}
+
+
+{\ttfamily \#include $<$Event\+Loop\+Thread.\+h$>$}
+
+
+
+Inheritance diagram for Event\+Loop\+Thread\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=181pt]{classEventLoopThread__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Event\+Loop\+Thread\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=235pt]{classEventLoopThread__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classEventLoopThread_a6a1184b6cdfd2e1f9cafa0ed486191d1}{Thread\+Init\+Callback}} = std\+::function$<$ void(\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$)$>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEventLoopThread_ac070b3178b0ecabacd525a8919380bab}{Event\+Loop\+Thread}} (const \mbox{\hyperlink{classEventLoopThread_a6a1184b6cdfd2e1f9cafa0ed486191d1}{Thread\+Init\+Callback}} \&cb=\mbox{\hyperlink{classEventLoopThread_a6a1184b6cdfd2e1f9cafa0ed486191d1}{Thread\+Init\+Callback}}(), const std\+::string \&name=std\+::string())
+\item 
+\mbox{\hyperlink{classEventLoopThread_a25e0b31dc4fe28fc57c734b446ee1017}{$\sim$\+Event\+Loop\+Thread}} ()
+\item 
+\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$ \mbox{\hyperlink{classEventLoopThread_a9bf93537ede7fc0d4141650ce9bfdf1e}{start\+Loop}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classEventLoopThread_a6bf321e5b5e65e072b4a3a23ef4e0f19}{thread\+Func}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$ \mbox{\hyperlink{classEventLoopThread_a4cbfbbf14e3a06b68b1c7a1b11cf4a9a}{m\+\_\+loop}}
+\item 
+bool \mbox{\hyperlink{classEventLoopThread_a9eda1f5727870647382f0d8e32019d43}{m\+\_\+exiting}}
+\item 
+\mbox{\hyperlink{classThread}{Thread}} \mbox{\hyperlink{classEventLoopThread_a839df259a971c25a6e75754efa6e826c}{m\+\_\+thread}}
+\item 
+std\+::mutex \mbox{\hyperlink{classEventLoopThread_a485600894c5bf6725dc600c1908b542e}{m\+\_\+mutex}}
+\item 
+std\+::condition\+\_\+variable \mbox{\hyperlink{classEventLoopThread_ac71be384e9dc611e86873caf0f4c2937}{m\+\_\+cond}}
+\item 
+\mbox{\hyperlink{classEventLoopThread_a6a1184b6cdfd2e1f9cafa0ed486191d1}{Thread\+Init\+Callback}} \mbox{\hyperlink{classEventLoopThread_ad2b40c1a2e51f674fae1ad5e6bf77895}{m\+\_\+callback}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classEventLoopThread_a6a1184b6cdfd2e1f9cafa0ed486191d1}\label{classEventLoopThread_a6a1184b6cdfd2e1f9cafa0ed486191d1}} 
+\index{EventLoopThread@{EventLoopThread}!ThreadInitCallback@{ThreadInitCallback}}
+\index{ThreadInitCallback@{ThreadInitCallback}!EventLoopThread@{EventLoopThread}}
+\doxysubsubsection{\texorpdfstring{ThreadInitCallback}{ThreadInitCallback}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classEventLoopThread_a6a1184b6cdfd2e1f9cafa0ed486191d1}{Event\+Loop\+Thread\+::\+Thread\+Init\+Callback}} =  std\+::function$<$void(\mbox{\hyperlink{classEventLoop}{Event\+Loop}}$\ast$)$>$}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classEventLoopThread_ac070b3178b0ecabacd525a8919380bab}\label{classEventLoopThread_ac070b3178b0ecabacd525a8919380bab}} 
+\index{EventLoopThread@{EventLoopThread}!EventLoopThread@{EventLoopThread}}
+\index{EventLoopThread@{EventLoopThread}!EventLoopThread@{EventLoopThread}}
+\doxysubsubsection{\texorpdfstring{EventLoopThread()}{EventLoopThread()}}
+{\footnotesize\ttfamily Event\+Loop\+Thread\+::\+Event\+Loop\+Thread (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEventLoopThread_a6a1184b6cdfd2e1f9cafa0ed486191d1}{Thread\+Init\+Callback}} \&}]{cb = {\ttfamily \mbox{\hyperlink{classEventLoopThread_a6a1184b6cdfd2e1f9cafa0ed486191d1}{Thread\+Init\+Callback}}()},  }\item[{const std\+::string \&}]{name = {\ttfamily std\+:\+:string()} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classEventLoopThread_a25e0b31dc4fe28fc57c734b446ee1017}\label{classEventLoopThread_a25e0b31dc4fe28fc57c734b446ee1017}} 
+\index{EventLoopThread@{EventLoopThread}!````~EventLoopThread@{$\sim$EventLoopThread}}
+\index{````~EventLoopThread@{$\sim$EventLoopThread}!EventLoopThread@{EventLoopThread}}
+\doxysubsubsection{\texorpdfstring{$\sim$EventLoopThread()}{~EventLoopThread()}}
+{\footnotesize\ttfamily Event\+Loop\+Thread\+::$\sim$\+Event\+Loop\+Thread (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEventLoopThread_a25e0b31dc4fe28fc57c734b446ee1017_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classEventLoopThread_a9bf93537ede7fc0d4141650ce9bfdf1e}\label{classEventLoopThread_a9bf93537ede7fc0d4141650ce9bfdf1e}} 
+\index{EventLoopThread@{EventLoopThread}!startLoop@{startLoop}}
+\index{startLoop@{startLoop}!EventLoopThread@{EventLoopThread}}
+\doxysubsubsection{\texorpdfstring{startLoop()}{startLoop()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$ Event\+Loop\+Thread\+::start\+Loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{classEventLoopThread_a9bf93537ede7fc0d4141650ce9bfdf1e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEventLoopThread_a9bf93537ede7fc0d4141650ce9bfdf1e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classEventLoopThread_a6bf321e5b5e65e072b4a3a23ef4e0f19}\label{classEventLoopThread_a6bf321e5b5e65e072b4a3a23ef4e0f19}} 
+\index{EventLoopThread@{EventLoopThread}!threadFunc@{threadFunc}}
+\index{threadFunc@{threadFunc}!EventLoopThread@{EventLoopThread}}
+\doxysubsubsection{\texorpdfstring{threadFunc()}{threadFunc()}}
+{\footnotesize\ttfamily void Event\+Loop\+Thread\+::thread\+Func (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEventLoopThread_a6bf321e5b5e65e072b4a3a23ef4e0f19_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classEventLoopThread_ad2b40c1a2e51f674fae1ad5e6bf77895}\label{classEventLoopThread_ad2b40c1a2e51f674fae1ad5e6bf77895}} 
+\index{EventLoopThread@{EventLoopThread}!m\_callback@{m\_callback}}
+\index{m\_callback@{m\_callback}!EventLoopThread@{EventLoopThread}}
+\doxysubsubsection{\texorpdfstring{m\_callback}{m\_callback}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEventLoopThread_a6a1184b6cdfd2e1f9cafa0ed486191d1}{Thread\+Init\+Callback}} Event\+Loop\+Thread\+::m\+\_\+callback\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classEventLoopThread_ac71be384e9dc611e86873caf0f4c2937}\label{classEventLoopThread_ac71be384e9dc611e86873caf0f4c2937}} 
+\index{EventLoopThread@{EventLoopThread}!m\_cond@{m\_cond}}
+\index{m\_cond@{m\_cond}!EventLoopThread@{EventLoopThread}}
+\doxysubsubsection{\texorpdfstring{m\_cond}{m\_cond}}
+{\footnotesize\ttfamily std\+::condition\+\_\+variable Event\+Loop\+Thread\+::m\+\_\+cond\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classEventLoopThread_a9eda1f5727870647382f0d8e32019d43}\label{classEventLoopThread_a9eda1f5727870647382f0d8e32019d43}} 
+\index{EventLoopThread@{EventLoopThread}!m\_exiting@{m\_exiting}}
+\index{m\_exiting@{m\_exiting}!EventLoopThread@{EventLoopThread}}
+\doxysubsubsection{\texorpdfstring{m\_exiting}{m\_exiting}}
+{\footnotesize\ttfamily bool Event\+Loop\+Thread\+::m\+\_\+exiting\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classEventLoopThread_a4cbfbbf14e3a06b68b1c7a1b11cf4a9a}\label{classEventLoopThread_a4cbfbbf14e3a06b68b1c7a1b11cf4a9a}} 
+\index{EventLoopThread@{EventLoopThread}!m\_loop@{m\_loop}}
+\index{m\_loop@{m\_loop}!EventLoopThread@{EventLoopThread}}
+\doxysubsubsection{\texorpdfstring{m\_loop}{m\_loop}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEventLoop}{Event\+Loop}}$\ast$ Event\+Loop\+Thread\+::m\+\_\+loop\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classEventLoopThread_a485600894c5bf6725dc600c1908b542e}\label{classEventLoopThread_a485600894c5bf6725dc600c1908b542e}} 
+\index{EventLoopThread@{EventLoopThread}!m\_mutex@{m\_mutex}}
+\index{m\_mutex@{m\_mutex}!EventLoopThread@{EventLoopThread}}
+\doxysubsubsection{\texorpdfstring{m\_mutex}{m\_mutex}}
+{\footnotesize\ttfamily std\+::mutex Event\+Loop\+Thread\+::m\+\_\+mutex\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classEventLoopThread_a839df259a971c25a6e75754efa6e826c}\label{classEventLoopThread_a839df259a971c25a6e75754efa6e826c}} 
+\index{EventLoopThread@{EventLoopThread}!m\_thread@{m\_thread}}
+\index{m\_thread@{m\_thread}!EventLoopThread@{EventLoopThread}}
+\doxysubsubsection{\texorpdfstring{m\_thread}{m\_thread}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classThread}{Thread}} Event\+Loop\+Thread\+::m\+\_\+thread\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+net/\mbox{\hyperlink{EventLoopThread_8h}{Event\+Loop\+Thread.\+h}}\item 
+net/\mbox{\hyperlink{EventLoopThread_8cpp}{Event\+Loop\+Thread.\+cpp}}\end{DoxyCompactItemize}

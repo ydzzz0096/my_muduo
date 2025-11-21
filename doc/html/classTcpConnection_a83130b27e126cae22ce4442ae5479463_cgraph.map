@@ -1,0 +1,12 @@
+<map id="TcpConnection::sendInLoop" name="TcpConnection::sendInLoop">
+<area shape="rect" id="node1" title=" " alt="" coords="5,148,204,175"/>
+<area shape="rect" id="node2" href="$classBuffer.html#a2a84cd2372a86df68c53156050130181" title=" " alt="" coords="307,56,424,83"/>
+<area shape="rect" id="node5" href="$classEventLoop.html#a023018c12b5ac17adf4c7bf2ca227458" title=" " alt="" coords="252,123,479,149"/>
+<area shape="rect" id="node8" href="$classEventLoop.html#a333b03ec759dad8399da147822f99381" title=" " alt="" coords="275,173,456,200"/>
+<area shape="rect" id="node10" href="$classBuffer.html#a491580018bd1d3fb6c2851a037164509" title=" " alt="" coords="284,224,447,251"/>
+<area shape="rect" id="node3" href="$classBuffer.html#a80f73594a16b8a025ffb7a48f9a08410" title=" " alt="" coords="559,5,699,32"/>
+<area shape="rect" id="node4" href="$classBuffer.html#ad5141c6da5c9cbdd6833581a43c10882" title=" " alt="" coords="527,56,732,83"/>
+<area shape="rect" id="node6" href="$classEventLoop.html#a01aeec7f46ce30af1f89aee90889e8aa" title=" " alt="" coords="530,107,729,149"/>
+<area shape="rect" id="node7" href="$classEventLoop.html#a3a7b79d0d7d4568de3b8d2fda49634bc" title=" " alt="" coords="531,173,728,200"/>
+<area shape="rect" id="node9" href="$classEventLoop.html#ae103810008b58d64e641f9a7e136cfaa" title=" " alt="" coords="555,224,703,251"/>
+</map>

@@ -1,6 +1,7 @@
 #include "Poller.h"
 #include "Channel.h"
 #include "EpollPoller.h" // 需要包含具体实现
+#include "EventLoop.h"
 
 Poller::Poller(EventLoop* loop)
     : m_ownerLoop(loop)
@@ -9,8 +10,14 @@ Poller::Poller(EventLoop* loop)
 // 提供通用实现
 bool Poller::hasChannel(Channel* channel) const
 {
+    assertInLoopThread();
     auto it = m_channels.find(channel->fd());
     return it != m_channels.end() && it->second == channel;
+}
+
+void Poller::assertInLoopThread() const
+{
+    m_ownerLoop->assertInLoopThread();
 }
 
 // 这个工厂方法，是解耦的关键

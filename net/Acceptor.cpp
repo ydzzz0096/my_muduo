@@ -38,7 +38,7 @@ Acceptor::Acceptor(EventLoop* loop, const InetAddress& listenAddr, bool reusepor
 Acceptor::~Acceptor()
 {
     // 在析构时，确保 Channel 不再监听任何事件，并从 Poller 中移除
-    m_acceptChannel.disableAll();
+    m_acceptChannel.disableAll();// 关键在于内部会调用update(),更新底层状态
     m_acceptChannel.remove();
 }
 

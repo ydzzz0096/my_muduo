@@ -3,6 +3,7 @@
 #include "base/Logger.h"
 #include <sys/epoll.h>
 
+// 会出现的读写事件,实际上是一串二进制数
 const int Channel::kNoneEvent = 0;
 const int Channel::kReadEvent = EPOLLIN | EPOLLPRI;
 const int Channel::kWriteEvent = EPOLLOUT;
@@ -24,7 +25,7 @@ void Channel::tie(const std::shared_ptr<void>& obj)
     m_tied = true;
 }
 
-
+// 实现封装,提供单一修改点
 void Channel::update()
 {
     // 通过 Channel 所属的 EventLoop, 调用 Poller 的相应方法，注册 fd 的 events 事件
@@ -36,7 +37,6 @@ void Channel::remove()
     m_loop->removeChannel(this);
 }
 
-// 【核心修正】handleEvent 的实现
 void Channel::handleEvent(Timestamp receiveTime)
 {
     // 如果已经绑定了对象
@@ -77,7 +77,7 @@ void Channel::handleEventWithGuard(Timestamp receiveTime)
     }
 }
 
-// 给链接提供的"遥控器",
+// Channel 提供给其直接所有者（Acceptor, TcpConnection, EventLoop）的控制接口
 void Channel::enableReading() { m_events |= kReadEvent; update(); }
 void Channel::enableWriting() { m_events |= kWriteEvent; update(); }
 void Channel::disableReading() { m_events &= ~kReadEvent; update(); }

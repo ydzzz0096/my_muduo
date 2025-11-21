@@ -1,0 +1,188 @@
+\hypertarget{classEventLoopThreadPool}{}\doxysection{Event\+Loop\+Thread\+Pool Class Reference}
+\label{classEventLoopThreadPool}\index{EventLoopThreadPool@{EventLoopThreadPool}}
+
+
+{\ttfamily \#include $<$Event\+Loop\+Thread\+Pool.\+h$>$}
+
+
+
+Inheritance diagram for Event\+Loop\+Thread\+Pool\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{classEventLoopThreadPool__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Event\+Loop\+Thread\+Pool\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{classEventLoopThreadPool__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classEventLoopThreadPool_ab0abce78997adc74f709d1488e6a0fa9}{Thread\+Init\+Callback}} = std\+::function$<$ void(\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$)$>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEventLoopThreadPool_a3576042d22a82af0330436a0750acaf5}{Event\+Loop\+Thread\+Pool}} (\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$base\+Loop, const std\+::string \&name\+Arg)
+\item 
+\mbox{\hyperlink{classEventLoopThreadPool_a7942b30132abeeec0ae5ddd5edcf01e3}{$\sim$\+Event\+Loop\+Thread\+Pool}} ()
+\item 
+void \mbox{\hyperlink{classEventLoopThreadPool_a8e6c250c2b789384385cf74e4e16a96a}{set\+Thread\+Num}} (int num\+Threads)
+\item 
+void \mbox{\hyperlink{classEventLoopThreadPool_a6d0155a9d2118604c82bae6b7fa0f3f2}{start}} (const \mbox{\hyperlink{classEventLoopThreadPool_ab0abce78997adc74f709d1488e6a0fa9}{Thread\+Init\+Callback}} \&cb=\mbox{\hyperlink{classEventLoopThreadPool_ab0abce78997adc74f709d1488e6a0fa9}{Thread\+Init\+Callback}}())
+\item 
+\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$ \mbox{\hyperlink{classEventLoopThreadPool_a4fa098907a4ece34a2941c8e73bee346}{get\+Next\+Loop}} ()
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$ $>$ \mbox{\hyperlink{classEventLoopThreadPool_a8ca4df1eed48fe338f74ea3723d6888a}{get\+All\+Loops}} ()
+\item 
+bool \mbox{\hyperlink{classEventLoopThreadPool_a112769cfed14fcafd3350299d2249656}{started}} () const
+\item 
+const std\+::string \& \mbox{\hyperlink{classEventLoopThreadPool_a144341a4ff8e61f33af5c4e245e6f342}{name}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$ \mbox{\hyperlink{classEventLoopThreadPool_ad680848c6d78e673cdff94f5a5300df1}{m\+\_\+base\+Loop}}
+\item 
+std\+::string \mbox{\hyperlink{classEventLoopThreadPool_aa0991fcdd48281b3d13a9b9b3ee7d190}{m\+\_\+name}}
+\item 
+bool \mbox{\hyperlink{classEventLoopThreadPool_a9508d35832d675150ea3e938959931d8}{m\+\_\+started}}
+\item 
+int \mbox{\hyperlink{classEventLoopThreadPool_a42fdac97520e0703166bab76a73ea363}{m\+\_\+num\+Threads}}
+\item 
+size\+\_\+t \mbox{\hyperlink{classEventLoopThreadPool_a4ef3cc88fa60fcae87abfbb758bcf210}{m\+\_\+next}}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classEventLoopThread}{Event\+Loop\+Thread}} $>$ $>$ \mbox{\hyperlink{classEventLoopThreadPool_a52bb83a3e96bbe81ce6302431e8eaeec}{m\+\_\+threads}}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$ $>$ \mbox{\hyperlink{classEventLoopThreadPool_ab9cb1547b948c76befabcf6966461b6c}{m\+\_\+loops}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classEventLoopThreadPool_ab0abce78997adc74f709d1488e6a0fa9}\label{classEventLoopThreadPool_ab0abce78997adc74f709d1488e6a0fa9}} 
+\index{EventLoopThreadPool@{EventLoopThreadPool}!ThreadInitCallback@{ThreadInitCallback}}
+\index{ThreadInitCallback@{ThreadInitCallback}!EventLoopThreadPool@{EventLoopThreadPool}}
+\doxysubsubsection{\texorpdfstring{ThreadInitCallback}{ThreadInitCallback}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classEventLoopThreadPool_ab0abce78997adc74f709d1488e6a0fa9}{Event\+Loop\+Thread\+Pool\+::\+Thread\+Init\+Callback}} =  std\+::function$<$void(\mbox{\hyperlink{classEventLoop}{Event\+Loop}}$\ast$)$>$}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classEventLoopThreadPool_a3576042d22a82af0330436a0750acaf5}\label{classEventLoopThreadPool_a3576042d22a82af0330436a0750acaf5}} 
+\index{EventLoopThreadPool@{EventLoopThreadPool}!EventLoopThreadPool@{EventLoopThreadPool}}
+\index{EventLoopThreadPool@{EventLoopThreadPool}!EventLoopThreadPool@{EventLoopThreadPool}}
+\doxysubsubsection{\texorpdfstring{EventLoopThreadPool()}{EventLoopThreadPool()}}
+{\footnotesize\ttfamily Event\+Loop\+Thread\+Pool\+::\+Event\+Loop\+Thread\+Pool (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$}]{base\+Loop,  }\item[{const std\+::string \&}]{name\+Arg }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classEventLoopThreadPool_a7942b30132abeeec0ae5ddd5edcf01e3}\label{classEventLoopThreadPool_a7942b30132abeeec0ae5ddd5edcf01e3}} 
+\index{EventLoopThreadPool@{EventLoopThreadPool}!````~EventLoopThreadPool@{$\sim$EventLoopThreadPool}}
+\index{````~EventLoopThreadPool@{$\sim$EventLoopThreadPool}!EventLoopThreadPool@{EventLoopThreadPool}}
+\doxysubsubsection{\texorpdfstring{$\sim$EventLoopThreadPool()}{~EventLoopThreadPool()}}
+{\footnotesize\ttfamily Event\+Loop\+Thread\+Pool\+::$\sim$\+Event\+Loop\+Thread\+Pool (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classEventLoopThreadPool_a8ca4df1eed48fe338f74ea3723d6888a}\label{classEventLoopThreadPool_a8ca4df1eed48fe338f74ea3723d6888a}} 
+\index{EventLoopThreadPool@{EventLoopThreadPool}!getAllLoops@{getAllLoops}}
+\index{getAllLoops@{getAllLoops}!EventLoopThreadPool@{EventLoopThreadPool}}
+\doxysubsubsection{\texorpdfstring{getAllLoops()}{getAllLoops()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$ $>$ Event\+Loop\+Thread\+Pool\+::get\+All\+Loops (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classEventLoopThreadPool_a4fa098907a4ece34a2941c8e73bee346}\label{classEventLoopThreadPool_a4fa098907a4ece34a2941c8e73bee346}} 
+\index{EventLoopThreadPool@{EventLoopThreadPool}!getNextLoop@{getNextLoop}}
+\index{getNextLoop@{getNextLoop}!EventLoopThreadPool@{EventLoopThreadPool}}
+\doxysubsubsection{\texorpdfstring{getNextLoop()}{getNextLoop()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$ Event\+Loop\+Thread\+Pool\+::get\+Next\+Loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classEventLoopThreadPool_a144341a4ff8e61f33af5c4e245e6f342}\label{classEventLoopThreadPool_a144341a4ff8e61f33af5c4e245e6f342}} 
+\index{EventLoopThreadPool@{EventLoopThreadPool}!name@{name}}
+\index{name@{name}!EventLoopThreadPool@{EventLoopThreadPool}}
+\doxysubsubsection{\texorpdfstring{name()}{name()}}
+{\footnotesize\ttfamily const std\+::string\& Event\+Loop\+Thread\+Pool\+::name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classEventLoopThreadPool_a8e6c250c2b789384385cf74e4e16a96a}\label{classEventLoopThreadPool_a8e6c250c2b789384385cf74e4e16a96a}} 
+\index{EventLoopThreadPool@{EventLoopThreadPool}!setThreadNum@{setThreadNum}}
+\index{setThreadNum@{setThreadNum}!EventLoopThreadPool@{EventLoopThreadPool}}
+\doxysubsubsection{\texorpdfstring{setThreadNum()}{setThreadNum()}}
+{\footnotesize\ttfamily void Event\+Loop\+Thread\+Pool\+::set\+Thread\+Num (\begin{DoxyParamCaption}\item[{int}]{num\+Threads }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classEventLoopThreadPool_a6d0155a9d2118604c82bae6b7fa0f3f2}\label{classEventLoopThreadPool_a6d0155a9d2118604c82bae6b7fa0f3f2}} 
+\index{EventLoopThreadPool@{EventLoopThreadPool}!start@{start}}
+\index{start@{start}!EventLoopThreadPool@{EventLoopThreadPool}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void Event\+Loop\+Thread\+Pool\+::start (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEventLoopThreadPool_ab0abce78997adc74f709d1488e6a0fa9}{Thread\+Init\+Callback}} \&}]{cb = {\ttfamily \mbox{\hyperlink{classEventLoopThreadPool_ab0abce78997adc74f709d1488e6a0fa9}{Thread\+Init\+Callback}}()} }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEventLoopThreadPool_a6d0155a9d2118604c82bae6b7fa0f3f2_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classEventLoopThreadPool_a112769cfed14fcafd3350299d2249656}\label{classEventLoopThreadPool_a112769cfed14fcafd3350299d2249656}} 
+\index{EventLoopThreadPool@{EventLoopThreadPool}!started@{started}}
+\index{started@{started}!EventLoopThreadPool@{EventLoopThreadPool}}
+\doxysubsubsection{\texorpdfstring{started()}{started()}}
+{\footnotesize\ttfamily bool Event\+Loop\+Thread\+Pool\+::started (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classEventLoopThreadPool_ad680848c6d78e673cdff94f5a5300df1}\label{classEventLoopThreadPool_ad680848c6d78e673cdff94f5a5300df1}} 
+\index{EventLoopThreadPool@{EventLoopThreadPool}!m\_baseLoop@{m\_baseLoop}}
+\index{m\_baseLoop@{m\_baseLoop}!EventLoopThreadPool@{EventLoopThreadPool}}
+\doxysubsubsection{\texorpdfstring{m\_baseLoop}{m\_baseLoop}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEventLoop}{Event\+Loop}}$\ast$ Event\+Loop\+Thread\+Pool\+::m\+\_\+base\+Loop\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classEventLoopThreadPool_ab9cb1547b948c76befabcf6966461b6c}\label{classEventLoopThreadPool_ab9cb1547b948c76befabcf6966461b6c}} 
+\index{EventLoopThreadPool@{EventLoopThreadPool}!m\_loops@{m\_loops}}
+\index{m\_loops@{m\_loops}!EventLoopThreadPool@{EventLoopThreadPool}}
+\doxysubsubsection{\texorpdfstring{m\_loops}{m\_loops}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classEventLoop}{Event\+Loop}}$\ast$$>$ Event\+Loop\+Thread\+Pool\+::m\+\_\+loops\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classEventLoopThreadPool_aa0991fcdd48281b3d13a9b9b3ee7d190}\label{classEventLoopThreadPool_aa0991fcdd48281b3d13a9b9b3ee7d190}} 
+\index{EventLoopThreadPool@{EventLoopThreadPool}!m\_name@{m\_name}}
+\index{m\_name@{m\_name}!EventLoopThreadPool@{EventLoopThreadPool}}
+\doxysubsubsection{\texorpdfstring{m\_name}{m\_name}}
+{\footnotesize\ttfamily std\+::string Event\+Loop\+Thread\+Pool\+::m\+\_\+name\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classEventLoopThreadPool_a4ef3cc88fa60fcae87abfbb758bcf210}\label{classEventLoopThreadPool_a4ef3cc88fa60fcae87abfbb758bcf210}} 
+\index{EventLoopThreadPool@{EventLoopThreadPool}!m\_next@{m\_next}}
+\index{m\_next@{m\_next}!EventLoopThreadPool@{EventLoopThreadPool}}
+\doxysubsubsection{\texorpdfstring{m\_next}{m\_next}}
+{\footnotesize\ttfamily size\+\_\+t Event\+Loop\+Thread\+Pool\+::m\+\_\+next\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classEventLoopThreadPool_a42fdac97520e0703166bab76a73ea363}\label{classEventLoopThreadPool_a42fdac97520e0703166bab76a73ea363}} 
+\index{EventLoopThreadPool@{EventLoopThreadPool}!m\_numThreads@{m\_numThreads}}
+\index{m\_numThreads@{m\_numThreads}!EventLoopThreadPool@{EventLoopThreadPool}}
+\doxysubsubsection{\texorpdfstring{m\_numThreads}{m\_numThreads}}
+{\footnotesize\ttfamily int Event\+Loop\+Thread\+Pool\+::m\+\_\+num\+Threads\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classEventLoopThreadPool_a9508d35832d675150ea3e938959931d8}\label{classEventLoopThreadPool_a9508d35832d675150ea3e938959931d8}} 
+\index{EventLoopThreadPool@{EventLoopThreadPool}!m\_started@{m\_started}}
+\index{m\_started@{m\_started}!EventLoopThreadPool@{EventLoopThreadPool}}
+\doxysubsubsection{\texorpdfstring{m\_started}{m\_started}}
+{\footnotesize\ttfamily bool Event\+Loop\+Thread\+Pool\+::m\+\_\+started\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classEventLoopThreadPool_a52bb83a3e96bbe81ce6302431e8eaeec}\label{classEventLoopThreadPool_a52bb83a3e96bbe81ce6302431e8eaeec}} 
+\index{EventLoopThreadPool@{EventLoopThreadPool}!m\_threads@{m\_threads}}
+\index{m\_threads@{m\_threads}!EventLoopThreadPool@{EventLoopThreadPool}}
+\doxysubsubsection{\texorpdfstring{m\_threads}{m\_threads}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classEventLoopThread}{Event\+Loop\+Thread}}$>$ $>$ Event\+Loop\+Thread\+Pool\+::m\+\_\+threads\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+net/\mbox{\hyperlink{EventLoopThreadPool_8h}{Event\+Loop\+Thread\+Pool.\+h}}\item 
+net/\mbox{\hyperlink{EventLoopThreadPool_8cpp}{Event\+Loop\+Thread\+Pool.\+cpp}}\end{DoxyCompactItemize}

@@ -5,7 +5,11 @@
 
 #include <sys/eventfd.h>
 #include <unistd.h>
+// unistd.h 提供了像 read, write, close 这样的基础 I/O 功能 
 #include <fcntl.h>
+// 提供一系列函数和常量，用于对文件描述符 (File Descriptor, fd) 进行高级控制和操作。
+// fcntl() 函数
+// 核心控制标志:O_NONBLOCK (非阻塞)和FD_CLOEXEC (执行时关闭)
 #include <cerrno>
 #include <memory>
 
@@ -29,6 +33,7 @@ EventLoop::EventLoop()
       m_threadId(CurrentThread::tid()),
       m_poller(Poller::newDefaultPoller(this)),
       m_wakeupFd(createEventfd()),
+      // this 被作为第一个参数传递给了 Channel 的构造函数
       m_wakeupChannel(std::make_unique<Channel>(this, m_wakeupFd))
 {
     if (t_loopInThisThread)
@@ -42,6 +47,7 @@ EventLoop::EventLoop()
 
     // 固定不变的绑定关系,尽早确定下来
     // 唤醒成功之后应该调用handleRead清零计数器
+    // this 就代表了那个正在被初始化的、新创建的 EventLoop 对象的内存地址 在bind中作为handleRead的执行者
     m_wakeupChannel->setReadCallback(std::bind(&EventLoop::handleRead, this));
     m_wakeupChannel->enableReading();
 }
@@ -64,7 +70,7 @@ void EventLoop::loop()
     while (!m_quit)
     {
         m_activeChannels.clear();
-        m_poller->poll(kPollTimeMs, &m_activeChannels);
+        m_poller->poll(kPollTimeMs, &m_activeChannels);// 平时会阻塞在这里,具体来说是::epoll_wait函数
 
         for (Channel* channel : m_activeChannels)
         {
@@ -111,6 +117,8 @@ void EventLoop::queueInLoop(std::function<void()> cb)
     }
 }
 
+// 给计数器加1 表示可以读了
+// epoll_wait 被唤醒
 void EventLoop::wakeup()
 {
     uint64_t one = 1;
@@ -121,6 +129,7 @@ void EventLoop::wakeup()
     }
 }
 
+// 这行代码的核心目的不是为了读取 one 这个值（这个值通常就是我们 wakeup 时写入的 1），而是为了利用 read 操作会将 eventfd 计数器清零的副作用,使其恢复到“非可读”状态,否则会陷入活锁
 void EventLoop::handleRead()
 {
     uint64_t one = 1;
