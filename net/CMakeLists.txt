@@ -11,6 +11,8 @@ add_library(net_lib STATIC
     EventLoopThreadPool.cpp
     EventLoopThread.cpp
     TcpServer.cpp
+    Timer.cpp
+    TimerQueue.cpp
 )
 
 target_include_directories(net_lib INTERFACE ${CMAKE_SOURCE_DIR})
