@@ -25,6 +25,9 @@ class Logger
 public:
     static Logger& getInstance();
     void setLogLevel(LogLevel level);
+
+    int logLevel() const { return m_logLevel; }
+
     void log(const std::string& msg);
     
 private:
@@ -58,9 +61,21 @@ private:
     LogLevel m_level;// 【新增】记录当前消息的级别
 };
 
-#define LOG_INFO  LogStream(__FILE__, __LINE__, INFO)
-#define LOG_ERROR LogStream(__FILE__, __LINE__, ERROR)
-#define LOG_FATAL LogStream(__FILE__, __LINE__, FATAL)
-#define LOG_DEBUG LogStream(__FILE__, __LINE__, DEBUG)
+// 【修改后】增加判断逻辑
+#define LOG_INFO \
+    if (Logger::getInstance().logLevel() <= INFO) \
+        LogStream(__FILE__, __LINE__, INFO)
+
+#define LOG_DEBUG \
+    if (Logger::getInstance().logLevel() <= DEBUG) \
+        LogStream(__FILE__, __LINE__, DEBUG)
+
+#define LOG_ERROR \
+    if (Logger::getInstance().logLevel() <= ERROR) \
+        LogStream(__FILE__, __LINE__, ERROR)
+
+#define LOG_FATAL \
+    if (Logger::getInstance().logLevel() <= FATAL) \
+        LogStream(__FILE__, __LINE__, FATAL)
 
 #endif

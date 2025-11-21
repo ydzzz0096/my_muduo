@@ -39,3 +39,7 @@ target_link_libraries(test_timer PRIVATE net_lib)
 
 add_executable(test_client test_client.cpp)
 target_link_libraries(test_client PRIVATE net_lib)
+
+add_executable(test_log_level test_log_level.cpp)
+# 链接 base_lib 即可，不需要 net_lib
+target_link_libraries(test_log_level PRIVATE base_lib)
