@@ -6,32 +6,48 @@
 #include "base/noncopyable.h"
 #include "base/CurrentThread.h"
 #include "base/Timestamp.h"
+#include "TimerId.h"
+#include "net/Callbacks.h"
+
 #include <functional>
 #include <atomic>
 #include <memory>
 #include <mutex>
 #include <vector>
 
+
 class Channel;
 class Poller;
+class TimerQueue;
 
 class EventLoop : noncopyable
 {
 public:
+    using Functor = std::function<void()>;
+
     EventLoop();
     ~EventLoop();
 
     void loop();
     void quit();
 
-    // 【新增】跨线程调用的核心接口
-    void runInLoop(std::function<void()> cb);
-    void queueInLoop(std::function<void()> cb);
+    Timestamp pollReturnTime() const { return m_pollReturnTime; }
 
-    // 【新增】用于唤醒 loop 所在线程的方法
+    void runInLoop(Functor cb);
+    void queueInLoop(Functor cb);
     void wakeup();
 
-    // EventLoop 与 Poller/Channel 的交互接口
+    // --- 【新增】定时器相关接口 ---
+    // 在指定的时间点执行
+    TimerId runAt(Timestamp time, TimerCallback cb);
+    // 在一段时间后执行
+    TimerId runAfter(double delay, TimerCallback cb);
+    // 每隔一段时间执行
+    TimerId runEvery(double interval, TimerCallback cb);
+    // 取消定时器
+    void cancel(TimerId timerId);
+    // ---------------------------
+
     void updateChannel(Channel* channel);
     void removeChannel(Channel* channel);
     bool hasChannel(Channel* channel);
@@ -47,9 +63,7 @@ public:
 
 private:
     void abortNotInLoopThread();
-    
-    // 【新增】处理唤醒事件和待处理任务的方法
-    void handleRead(); // waked up
+    void handleRead(); 
     void doPendingFunctors();
 
     using ChannelList = std::vector<Channel*>;
@@ -57,17 +71,18 @@ private:
     std::atomic_bool m_looping;
     std::atomic_bool m_quit;
     const pid_t m_threadId;
+    Timestamp m_pollReturnTime;
 
     std::unique_ptr<Poller> m_poller;
-    ChannelList m_activeChannels;// 在EpollPoller类中修改
+    // 【新增】定时器队列管理，EventLoop 拥有它
+    std::unique_ptr<TimerQueue> m_timerQueue; 
 
-    // 唤醒机制相关的成员
-    int m_wakeupFd;// 门铃
-    std::unique_ptr<Channel> m_wakeupChannel;// 哨兵
+    int m_wakeupFd;
+    std::unique_ptr<Channel> m_wakeupChannel;
+    ChannelList m_activeChannels;
 
-    // 用于处理跨线程任务的成员
     std::atomic_bool m_callingPendingFunctors;
-    std::vector<std::function<void()>> m_pendingFunctors;
+    std::vector<Functor> m_pendingFunctors;
     std::mutex m_mutex;
 };
 

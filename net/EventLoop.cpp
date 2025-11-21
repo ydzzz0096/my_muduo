@@ -2,6 +2,7 @@
 #include "base/Logger.h"
 #include "Poller.h"
 #include "Channel.h"
+#include "TimerQueue.h"
 
 #include <sys/eventfd.h>
 #include <unistd.h>
@@ -28,6 +29,7 @@ EventLoop::EventLoop()
       m_callingPendingFunctors(false),
       m_threadId(CurrentThread::tid()),
       m_poller(Poller::newDefaultPoller(this)),
+      m_timerQueue(new TimerQueue(this)),
       m_wakeupFd(createEventfd()),
       m_wakeupChannel(std::make_unique<Channel>(this, m_wakeupFd))
 {
@@ -171,4 +173,28 @@ void EventLoop::abortNotInLoopThread()
     LOG_FATAL << "EventLoop::abortNotInLoopThread - EventLoop " << this
               << " was created in threadId = " << m_threadId
               << ", current thread id = " << CurrentThread::tid();
+}
+
+// --- 【新增】定时器接口实现 ---
+
+TimerId EventLoop::runAt(Timestamp time, TimerCallback cb)
+{
+    return m_timerQueue->addTimer(std::move(cb), time, 0.0);
+}
+
+TimerId EventLoop::runAfter(double delay, TimerCallback cb)
+{
+    Timestamp time(addTime(Timestamp::now(), delay));
+    return runAt(time, std::move(cb));
+}
+
+TimerId EventLoop::runEvery(double interval, TimerCallback cb)
+{
+    Timestamp time(addTime(Timestamp::now(), interval));
+    return m_timerQueue->addTimer(std::move(cb), time, interval);
+}
+
+void EventLoop::cancel(TimerId timerId)
+{
+    return m_timerQueue->cancel(timerId);
 }
