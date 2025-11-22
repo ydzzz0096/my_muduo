@@ -1,0 +1,313 @@
+\hypertarget{classTimerQueue}{}\doxysection{Timer\+Queue Class Reference}
+\label{classTimerQueue}\index{TimerQueue@{TimerQueue}}
+
+
+定时器队列，基于 timerfd 实现。 这是一个内部类，不应该暴露给用户。 它持有 \mbox{\hyperlink{classTimer}{Timer}} 列表，并负责管理 timerfd，当最早的定时器到期时触发 handle\+Read。  
+
+
+
+
+{\ttfamily \#include $<$Timer\+Queue.\+h$>$}
+
+
+
+Inheritance diagram for Timer\+Queue\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{classTimerQueue__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Timer\+Queue\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classTimerQueue__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTimerQueue_ade9a15e58aed663a4634268b3a819da1}{Timer\+Queue}} (\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$loop)
+\item 
+\mbox{\hyperlink{classTimerQueue_a6511e1208f84054fb31893860970c031}{$\sim$\+Timer\+Queue}} ()
+\item 
+\mbox{\hyperlink{classTimerId}{Timer\+Id}} \mbox{\hyperlink{classTimerQueue_abc3b6a387bfd2f94515c8936595253a3}{add\+Timer}} (std\+::function$<$ void()$>$ cb, \mbox{\hyperlink{classTimestamp}{Timestamp}} when, double interval)
+\item 
+void \mbox{\hyperlink{classTimerQueue_a66bd94ec0f49f802183f50f9b3ed85ca}{cancel}} (\mbox{\hyperlink{classTimerId}{Timer\+Id}} timer\+Id)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classTimerQueue_a102eec42cb4a7320091c58de5c1cee49}{Entry}} = std\+::pair$<$ \mbox{\hyperlink{classTimestamp}{Timestamp}}, \mbox{\hyperlink{classTimer}{Timer}} $\ast$ $>$
+\item 
+using \mbox{\hyperlink{classTimerQueue_a55aa7cf5fdb595782138c054e3b5672f}{Timer\+List}} = std\+::set$<$ \mbox{\hyperlink{classTimerQueue_a102eec42cb4a7320091c58de5c1cee49}{Entry}} $>$
+\item 
+using \mbox{\hyperlink{classTimerQueue_a4d95eacaf9a83964162b0fb8f4c4f5d3}{Active\+Timer}} = std\+::pair$<$ \mbox{\hyperlink{classTimer}{Timer}} $\ast$, int64\+\_\+t $>$
+\item 
+using \mbox{\hyperlink{classTimerQueue_a9efd9ba7baef61683768171f44cf5197}{Active\+Timer\+Set}} = std\+::set$<$ \mbox{\hyperlink{classTimerQueue_a4d95eacaf9a83964162b0fb8f4c4f5d3}{Active\+Timer}} $>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classTimerQueue_af92e3fd1749ef19664716a5750b969b2}{handle\+Read}} ()
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classTimer}{Timer}} $\ast$ $>$ \mbox{\hyperlink{classTimerQueue_a43061fe1e780c618df3f1e99a6b5e893}{get\+Expired}} (\mbox{\hyperlink{classTimestamp}{Timestamp}} now)
+\item 
+void \mbox{\hyperlink{classTimerQueue_a6dac3424e06b3fba8e2d7c3f7f6c7457}{reset}} (const std\+::vector$<$ \mbox{\hyperlink{classTimer}{Timer}} $\ast$ $>$ \&expired, \mbox{\hyperlink{classTimestamp}{Timestamp}} now)
+\item 
+void \mbox{\hyperlink{classTimerQueue_a247f15e5d9c1e03b172a8cebd3c1819b}{cancel\+In\+Loop}} (\mbox{\hyperlink{classTimerId}{Timer\+Id}} timer\+Id)
+\item 
+bool \mbox{\hyperlink{classTimerQueue_ad85d1918255cf4933950019046c0546d}{insert}} (\mbox{\hyperlink{classTimer}{Timer}} $\ast$timer)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$ \mbox{\hyperlink{classTimerQueue_aba0626fa985f01b2f2ed21e1bbf08523}{m\+\_\+loop}}
+\item 
+const int \mbox{\hyperlink{classTimerQueue_a938c749dd8112acfab14769f1ccf6400}{m\+\_\+timerfd}}
+\item 
+\mbox{\hyperlink{classChannel}{Channel}} \mbox{\hyperlink{classTimerQueue_a8e95a3f07b7a44877cb1886544a2ea1f}{m\+\_\+timerfd\+Channel}}
+\item 
+\mbox{\hyperlink{classTimerQueue_a55aa7cf5fdb595782138c054e3b5672f}{Timer\+List}} \mbox{\hyperlink{classTimerQueue_a8f7328704a1084ac938d99ae929ca87e}{m\+\_\+timers}}
+\item 
+\mbox{\hyperlink{classTimerQueue_a9efd9ba7baef61683768171f44cf5197}{Active\+Timer\+Set}} \mbox{\hyperlink{classTimerQueue_a8e4825ccc6c9f58bb14dd04a1d5ce196}{m\+\_\+active\+Timers}}
+\item 
+bool \mbox{\hyperlink{classTimerQueue_a2ff134d28ecad2f0f2a4ac0cd7693d7e}{m\+\_\+calling\+Expired\+Timers}}
+\item 
+\mbox{\hyperlink{classTimerQueue_a9efd9ba7baef61683768171f44cf5197}{Active\+Timer\+Set}} \mbox{\hyperlink{classTimerQueue_a1ec70f85d11166052c79b8d417f27484}{m\+\_\+canceling\+Timers}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+定时器队列，基于 timerfd 实现。 这是一个内部类，不应该暴露给用户。 它持有 \mbox{\hyperlink{classTimer}{Timer}} 列表，并负责管理 timerfd，当最早的定时器到期时触发 handle\+Read。 
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classTimerQueue_a4d95eacaf9a83964162b0fb8f4c4f5d3}\label{classTimerQueue_a4d95eacaf9a83964162b0fb8f4c4f5d3}} 
+\index{TimerQueue@{TimerQueue}!ActiveTimer@{ActiveTimer}}
+\index{ActiveTimer@{ActiveTimer}!TimerQueue@{TimerQueue}}
+\doxysubsubsection{\texorpdfstring{ActiveTimer}{ActiveTimer}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classTimerQueue_a4d95eacaf9a83964162b0fb8f4c4f5d3}{Timer\+Queue\+::\+Active\+Timer}} =  std\+::pair$<$\mbox{\hyperlink{classTimer}{Timer}}$\ast$, int64\+\_\+t$>$\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTimerQueue_a9efd9ba7baef61683768171f44cf5197}\label{classTimerQueue_a9efd9ba7baef61683768171f44cf5197}} 
+\index{TimerQueue@{TimerQueue}!ActiveTimerSet@{ActiveTimerSet}}
+\index{ActiveTimerSet@{ActiveTimerSet}!TimerQueue@{TimerQueue}}
+\doxysubsubsection{\texorpdfstring{ActiveTimerSet}{ActiveTimerSet}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classTimerQueue_a9efd9ba7baef61683768171f44cf5197}{Timer\+Queue\+::\+Active\+Timer\+Set}} =  std\+::set$<$\mbox{\hyperlink{classTimerQueue_a4d95eacaf9a83964162b0fb8f4c4f5d3}{Active\+Timer}}$>$\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTimerQueue_a102eec42cb4a7320091c58de5c1cee49}\label{classTimerQueue_a102eec42cb4a7320091c58de5c1cee49}} 
+\index{TimerQueue@{TimerQueue}!Entry@{Entry}}
+\index{Entry@{Entry}!TimerQueue@{TimerQueue}}
+\doxysubsubsection{\texorpdfstring{Entry}{Entry}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classTimerQueue_a102eec42cb4a7320091c58de5c1cee49}{Timer\+Queue\+::\+Entry}} =  std\+::pair$<$\mbox{\hyperlink{classTimestamp}{Timestamp}}, \mbox{\hyperlink{classTimer}{Timer}}$\ast$$>$\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTimerQueue_a55aa7cf5fdb595782138c054e3b5672f}\label{classTimerQueue_a55aa7cf5fdb595782138c054e3b5672f}} 
+\index{TimerQueue@{TimerQueue}!TimerList@{TimerList}}
+\index{TimerList@{TimerList}!TimerQueue@{TimerQueue}}
+\doxysubsubsection{\texorpdfstring{TimerList}{TimerList}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classTimerQueue_a55aa7cf5fdb595782138c054e3b5672f}{Timer\+Queue\+::\+Timer\+List}} =  std\+::set$<$\mbox{\hyperlink{classTimerQueue_a102eec42cb4a7320091c58de5c1cee49}{Entry}}$>$\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTimerQueue_ade9a15e58aed663a4634268b3a819da1}\label{classTimerQueue_ade9a15e58aed663a4634268b3a819da1}} 
+\index{TimerQueue@{TimerQueue}!TimerQueue@{TimerQueue}}
+\index{TimerQueue@{TimerQueue}!TimerQueue@{TimerQueue}}
+\doxysubsubsection{\texorpdfstring{TimerQueue()}{TimerQueue()}}
+{\footnotesize\ttfamily Timer\+Queue\+::\+Timer\+Queue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$}]{loop }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTimerQueue_ade9a15e58aed663a4634268b3a819da1_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTimerQueue_a6511e1208f84054fb31893860970c031}\label{classTimerQueue_a6511e1208f84054fb31893860970c031}} 
+\index{TimerQueue@{TimerQueue}!````~TimerQueue@{$\sim$TimerQueue}}
+\index{````~TimerQueue@{$\sim$TimerQueue}!TimerQueue@{TimerQueue}}
+\doxysubsubsection{\texorpdfstring{$\sim$TimerQueue()}{~TimerQueue()}}
+{\footnotesize\ttfamily Timer\+Queue\+::$\sim$\+Timer\+Queue (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTimerQueue_a6511e1208f84054fb31893860970c031_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTimerQueue_abc3b6a387bfd2f94515c8936595253a3}\label{classTimerQueue_abc3b6a387bfd2f94515c8936595253a3}} 
+\index{TimerQueue@{TimerQueue}!addTimer@{addTimer}}
+\index{addTimer@{addTimer}!TimerQueue@{TimerQueue}}
+\doxysubsubsection{\texorpdfstring{addTimer()}{addTimer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTimerId}{Timer\+Id}} Timer\+Queue\+::add\+Timer (\begin{DoxyParamCaption}\item[{std\+::function$<$ void()$>$}]{cb,  }\item[{\mbox{\hyperlink{classTimestamp}{Timestamp}}}]{when,  }\item[{double}]{interval }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTimerQueue_abc3b6a387bfd2f94515c8936595253a3_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTimerQueue_a66bd94ec0f49f802183f50f9b3ed85ca}\label{classTimerQueue_a66bd94ec0f49f802183f50f9b3ed85ca}} 
+\index{TimerQueue@{TimerQueue}!cancel@{cancel}}
+\index{cancel@{cancel}!TimerQueue@{TimerQueue}}
+\doxysubsubsection{\texorpdfstring{cancel()}{cancel()}}
+{\footnotesize\ttfamily void Timer\+Queue\+::cancel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTimerId}{Timer\+Id}}}]{timer\+Id }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTimerQueue_a66bd94ec0f49f802183f50f9b3ed85ca_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTimerQueue_a247f15e5d9c1e03b172a8cebd3c1819b}\label{classTimerQueue_a247f15e5d9c1e03b172a8cebd3c1819b}} 
+\index{TimerQueue@{TimerQueue}!cancelInLoop@{cancelInLoop}}
+\index{cancelInLoop@{cancelInLoop}!TimerQueue@{TimerQueue}}
+\doxysubsubsection{\texorpdfstring{cancelInLoop()}{cancelInLoop()}}
+{\footnotesize\ttfamily void Timer\+Queue\+::cancel\+In\+Loop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTimerId}{Timer\+Id}}}]{timer\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTimerQueue_a247f15e5d9c1e03b172a8cebd3c1819b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTimerQueue_a247f15e5d9c1e03b172a8cebd3c1819b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTimerQueue_a43061fe1e780c618df3f1e99a6b5e893}\label{classTimerQueue_a43061fe1e780c618df3f1e99a6b5e893}} 
+\index{TimerQueue@{TimerQueue}!getExpired@{getExpired}}
+\index{getExpired@{getExpired}!TimerQueue@{TimerQueue}}
+\doxysubsubsection{\texorpdfstring{getExpired()}{getExpired()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classTimer}{Timer}} $\ast$ $>$ Timer\+Queue\+::get\+Expired (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTimestamp}{Timestamp}}}]{now }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTimerQueue_a43061fe1e780c618df3f1e99a6b5e893_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTimerQueue_af92e3fd1749ef19664716a5750b969b2}\label{classTimerQueue_af92e3fd1749ef19664716a5750b969b2}} 
+\index{TimerQueue@{TimerQueue}!handleRead@{handleRead}}
+\index{handleRead@{handleRead}!TimerQueue@{TimerQueue}}
+\doxysubsubsection{\texorpdfstring{handleRead()}{handleRead()}}
+{\footnotesize\ttfamily void Timer\+Queue\+::handle\+Read (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTimerQueue_af92e3fd1749ef19664716a5750b969b2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTimerQueue_af92e3fd1749ef19664716a5750b969b2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTimerQueue_ad85d1918255cf4933950019046c0546d}\label{classTimerQueue_ad85d1918255cf4933950019046c0546d}} 
+\index{TimerQueue@{TimerQueue}!insert@{insert}}
+\index{insert@{insert}!TimerQueue@{TimerQueue}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily bool Timer\+Queue\+::insert (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTimer}{Timer}} $\ast$}]{timer }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTimerQueue_ad85d1918255cf4933950019046c0546d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTimerQueue_ad85d1918255cf4933950019046c0546d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTimerQueue_a6dac3424e06b3fba8e2d7c3f7f6c7457}\label{classTimerQueue_a6dac3424e06b3fba8e2d7c3f7f6c7457}} 
+\index{TimerQueue@{TimerQueue}!reset@{reset}}
+\index{reset@{reset}!TimerQueue@{TimerQueue}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void Timer\+Queue\+::reset (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{classTimer}{Timer}} $\ast$ $>$ \&}]{expired,  }\item[{\mbox{\hyperlink{classTimestamp}{Timestamp}}}]{now }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTimerQueue_a6dac3424e06b3fba8e2d7c3f7f6c7457_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTimerQueue_a6dac3424e06b3fba8e2d7c3f7f6c7457_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classTimerQueue_a8e4825ccc6c9f58bb14dd04a1d5ce196}\label{classTimerQueue_a8e4825ccc6c9f58bb14dd04a1d5ce196}} 
+\index{TimerQueue@{TimerQueue}!m\_activeTimers@{m\_activeTimers}}
+\index{m\_activeTimers@{m\_activeTimers}!TimerQueue@{TimerQueue}}
+\doxysubsubsection{\texorpdfstring{m\_activeTimers}{m\_activeTimers}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTimerQueue_a9efd9ba7baef61683768171f44cf5197}{Active\+Timer\+Set}} Timer\+Queue\+::m\+\_\+active\+Timers\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTimerQueue_a2ff134d28ecad2f0f2a4ac0cd7693d7e}\label{classTimerQueue_a2ff134d28ecad2f0f2a4ac0cd7693d7e}} 
+\index{TimerQueue@{TimerQueue}!m\_callingExpiredTimers@{m\_callingExpiredTimers}}
+\index{m\_callingExpiredTimers@{m\_callingExpiredTimers}!TimerQueue@{TimerQueue}}
+\doxysubsubsection{\texorpdfstring{m\_callingExpiredTimers}{m\_callingExpiredTimers}}
+{\footnotesize\ttfamily bool Timer\+Queue\+::m\+\_\+calling\+Expired\+Timers\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTimerQueue_a1ec70f85d11166052c79b8d417f27484}\label{classTimerQueue_a1ec70f85d11166052c79b8d417f27484}} 
+\index{TimerQueue@{TimerQueue}!m\_cancelingTimers@{m\_cancelingTimers}}
+\index{m\_cancelingTimers@{m\_cancelingTimers}!TimerQueue@{TimerQueue}}
+\doxysubsubsection{\texorpdfstring{m\_cancelingTimers}{m\_cancelingTimers}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTimerQueue_a9efd9ba7baef61683768171f44cf5197}{Active\+Timer\+Set}} Timer\+Queue\+::m\+\_\+canceling\+Timers\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTimerQueue_aba0626fa985f01b2f2ed21e1bbf08523}\label{classTimerQueue_aba0626fa985f01b2f2ed21e1bbf08523}} 
+\index{TimerQueue@{TimerQueue}!m\_loop@{m\_loop}}
+\index{m\_loop@{m\_loop}!TimerQueue@{TimerQueue}}
+\doxysubsubsection{\texorpdfstring{m\_loop}{m\_loop}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEventLoop}{Event\+Loop}}$\ast$ Timer\+Queue\+::m\+\_\+loop\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTimerQueue_a938c749dd8112acfab14769f1ccf6400}\label{classTimerQueue_a938c749dd8112acfab14769f1ccf6400}} 
+\index{TimerQueue@{TimerQueue}!m\_timerfd@{m\_timerfd}}
+\index{m\_timerfd@{m\_timerfd}!TimerQueue@{TimerQueue}}
+\doxysubsubsection{\texorpdfstring{m\_timerfd}{m\_timerfd}}
+{\footnotesize\ttfamily const int Timer\+Queue\+::m\+\_\+timerfd\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTimerQueue_a8e95a3f07b7a44877cb1886544a2ea1f}\label{classTimerQueue_a8e95a3f07b7a44877cb1886544a2ea1f}} 
+\index{TimerQueue@{TimerQueue}!m\_timerfdChannel@{m\_timerfdChannel}}
+\index{m\_timerfdChannel@{m\_timerfdChannel}!TimerQueue@{TimerQueue}}
+\doxysubsubsection{\texorpdfstring{m\_timerfdChannel}{m\_timerfdChannel}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classChannel}{Channel}} Timer\+Queue\+::m\+\_\+timerfd\+Channel\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTimerQueue_a8f7328704a1084ac938d99ae929ca87e}\label{classTimerQueue_a8f7328704a1084ac938d99ae929ca87e}} 
+\index{TimerQueue@{TimerQueue}!m\_timers@{m\_timers}}
+\index{m\_timers@{m\_timers}!TimerQueue@{TimerQueue}}
+\doxysubsubsection{\texorpdfstring{m\_timers}{m\_timers}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTimerQueue_a55aa7cf5fdb595782138c054e3b5672f}{Timer\+List}} Timer\+Queue\+::m\+\_\+timers\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+net/\mbox{\hyperlink{TimerQueue_8h}{Timer\+Queue.\+h}}\item 
+net/\mbox{\hyperlink{TimerQueue_8cpp}{Timer\+Queue.\+cpp}}\end{DoxyCompactItemize}

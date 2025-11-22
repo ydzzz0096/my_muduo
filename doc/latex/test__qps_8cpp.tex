@@ -1,0 +1,114 @@
+\hypertarget{test__qps_8cpp}{}\doxysection{examples/test\+\_\+qps.cpp File Reference}
+\label{test__qps_8cpp}\index{examples/test\_qps.cpp@{examples/test\_qps.cpp}}
+{\ttfamily \#include \char`\"{}net/\+Tcp\+Client.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}net/\+Event\+Loop.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}net/\+Inet\+Address.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}base/\+Logger.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}base/\+Timestamp.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}base/\+Thread.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$atomic$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+Include dependency graph for test\+\_\+qps.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test__qps_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classQpsClient}{Qps\+Client}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::atomic$<$ int64\+\_\+t $>$ \mbox{\hyperlink{test__qps_8cpp_abd0f70452ccdb5fa01590403d84c2aae}{g\+\_\+total\+Messages}} (0)
+\item 
+std\+::atomic$<$ int64\+\_\+t $>$ \mbox{\hyperlink{test__qps_8cpp_a28942aa22218a5cdfce7801efeb50fee}{g\+\_\+total\+Bytes}} (0)
+\item 
+void \mbox{\hyperlink{test__qps_8cpp_a6bdc9b03a3ab440c7dac5bfb0e35e21c}{stats\+Func}} ()
+\item 
+int \mbox{\hyperlink{test__qps_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{test__qps_8cpp_aa52c13244300efe861a891e0969f3a2f}{g\+\_\+message}} = \char`\"{}1234567890\+ABCDEFGHIJKLMNOPQRSTUVWXYZ\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{test__qps_8cpp_a28942aa22218a5cdfce7801efeb50fee}\label{test__qps_8cpp_a28942aa22218a5cdfce7801efeb50fee}} 
+\index{test\_qps.cpp@{test\_qps.cpp}!g\_totalBytes@{g\_totalBytes}}
+\index{g\_totalBytes@{g\_totalBytes}!test\_qps.cpp@{test\_qps.cpp}}
+\doxysubsubsection{\texorpdfstring{g\_totalBytes()}{g\_totalBytes()}}
+{\footnotesize\ttfamily std\+::atomic$<$int64\+\_\+t$>$ g\+\_\+total\+Bytes (\begin{DoxyParamCaption}\item[{0}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test__qps_8cpp_a28942aa22218a5cdfce7801efeb50fee_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{test__qps_8cpp_abd0f70452ccdb5fa01590403d84c2aae}\label{test__qps_8cpp_abd0f70452ccdb5fa01590403d84c2aae}} 
+\index{test\_qps.cpp@{test\_qps.cpp}!g\_totalMessages@{g\_totalMessages}}
+\index{g\_totalMessages@{g\_totalMessages}!test\_qps.cpp@{test\_qps.cpp}}
+\doxysubsubsection{\texorpdfstring{g\_totalMessages()}{g\_totalMessages()}}
+{\footnotesize\ttfamily std\+::atomic$<$int64\+\_\+t$>$ g\+\_\+total\+Messages (\begin{DoxyParamCaption}\item[{0}]{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test__qps_8cpp_abd0f70452ccdb5fa01590403d84c2aae_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{test__qps_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\label{test__qps_8cpp_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{test\_qps.cpp@{test\_qps.cpp}!main@{main}}
+\index{main@{main}!test\_qps.cpp@{test\_qps.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test__qps_8cpp_a0ddf1224851353fc92bfbff6f499fa97_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{test__qps_8cpp_a6bdc9b03a3ab440c7dac5bfb0e35e21c}\label{test__qps_8cpp_a6bdc9b03a3ab440c7dac5bfb0e35e21c}} 
+\index{test\_qps.cpp@{test\_qps.cpp}!statsFunc@{statsFunc}}
+\index{statsFunc@{statsFunc}!test\_qps.cpp@{test\_qps.cpp}}
+\doxysubsubsection{\texorpdfstring{statsFunc()}{statsFunc()}}
+{\footnotesize\ttfamily void stats\+Func (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test__qps_8cpp_a6bdc9b03a3ab440c7dac5bfb0e35e21c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{test__qps_8cpp_a6bdc9b03a3ab440c7dac5bfb0e35e21c_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{test__qps_8cpp_aa52c13244300efe861a891e0969f3a2f}\label{test__qps_8cpp_aa52c13244300efe861a891e0969f3a2f}} 
+\index{test\_qps.cpp@{test\_qps.cpp}!g\_message@{g\_message}}
+\index{g\_message@{g\_message}!test\_qps.cpp@{test\_qps.cpp}}
+\doxysubsubsection{\texorpdfstring{g\_message}{g\_message}}
+{\footnotesize\ttfamily std\+::string g\+\_\+message = \char`\"{}1234567890\+ABCDEFGHIJKLMNOPQRSTUVWXYZ\char`\"{}}
+

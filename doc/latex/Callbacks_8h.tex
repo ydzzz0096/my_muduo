@@ -1,0 +1,80 @@
+\hypertarget{Callbacks_8h}{}\doxysection{net/\+Callbacks.h File Reference}
+\label{Callbacks_8h}\index{net/Callbacks.h@{net/Callbacks.h}}
+{\ttfamily \#include $<$functional$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+Include dependency graph for Callbacks.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{Callbacks_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{Callbacks_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{Callbacks_8h_ac3732590ccadee074644a27ff5d78da1}{Tcp\+Connection}} = std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classTcpConnection}{Tcp\+Connection}} $>$
+\item 
+using \mbox{\hyperlink{Callbacks_8h_a5ae081a0a16388ee27fc7bf36292b9f6}{Connection\+Callback}} = std\+::function$<$ void(const \mbox{\hyperlink{classTcpConnection}{Tcp\+Connection}} $\ast$\&)$>$
+\item 
+using \mbox{\hyperlink{Callbacks_8h_a9f980df2992d2e00df508b480b0709b6}{Close\+Callback}} = std\+::function$<$ void(const \mbox{\hyperlink{classTcpConnection}{Tcp\+Connection}} $\ast$\&)$>$
+\item 
+using \mbox{\hyperlink{Callbacks_8h_a826cae2589e8be77f9075215547bfb6c}{Write\+Complete\+Callback}} = std\+::function$<$ void(const \mbox{\hyperlink{classTcpConnection}{Tcp\+Connection}} $\ast$\&)$>$
+\item 
+using \mbox{\hyperlink{Callbacks_8h_a3b9db188c6d3c2e7a052a784b1f4ff1a}{High\+Water\+Mark\+Callback}} = std\+::function$<$ void(const \mbox{\hyperlink{classTcpConnection}{Tcp\+Connection}} $\ast$\&, size\+\_\+t)$>$
+\item 
+using \mbox{\hyperlink{Callbacks_8h_a7774a95b3b90575a31d8053224f9126a}{Message\+Callback}} = std\+::function$<$ void(const \mbox{\hyperlink{classTcpConnection}{Tcp\+Connection}} $\ast$\&, \mbox{\hyperlink{classBuffer}{Buffer}} $\ast$, \mbox{\hyperlink{classTimestamp}{Timestamp}})$>$
+\item 
+using \mbox{\hyperlink{Callbacks_8h_a296f375b65e0467e9a5f5efc6dc18288}{Timer\+Callback}} = std\+::function$<$ void()$>$
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{Callbacks_8h_a9f980df2992d2e00df508b480b0709b6}\label{Callbacks_8h_a9f980df2992d2e00df508b480b0709b6}} 
+\index{Callbacks.h@{Callbacks.h}!CloseCallback@{CloseCallback}}
+\index{CloseCallback@{CloseCallback}!Callbacks.h@{Callbacks.h}}
+\doxysubsubsection{\texorpdfstring{CloseCallback}{CloseCallback}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{Callbacks_8h_a9f980df2992d2e00df508b480b0709b6}{Close\+Callback}} =  std\+::function$<$void(const \mbox{\hyperlink{classTcpConnection}{Tcp\+Connection}}$\ast$\&)$>$}
+
+\mbox{\Hypertarget{Callbacks_8h_a5ae081a0a16388ee27fc7bf36292b9f6}\label{Callbacks_8h_a5ae081a0a16388ee27fc7bf36292b9f6}} 
+\index{Callbacks.h@{Callbacks.h}!ConnectionCallback@{ConnectionCallback}}
+\index{ConnectionCallback@{ConnectionCallback}!Callbacks.h@{Callbacks.h}}
+\doxysubsubsection{\texorpdfstring{ConnectionCallback}{ConnectionCallback}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{Callbacks_8h_a5ae081a0a16388ee27fc7bf36292b9f6}{Connection\+Callback}} =  std\+::function$<$void(const \mbox{\hyperlink{classTcpConnection}{Tcp\+Connection}}$\ast$\&)$>$}
+
+\mbox{\Hypertarget{Callbacks_8h_a3b9db188c6d3c2e7a052a784b1f4ff1a}\label{Callbacks_8h_a3b9db188c6d3c2e7a052a784b1f4ff1a}} 
+\index{Callbacks.h@{Callbacks.h}!HighWaterMarkCallback@{HighWaterMarkCallback}}
+\index{HighWaterMarkCallback@{HighWaterMarkCallback}!Callbacks.h@{Callbacks.h}}
+\doxysubsubsection{\texorpdfstring{HighWaterMarkCallback}{HighWaterMarkCallback}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{Callbacks_8h_a3b9db188c6d3c2e7a052a784b1f4ff1a}{High\+Water\+Mark\+Callback}} =  std\+::function$<$void(const \mbox{\hyperlink{classTcpConnection}{Tcp\+Connection}}$\ast$\&, size\+\_\+t)$>$}
+
+\mbox{\Hypertarget{Callbacks_8h_a7774a95b3b90575a31d8053224f9126a}\label{Callbacks_8h_a7774a95b3b90575a31d8053224f9126a}} 
+\index{Callbacks.h@{Callbacks.h}!MessageCallback@{MessageCallback}}
+\index{MessageCallback@{MessageCallback}!Callbacks.h@{Callbacks.h}}
+\doxysubsubsection{\texorpdfstring{MessageCallback}{MessageCallback}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{Callbacks_8h_a7774a95b3b90575a31d8053224f9126a}{Message\+Callback}} =  std\+::function$<$void(const \mbox{\hyperlink{classTcpConnection}{Tcp\+Connection}}$\ast$\&, \mbox{\hyperlink{classBuffer}{Buffer}}$\ast$, \mbox{\hyperlink{classTimestamp}{Timestamp}})$>$}
+
+\mbox{\Hypertarget{Callbacks_8h_ac3732590ccadee074644a27ff5d78da1}\label{Callbacks_8h_ac3732590ccadee074644a27ff5d78da1}} 
+\index{Callbacks.h@{Callbacks.h}!TcpConnection@{TcpConnection}}
+\index{TcpConnection@{TcpConnection}!Callbacks.h@{Callbacks.h}}
+\doxysubsubsection{\texorpdfstring{TcpConnection}{TcpConnection}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classTcpConnection}{Tcp\+Connection}} =  std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classTcpConnection}{Tcp\+Connection}}$>$}
+
+\mbox{\Hypertarget{Callbacks_8h_a296f375b65e0467e9a5f5efc6dc18288}\label{Callbacks_8h_a296f375b65e0467e9a5f5efc6dc18288}} 
+\index{Callbacks.h@{Callbacks.h}!TimerCallback@{TimerCallback}}
+\index{TimerCallback@{TimerCallback}!Callbacks.h@{Callbacks.h}}
+\doxysubsubsection{\texorpdfstring{TimerCallback}{TimerCallback}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{Callbacks_8h_a296f375b65e0467e9a5f5efc6dc18288}{Timer\+Callback}} =  std\+::function$<$void()$>$}
+
+\mbox{\Hypertarget{Callbacks_8h_a826cae2589e8be77f9075215547bfb6c}\label{Callbacks_8h_a826cae2589e8be77f9075215547bfb6c}} 
+\index{Callbacks.h@{Callbacks.h}!WriteCompleteCallback@{WriteCompleteCallback}}
+\index{WriteCompleteCallback@{WriteCompleteCallback}!Callbacks.h@{Callbacks.h}}
+\doxysubsubsection{\texorpdfstring{WriteCompleteCallback}{WriteCompleteCallback}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{Callbacks_8h_a826cae2589e8be77f9075215547bfb6c}{Write\+Complete\+Callback}} =  std\+::function$<$void(const \mbox{\hyperlink{classTcpConnection}{Tcp\+Connection}}$\ast$\&)$>$}
+

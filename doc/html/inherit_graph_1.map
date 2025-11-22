@@ -1,0 +1,20 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" title=" " alt="" coords="5,23,151,65"/>
+<area shape="rect" id="node2" href="$classConnector.html" title="负责主动发起 TCP 连接的类。 核心逻辑：" alt="" coords="236,56,324,83"/>
+<area shape="rect" id="node3" href="$classTcpConnection.html" title=" " alt="" coords="222,5,338,32"/>
+<area shape="rect" id="node4" href="$classnoncopyable.html" title=" " alt="" coords="25,360,131,387"/>
+<area shape="rect" id="node5" href="$classAcceptor.html" title=" " alt="" coords="241,411,319,437"/>
+<area shape="rect" id="node6" href="$classChannel.html" title=" " alt="" coords="243,461,317,488"/>
+<area shape="rect" id="node7" href="$classEventLoop.html" title=" " alt="" coords="235,512,325,539"/>
+<area shape="rect" id="node8" href="$classEventLoopThread.html" title=" " alt="" coords="213,563,347,589"/>
+<area shape="rect" id="node9" href="$classEventLoopThreadPool.html" title=" " alt="" coords="199,613,361,640"/>
+<area shape="rect" id="node10" href="$classPoller.html" title=" " alt="" coords="251,664,309,691"/>
+<area shape="rect" id="node12" href="$classSocket.html" title=" " alt="" coords="247,715,313,741"/>
+<area shape="rect" id="node13" href="$classTcpClient.html" title=" " alt="" coords="239,107,321,133"/>
+<area shape="rect" id="node14" href="$classTcpServer.html" title=" " alt="" coords="237,157,323,184"/>
+<area shape="rect" id="node15" href="$classThread.html" title=" " alt="" coords="247,208,313,235"/>
+<area shape="rect" id="node16" href="$classThreadPool.html" title=" " alt="" coords="233,259,327,285"/>
+<area shape="rect" id="node17" href="$classTimer.html" title=" " alt="" coords="250,309,310,336"/>
+<area shape="rect" id="node18" href="$classTimerQueue.html" title="定时器队列，基于 timerfd 实现。 这是一个内部类，不应该暴露给用户。 它持有 Timer 列表，并负责管理 timerfd，当最早的定时器到期时触发 handleRead。" alt="" coords="229,360,331,387"/>
+<area shape="rect" id="node11" href="$classEpollPoller.html" title=" " alt="" coords="409,664,500,691"/>
+</map>

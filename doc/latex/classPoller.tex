@@ -1,0 +1,168 @@
+\hypertarget{classPoller}{}\doxysection{Poller Class Reference}
+\label{classPoller}\index{Poller@{Poller}}
+
+
+{\ttfamily \#include $<$Poller.\+h$>$}
+
+
+
+Inheritance diagram for Poller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{classPoller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Poller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classPoller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classPoller_a0d6212e417eae8975cf3b66211bf3fd4}{Channel\+List}} = std\+::vector$<$ \mbox{\hyperlink{classChannel}{Channel}} $\ast$ $>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPoller_a55cb3c1cc4b0243f13eff2cda49b140b}{Poller}} (\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$loop)
+\item 
+virtual \mbox{\hyperlink{classPoller_ab8bb3aafad67a0f2e466878126adffd1}{$\sim$\+Poller}} ()=default
+\item 
+virtual \mbox{\hyperlink{classTimestamp}{Timestamp}} \mbox{\hyperlink{classPoller_a9d3ecdca4602b1fe6f6ad065199a8152}{poll}} (int timeout\+Ms, \mbox{\hyperlink{classPoller_a0d6212e417eae8975cf3b66211bf3fd4}{Channel\+List}} $\ast$active\+Channels)=0
+\item 
+virtual void \mbox{\hyperlink{classPoller_a80b46252b5300a85946184406a883537}{update\+Channel}} (\mbox{\hyperlink{classChannel}{Channel}} $\ast$channel)=0
+\item 
+virtual void \mbox{\hyperlink{classPoller_a7820b92775aa9f5e13c6e7c11567c274}{remove\+Channel}} (\mbox{\hyperlink{classChannel}{Channel}} $\ast$channel)=0
+\item 
+virtual bool \mbox{\hyperlink{classPoller_a977470b5b7aa691bfd467db83e61eaea}{has\+Channel}} (\mbox{\hyperlink{classChannel}{Channel}} $\ast$channel) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classPoller}{Poller}} $\ast$ \mbox{\hyperlink{classPoller_a8007de90285691448f34cebf252bda44}{new\+Default\+Poller}} (\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$loop)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classPoller_afdf8dfb28107c9b9f43745e9cb55955c}{Channel\+Map}} = std\+::map$<$ int, \mbox{\hyperlink{classChannel}{Channel}} $\ast$ $>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPoller_afdf8dfb28107c9b9f43745e9cb55955c}{Channel\+Map}} \mbox{\hyperlink{classPoller_a1bf1a051f0103646612d5aabfd1734cc}{m\+\_\+channels}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$ \mbox{\hyperlink{classPoller_addf6d7b537407362d7664878784cce4f}{m\+\_\+owner\+Loop}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classPoller_a0d6212e417eae8975cf3b66211bf3fd4}\label{classPoller_a0d6212e417eae8975cf3b66211bf3fd4}} 
+\index{Poller@{Poller}!ChannelList@{ChannelList}}
+\index{ChannelList@{ChannelList}!Poller@{Poller}}
+\doxysubsubsection{\texorpdfstring{ChannelList}{ChannelList}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classPoller_a0d6212e417eae8975cf3b66211bf3fd4}{Poller\+::\+Channel\+List}} =  std\+::vector$<$\mbox{\hyperlink{classChannel}{Channel}} $\ast$$>$}
+
+\mbox{\Hypertarget{classPoller_afdf8dfb28107c9b9f43745e9cb55955c}\label{classPoller_afdf8dfb28107c9b9f43745e9cb55955c}} 
+\index{Poller@{Poller}!ChannelMap@{ChannelMap}}
+\index{ChannelMap@{ChannelMap}!Poller@{Poller}}
+\doxysubsubsection{\texorpdfstring{ChannelMap}{ChannelMap}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classPoller_afdf8dfb28107c9b9f43745e9cb55955c}{Poller\+::\+Channel\+Map}} =  std\+::map$<$int, \mbox{\hyperlink{classChannel}{Channel}} $\ast$$>$\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPoller_a55cb3c1cc4b0243f13eff2cda49b140b}\label{classPoller_a55cb3c1cc4b0243f13eff2cda49b140b}} 
+\index{Poller@{Poller}!Poller@{Poller}}
+\index{Poller@{Poller}!Poller@{Poller}}
+\doxysubsubsection{\texorpdfstring{Poller()}{Poller()}}
+{\footnotesize\ttfamily Poller\+::\+Poller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$}]{loop }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classPoller_ab8bb3aafad67a0f2e466878126adffd1}\label{classPoller_ab8bb3aafad67a0f2e466878126adffd1}} 
+\index{Poller@{Poller}!````~Poller@{$\sim$Poller}}
+\index{````~Poller@{$\sim$Poller}!Poller@{Poller}}
+\doxysubsubsection{\texorpdfstring{$\sim$Poller()}{~Poller()}}
+{\footnotesize\ttfamily virtual Poller\+::$\sim$\+Poller (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPoller_a977470b5b7aa691bfd467db83e61eaea}\label{classPoller_a977470b5b7aa691bfd467db83e61eaea}} 
+\index{Poller@{Poller}!hasChannel@{hasChannel}}
+\index{hasChannel@{hasChannel}!Poller@{Poller}}
+\doxysubsubsection{\texorpdfstring{hasChannel()}{hasChannel()}}
+{\footnotesize\ttfamily bool Poller\+::has\+Channel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classChannel}{Channel}} $\ast$}]{channel }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=295pt]{classPoller_a977470b5b7aa691bfd467db83e61eaea_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classPoller_a8007de90285691448f34cebf252bda44}\label{classPoller_a8007de90285691448f34cebf252bda44}} 
+\index{Poller@{Poller}!newDefaultPoller@{newDefaultPoller}}
+\index{newDefaultPoller@{newDefaultPoller}!Poller@{Poller}}
+\doxysubsubsection{\texorpdfstring{newDefaultPoller()}{newDefaultPoller()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPoller}{Poller}} $\ast$ Poller\+::new\+Default\+Poller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$}]{loop }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classPoller_a9d3ecdca4602b1fe6f6ad065199a8152}\label{classPoller_a9d3ecdca4602b1fe6f6ad065199a8152}} 
+\index{Poller@{Poller}!poll@{poll}}
+\index{poll@{poll}!Poller@{Poller}}
+\doxysubsubsection{\texorpdfstring{poll()}{poll()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classTimestamp}{Timestamp}} Poller\+::poll (\begin{DoxyParamCaption}\item[{int}]{timeout\+Ms,  }\item[{\mbox{\hyperlink{classPoller_a0d6212e417eae8975cf3b66211bf3fd4}{Channel\+List}} $\ast$}]{active\+Channels }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classEpollPoller_ac22317a7a8cdc656594a509a06806acd}{Epoll\+Poller}}.
+
+\mbox{\Hypertarget{classPoller_a7820b92775aa9f5e13c6e7c11567c274}\label{classPoller_a7820b92775aa9f5e13c6e7c11567c274}} 
+\index{Poller@{Poller}!removeChannel@{removeChannel}}
+\index{removeChannel@{removeChannel}!Poller@{Poller}}
+\doxysubsubsection{\texorpdfstring{removeChannel()}{removeChannel()}}
+{\footnotesize\ttfamily virtual void Poller\+::remove\+Channel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classChannel}{Channel}} $\ast$}]{channel }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classEpollPoller_a80b36ef78842392c480fc98d146ab167}{Epoll\+Poller}}.
+
+\mbox{\Hypertarget{classPoller_a80b46252b5300a85946184406a883537}\label{classPoller_a80b46252b5300a85946184406a883537}} 
+\index{Poller@{Poller}!updateChannel@{updateChannel}}
+\index{updateChannel@{updateChannel}!Poller@{Poller}}
+\doxysubsubsection{\texorpdfstring{updateChannel()}{updateChannel()}}
+{\footnotesize\ttfamily virtual void Poller\+::update\+Channel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classChannel}{Channel}} $\ast$}]{channel }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classEpollPoller_aa88c24cc8f60b7d3aca55d20c2bbec94}{Epoll\+Poller}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classPoller_a1bf1a051f0103646612d5aabfd1734cc}\label{classPoller_a1bf1a051f0103646612d5aabfd1734cc}} 
+\index{Poller@{Poller}!m\_channels@{m\_channels}}
+\index{m\_channels@{m\_channels}!Poller@{Poller}}
+\doxysubsubsection{\texorpdfstring{m\_channels}{m\_channels}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPoller_afdf8dfb28107c9b9f43745e9cb55955c}{Channel\+Map}} Poller\+::m\+\_\+channels\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classPoller_addf6d7b537407362d7664878784cce4f}\label{classPoller_addf6d7b537407362d7664878784cce4f}} 
+\index{Poller@{Poller}!m\_ownerLoop@{m\_ownerLoop}}
+\index{m\_ownerLoop@{m\_ownerLoop}!Poller@{Poller}}
+\doxysubsubsection{\texorpdfstring{m\_ownerLoop}{m\_ownerLoop}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEventLoop}{Event\+Loop}}$\ast$ Poller\+::m\+\_\+owner\+Loop\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+net/\mbox{\hyperlink{Poller_8h}{Poller.\+h}}\item 
+net/\mbox{\hyperlink{Poller_8cpp}{Poller.\+cpp}}\end{DoxyCompactItemize}

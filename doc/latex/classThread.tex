@@ -1,0 +1,231 @@
+\hypertarget{classThread}{}\doxysection{Thread Class Reference}
+\label{classThread}\index{Thread@{Thread}}
+
+
+{\ttfamily \#include $<$Thread.\+h$>$}
+
+
+
+Inheritance diagram for Thread\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=191pt]{classThread__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Thread\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=191pt]{classThread__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classThread_ae76dbb5967e2a5fcec38543e4e634a3a}{Thread\+Func}} = std\+::function$<$ void()$>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classThread_ae936786b12b434837624a660cef6e8d5}{Thread}} (\mbox{\hyperlink{classThread_ae76dbb5967e2a5fcec38543e4e634a3a}{Thread\+Func}}, const std\+::string \&\mbox{\hyperlink{classThread_a7b06a44618a6a31c23fb3a4210882fee}{name}}=std\+::string())
+\item 
+\mbox{\hyperlink{classThread_a37d9edd3a1a776cbc27dedff949c9726}{$\sim$\+Thread}} ()
+\item 
+void \mbox{\hyperlink{classThread_a1f53ee62bd30a7924186ef26150ce262}{start}} ()
+\item 
+void \mbox{\hyperlink{classThread_a4d9d788e98388a3217831a9046709deb}{join}} ()
+\item 
+bool \mbox{\hyperlink{classThread_a83fe4960003d008e7d564d0bd6fccb3a}{started}} () const
+\item 
+pid\+\_\+t \mbox{\hyperlink{classThread_ad9cc81d66794a23e40ba90b5fbaf7a1b}{tid}} () const
+\item 
+const std\+::string \& \mbox{\hyperlink{classThread_a7b06a44618a6a31c23fb3a4210882fee}{name}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{classThread_a458d2733f8b129ea594693330ca3c7c8}{num\+Created}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classThread_af17d93115d606787d1632ec94bd8e553}{set\+Default\+Name}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classThread_a51de0bce652f47b06337627cd705b260}{m\+\_\+started}}
+\item 
+bool \mbox{\hyperlink{classThread_a7566e76b0fd75a030d11371db8bcd931}{m\+\_\+joined}}
+\item 
+std\+::unique\+\_\+ptr$<$ std\+::thread $>$ \mbox{\hyperlink{classThread_acded320e691201efd51d6f443e7b330d}{m\+\_\+thread}}
+\item 
+pid\+\_\+t \mbox{\hyperlink{classThread_a5ac55bd5c09d9e91c586ed87f16e3a68}{m\+\_\+tid}}
+\item 
+\mbox{\hyperlink{classThread_ae76dbb5967e2a5fcec38543e4e634a3a}{Thread\+Func}} \mbox{\hyperlink{classThread_a2f3685bef50e5241620ca8f2a1d04dc9}{m\+\_\+func}}
+\item 
+std\+::string \mbox{\hyperlink{classThread_a857bb68a400155e72f0dfe6c2631172c}{m\+\_\+name}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::atomic$<$ int $>$ \mbox{\hyperlink{classThread_aa54037444865fe96402afa239f975215}{m\+\_\+num\+Created}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classThread_ae76dbb5967e2a5fcec38543e4e634a3a}\label{classThread_ae76dbb5967e2a5fcec38543e4e634a3a}} 
+\index{Thread@{Thread}!ThreadFunc@{ThreadFunc}}
+\index{ThreadFunc@{ThreadFunc}!Thread@{Thread}}
+\doxysubsubsection{\texorpdfstring{ThreadFunc}{ThreadFunc}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classThread_ae76dbb5967e2a5fcec38543e4e634a3a}{Thread\+::\+Thread\+Func}} =  std\+::function$<$void()$>$}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classThread_ae936786b12b434837624a660cef6e8d5}\label{classThread_ae936786b12b434837624a660cef6e8d5}} 
+\index{Thread@{Thread}!Thread@{Thread}}
+\index{Thread@{Thread}!Thread@{Thread}}
+\doxysubsubsection{\texorpdfstring{Thread()}{Thread()}}
+{\footnotesize\ttfamily Thread\+::\+Thread (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classThread_ae76dbb5967e2a5fcec38543e4e634a3a}{Thread\+Func}}}]{func,  }\item[{const std\+::string \&}]{name = {\ttfamily std\+:\+:string()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=343pt]{classThread_ae936786b12b434837624a660cef6e8d5_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classThread_a37d9edd3a1a776cbc27dedff949c9726}\label{classThread_a37d9edd3a1a776cbc27dedff949c9726}} 
+\index{Thread@{Thread}!````~Thread@{$\sim$Thread}}
+\index{````~Thread@{$\sim$Thread}!Thread@{Thread}}
+\doxysubsubsection{\texorpdfstring{$\sim$Thread()}{~Thread()}}
+{\footnotesize\ttfamily Thread\+::$\sim$\+Thread (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classThread_a4d9d788e98388a3217831a9046709deb}\label{classThread_a4d9d788e98388a3217831a9046709deb}} 
+\index{Thread@{Thread}!join@{join}}
+\index{join@{join}!Thread@{Thread}}
+\doxysubsubsection{\texorpdfstring{join()}{join()}}
+{\footnotesize\ttfamily void Thread\+::join (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classThread_a4d9d788e98388a3217831a9046709deb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classThread_a7b06a44618a6a31c23fb3a4210882fee}\label{classThread_a7b06a44618a6a31c23fb3a4210882fee}} 
+\index{Thread@{Thread}!name@{name}}
+\index{name@{name}!Thread@{Thread}}
+\doxysubsubsection{\texorpdfstring{name()}{name()}}
+{\footnotesize\ttfamily const std\+::string\& Thread\+::name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=241pt]{classThread_a7b06a44618a6a31c23fb3a4210882fee_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classThread_a458d2733f8b129ea594693330ca3c7c8}\label{classThread_a458d2733f8b129ea594693330ca3c7c8}} 
+\index{Thread@{Thread}!numCreated@{numCreated}}
+\index{numCreated@{numCreated}!Thread@{Thread}}
+\doxysubsubsection{\texorpdfstring{numCreated()}{numCreated()}}
+{\footnotesize\ttfamily static int Thread\+::num\+Created (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+\mbox{\Hypertarget{classThread_af17d93115d606787d1632ec94bd8e553}\label{classThread_af17d93115d606787d1632ec94bd8e553}} 
+\index{Thread@{Thread}!setDefaultName@{setDefaultName}}
+\index{setDefaultName@{setDefaultName}!Thread@{Thread}}
+\doxysubsubsection{\texorpdfstring{setDefaultName()}{setDefaultName()}}
+{\footnotesize\ttfamily void Thread\+::set\+Default\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=343pt]{classThread_af17d93115d606787d1632ec94bd8e553_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classThread_a1f53ee62bd30a7924186ef26150ce262}\label{classThread_a1f53ee62bd30a7924186ef26150ce262}} 
+\index{Thread@{Thread}!start@{start}}
+\index{start@{start}!Thread@{Thread}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void Thread\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classThread_a1f53ee62bd30a7924186ef26150ce262_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classThread_a83fe4960003d008e7d564d0bd6fccb3a}\label{classThread_a83fe4960003d008e7d564d0bd6fccb3a}} 
+\index{Thread@{Thread}!started@{started}}
+\index{started@{started}!Thread@{Thread}}
+\doxysubsubsection{\texorpdfstring{started()}{started()}}
+{\footnotesize\ttfamily bool Thread\+::started (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classThread_ad9cc81d66794a23e40ba90b5fbaf7a1b}\label{classThread_ad9cc81d66794a23e40ba90b5fbaf7a1b}} 
+\index{Thread@{Thread}!tid@{tid}}
+\index{tid@{tid}!Thread@{Thread}}
+\doxysubsubsection{\texorpdfstring{tid()}{tid()}}
+{\footnotesize\ttfamily pid\+\_\+t Thread\+::tid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classThread_a2f3685bef50e5241620ca8f2a1d04dc9}\label{classThread_a2f3685bef50e5241620ca8f2a1d04dc9}} 
+\index{Thread@{Thread}!m\_func@{m\_func}}
+\index{m\_func@{m\_func}!Thread@{Thread}}
+\doxysubsubsection{\texorpdfstring{m\_func}{m\_func}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classThread_ae76dbb5967e2a5fcec38543e4e634a3a}{Thread\+Func}} Thread\+::m\+\_\+func\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classThread_a7566e76b0fd75a030d11371db8bcd931}\label{classThread_a7566e76b0fd75a030d11371db8bcd931}} 
+\index{Thread@{Thread}!m\_joined@{m\_joined}}
+\index{m\_joined@{m\_joined}!Thread@{Thread}}
+\doxysubsubsection{\texorpdfstring{m\_joined}{m\_joined}}
+{\footnotesize\ttfamily bool Thread\+::m\+\_\+joined\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classThread_a857bb68a400155e72f0dfe6c2631172c}\label{classThread_a857bb68a400155e72f0dfe6c2631172c}} 
+\index{Thread@{Thread}!m\_name@{m\_name}}
+\index{m\_name@{m\_name}!Thread@{Thread}}
+\doxysubsubsection{\texorpdfstring{m\_name}{m\_name}}
+{\footnotesize\ttfamily std\+::string Thread\+::m\+\_\+name\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classThread_aa54037444865fe96402afa239f975215}\label{classThread_aa54037444865fe96402afa239f975215}} 
+\index{Thread@{Thread}!m\_numCreated@{m\_numCreated}}
+\index{m\_numCreated@{m\_numCreated}!Thread@{Thread}}
+\doxysubsubsection{\texorpdfstring{m\_numCreated}{m\_numCreated}}
+{\footnotesize\ttfamily std\+::atomic$<$ int $>$ Thread\+::m\+\_\+num\+Created\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classThread_a51de0bce652f47b06337627cd705b260}\label{classThread_a51de0bce652f47b06337627cd705b260}} 
+\index{Thread@{Thread}!m\_started@{m\_started}}
+\index{m\_started@{m\_started}!Thread@{Thread}}
+\doxysubsubsection{\texorpdfstring{m\_started}{m\_started}}
+{\footnotesize\ttfamily bool Thread\+::m\+\_\+started\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classThread_acded320e691201efd51d6f443e7b330d}\label{classThread_acded320e691201efd51d6f443e7b330d}} 
+\index{Thread@{Thread}!m\_thread@{m\_thread}}
+\index{m\_thread@{m\_thread}!Thread@{Thread}}
+\doxysubsubsection{\texorpdfstring{m\_thread}{m\_thread}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$std\+::thread$>$ Thread\+::m\+\_\+thread\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classThread_a5ac55bd5c09d9e91c586ed87f16e3a68}\label{classThread_a5ac55bd5c09d9e91c586ed87f16e3a68}} 
+\index{Thread@{Thread}!m\_tid@{m\_tid}}
+\index{m\_tid@{m\_tid}!Thread@{Thread}}
+\doxysubsubsection{\texorpdfstring{m\_tid}{m\_tid}}
+{\footnotesize\ttfamily pid\+\_\+t Thread\+::m\+\_\+tid\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+base/\mbox{\hyperlink{Thread_8h}{Thread.\+h}}\item 
+base/\mbox{\hyperlink{Thread_8cpp}{Thread.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,149 @@
+\hypertarget{classTimestamp}{}\doxysection{Timestamp Class Reference}
+\label{classTimestamp}\index{Timestamp@{Timestamp}}
+
+
+{\ttfamily \#include $<$Timestamp.\+h$>$}
+
+
+
+Collaboration diagram for Timestamp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=242pt]{classTimestamp__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTimestamp_ae5cd5261b17f185a2032a0e3feeba7ac}{Timestamp}} (int64\+\_\+t micro\+Seconds\+Since\+Epoch\+Arg=0)
+\item 
+std\+::string \mbox{\hyperlink{classTimestamp_a4c2e283d00821d1141ab941527842ba4}{to\+String}} () const
+\item 
+int64\+\_\+t \mbox{\hyperlink{classTimestamp_a376b6de7bf735abfa64f5630d2e32978}{micro\+Seconds\+Since\+Epoch}} () const
+\item 
+bool \mbox{\hyperlink{classTimestamp_a783b019309189ff535bfee4b409c5f59}{valid}} () const
+\item 
+bool \mbox{\hyperlink{classTimestamp_a6f5af219bd89169289c30a30f6b2f73a}{operator$<$}} (const \mbox{\hyperlink{classTimestamp}{Timestamp}} \&rhs) const
+\item 
+bool \mbox{\hyperlink{classTimestamp_a437daee42b82335c90219a3d9549ab5a}{operator==}} (const \mbox{\hyperlink{classTimestamp}{Timestamp}} \&rhs) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classTimestamp}{Timestamp}} \mbox{\hyperlink{classTimestamp_a19e3af06162b40e81f912fe150610e21}{now}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const int \mbox{\hyperlink{classTimestamp_a336fc18fea3f1e7eea4fb2d587e32e4d}{k\+Micro\+Seconds\+Per\+Second}} = 1000 $\ast$ 1000
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int64\+\_\+t \mbox{\hyperlink{classTimestamp_abaceee7257634ff0c2d1dcf446e7d285}{m\+\_\+micro\+Seconds\+Since\+Epoch}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTimestamp_ae5cd5261b17f185a2032a0e3feeba7ac}\label{classTimestamp_ae5cd5261b17f185a2032a0e3feeba7ac}} 
+\index{Timestamp@{Timestamp}!Timestamp@{Timestamp}}
+\index{Timestamp@{Timestamp}!Timestamp@{Timestamp}}
+\doxysubsubsection{\texorpdfstring{Timestamp()}{Timestamp()}}
+{\footnotesize\ttfamily Timestamp\+::\+Timestamp (\begin{DoxyParamCaption}\item[{int64\+\_\+t}]{micro\+Seconds\+Since\+Epoch\+Arg = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTimestamp_ae5cd5261b17f185a2032a0e3feeba7ac_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTimestamp_a376b6de7bf735abfa64f5630d2e32978}\label{classTimestamp_a376b6de7bf735abfa64f5630d2e32978}} 
+\index{Timestamp@{Timestamp}!microSecondsSinceEpoch@{microSecondsSinceEpoch}}
+\index{microSecondsSinceEpoch@{microSecondsSinceEpoch}!Timestamp@{Timestamp}}
+\doxysubsubsection{\texorpdfstring{microSecondsSinceEpoch()}{microSecondsSinceEpoch()}}
+{\footnotesize\ttfamily int64\+\_\+t Timestamp\+::micro\+Seconds\+Since\+Epoch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTimestamp_a376b6de7bf735abfa64f5630d2e32978_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTimestamp_a19e3af06162b40e81f912fe150610e21}\label{classTimestamp_a19e3af06162b40e81f912fe150610e21}} 
+\index{Timestamp@{Timestamp}!now@{now}}
+\index{now@{now}!Timestamp@{Timestamp}}
+\doxysubsubsection{\texorpdfstring{now()}{now()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTimestamp}{Timestamp}} Timestamp\+::now (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{classTimestamp_a19e3af06162b40e81f912fe150610e21_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTimestamp_a19e3af06162b40e81f912fe150610e21_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTimestamp_a6f5af219bd89169289c30a30f6b2f73a}\label{classTimestamp_a6f5af219bd89169289c30a30f6b2f73a}} 
+\index{Timestamp@{Timestamp}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Timestamp@{Timestamp}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool Timestamp\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classTimestamp}{Timestamp}} \&}]{rhs }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classTimestamp_a437daee42b82335c90219a3d9549ab5a}\label{classTimestamp_a437daee42b82335c90219a3d9549ab5a}} 
+\index{Timestamp@{Timestamp}!operator==@{operator==}}
+\index{operator==@{operator==}!Timestamp@{Timestamp}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool Timestamp\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classTimestamp}{Timestamp}} \&}]{rhs }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classTimestamp_a4c2e283d00821d1141ab941527842ba4}\label{classTimestamp_a4c2e283d00821d1141ab941527842ba4}} 
+\index{Timestamp@{Timestamp}!toString@{toString}}
+\index{toString@{toString}!Timestamp@{Timestamp}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily std\+::string Timestamp\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTimestamp_a4c2e283d00821d1141ab941527842ba4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTimestamp_a783b019309189ff535bfee4b409c5f59}\label{classTimestamp_a783b019309189ff535bfee4b409c5f59}} 
+\index{Timestamp@{Timestamp}!valid@{valid}}
+\index{valid@{valid}!Timestamp@{Timestamp}}
+\doxysubsubsection{\texorpdfstring{valid()}{valid()}}
+{\footnotesize\ttfamily bool Timestamp\+::valid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classTimestamp_a336fc18fea3f1e7eea4fb2d587e32e4d}\label{classTimestamp_a336fc18fea3f1e7eea4fb2d587e32e4d}} 
+\index{Timestamp@{Timestamp}!kMicroSecondsPerSecond@{kMicroSecondsPerSecond}}
+\index{kMicroSecondsPerSecond@{kMicroSecondsPerSecond}!Timestamp@{Timestamp}}
+\doxysubsubsection{\texorpdfstring{kMicroSecondsPerSecond}{kMicroSecondsPerSecond}}
+{\footnotesize\ttfamily const int Timestamp\+::k\+Micro\+Seconds\+Per\+Second = 1000 $\ast$ 1000\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classTimestamp_abaceee7257634ff0c2d1dcf446e7d285}\label{classTimestamp_abaceee7257634ff0c2d1dcf446e7d285}} 
+\index{Timestamp@{Timestamp}!m\_microSecondsSinceEpoch@{m\_microSecondsSinceEpoch}}
+\index{m\_microSecondsSinceEpoch@{m\_microSecondsSinceEpoch}!Timestamp@{Timestamp}}
+\doxysubsubsection{\texorpdfstring{m\_microSecondsSinceEpoch}{m\_microSecondsSinceEpoch}}
+{\footnotesize\ttfamily int64\+\_\+t Timestamp\+::m\+\_\+micro\+Seconds\+Since\+Epoch\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+base/\mbox{\hyperlink{Timestamp_8h}{Timestamp.\+h}}\item 
+base/\mbox{\hyperlink{Timestamp_8cpp}{Timestamp.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,5 @@
+<map id="Connector" name="Connector">
+<area shape="rect" id="node1" title="负责主动发起 TCP 连接的类。 核心逻辑：" alt="" coords="57,175,282,604"/>
+<area shape="rect" id="node2" href="$classnoncopyable.html" title=" " alt="" coords="5,5,147,127"/>
+<area shape="rect" id="node3" title=" " alt="" coords="171,20,357,112"/>
+</map>

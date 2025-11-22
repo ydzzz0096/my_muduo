@@ -1,0 +1,340 @@
+\hypertarget{classTcpClient}{}\doxysection{Tcp\+Client Class Reference}
+\label{classTcpClient}\index{TcpClient@{TcpClient}}
+
+
+{\ttfamily \#include $<$Tcp\+Client.\+h$>$}
+
+
+
+Inheritance diagram for Tcp\+Client\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{classTcpClient__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Tcp\+Client\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classTcpClient__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTcpClient_a8058a98456f2d95cc84c8a0f90e54289}{Tcp\+Client}} (\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$loop, const \mbox{\hyperlink{classInetAddress}{Inet\+Address}} \&server\+Addr, const std\+::string \&name\+Arg)
+\item 
+\mbox{\hyperlink{classTcpClient_a125d2277f401cbdebadb9689a5933e18}{$\sim$\+Tcp\+Client}} ()
+\item 
+void \mbox{\hyperlink{classTcpClient_ae6181c682c1c87d9edc30e3055798744}{connect}} ()
+\item 
+void \mbox{\hyperlink{classTcpClient_a0b7b3ecc473a0621902693414bd5d8c8}{disconnect}} ()
+\item 
+void \mbox{\hyperlink{classTcpClient_ad9f51e51cdc53deafc7bd97854ad6dec}{stop}} ()
+\item 
+\mbox{\hyperlink{classTcpConnection}{Tcp\+Connection}} $\ast$ \mbox{\hyperlink{classTcpClient_aeacc1c1995c85305d6a63eb529915077}{connection}} () const
+\item 
+\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$ \mbox{\hyperlink{classTcpClient_af6329705b4a4ff5db9f5aaccb49b443b}{get\+Loop}} () const
+\item 
+bool \mbox{\hyperlink{classTcpClient_ab733fe06059d570ca135ef7a50932544}{retry}} () const
+\item 
+void \mbox{\hyperlink{classTcpClient_a220c8fb0c81ac09a0bdcbcb5f7c2907e}{enable\+Retry}} ()
+\item 
+const std\+::string \& \mbox{\hyperlink{classTcpClient_ac96bc08739109d5200e7517c657726dd}{name}} () const
+\item 
+void \mbox{\hyperlink{classTcpClient_a6dab84e46ff7aaf6cbed0bc7e00b2d67}{set\+Connection\+Callback}} (\mbox{\hyperlink{Callbacks_8h_a5ae081a0a16388ee27fc7bf36292b9f6}{Connection\+Callback}} cb)
+\item 
+void \mbox{\hyperlink{classTcpClient_a6063821340908b935f88a4200972664f}{set\+Message\+Callback}} (\mbox{\hyperlink{Callbacks_8h_a7774a95b3b90575a31d8053224f9126a}{Message\+Callback}} cb)
+\item 
+void \mbox{\hyperlink{classTcpClient_a47b3fecb7980bc3b005ec4593cd449b0}{set\+Write\+Complete\+Callback}} (\mbox{\hyperlink{Callbacks_8h_a826cae2589e8be77f9075215547bfb6c}{Write\+Complete\+Callback}} cb)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classTcpClient_ae032dcb3bf7258687d8893ead185275e}{new\+Connection}} (int sockfd)
+\item 
+void \mbox{\hyperlink{classTcpClient_a9f7a2ebbaa398b33b8ddec6037f35b3f}{remove\+Connection}} (const \mbox{\hyperlink{classTcpConnection}{Tcp\+Connection}} $\ast$\&conn)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$ \mbox{\hyperlink{classTcpClient_afdbcc70747950119ff690d13bdce2fcd}{m\+\_\+loop}}
+\item 
+\mbox{\hyperlink{TcpClient_8h_ac440853cfb71c12805cbbd452fa4f515}{Connector\+Ptr}} \mbox{\hyperlink{classTcpClient_aacb64ab483a1fa2b349efe57ce9d93bb}{m\+\_\+connector}}
+\item 
+const std\+::string \mbox{\hyperlink{classTcpClient_afe23443d59bf66f4d19c4face6f1d1c1}{m\+\_\+name}}
+\item 
+\mbox{\hyperlink{Callbacks_8h_a5ae081a0a16388ee27fc7bf36292b9f6}{Connection\+Callback}} \mbox{\hyperlink{classTcpClient_a73168186dc8de10d14f6aa38849c164e}{m\+\_\+connection\+Callback}}
+\item 
+\mbox{\hyperlink{Callbacks_8h_a7774a95b3b90575a31d8053224f9126a}{Message\+Callback}} \mbox{\hyperlink{classTcpClient_a8c11c6b0bf9c7b2ab0b7001cb1014068}{m\+\_\+message\+Callback}}
+\item 
+\mbox{\hyperlink{Callbacks_8h_a826cae2589e8be77f9075215547bfb6c}{Write\+Complete\+Callback}} \mbox{\hyperlink{classTcpClient_a95aa2420b05b83a8388ea690d5ab845a}{m\+\_\+write\+Complete\+Callback}}
+\item 
+std\+::atomic\+\_\+bool \mbox{\hyperlink{classTcpClient_a1f80fc78232b09f9dbafaca3a19616d4}{m\+\_\+retry}}
+\item 
+std\+::atomic\+\_\+bool \mbox{\hyperlink{classTcpClient_ade6dda4005c8f2683635f9f73b60cccc}{m\+\_\+connect}}
+\item 
+int \mbox{\hyperlink{classTcpClient_adf55c7eeb8638803b4f92ff2f96aa792}{m\+\_\+next\+Conn\+Id}}
+\item 
+std\+::mutex \mbox{\hyperlink{classTcpClient_a4a223723c7f7848ea4d46f60455306a6}{m\+\_\+mutex}}
+\item 
+\mbox{\hyperlink{classTcpConnection}{Tcp\+Connection}} $\ast$ \mbox{\hyperlink{classTcpClient_a36d6c866214d67138f5f3186635d2e50}{m\+\_\+connection}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTcpClient_a8058a98456f2d95cc84c8a0f90e54289}\label{classTcpClient_a8058a98456f2d95cc84c8a0f90e54289}} 
+\index{TcpClient@{TcpClient}!TcpClient@{TcpClient}}
+\index{TcpClient@{TcpClient}!TcpClient@{TcpClient}}
+\doxysubsubsection{\texorpdfstring{TcpClient()}{TcpClient()}}
+{\footnotesize\ttfamily Tcp\+Client\+::\+Tcp\+Client (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$}]{loop,  }\item[{const \mbox{\hyperlink{classInetAddress}{Inet\+Address}} \&}]{server\+Addr,  }\item[{const std\+::string \&}]{name\+Arg }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTcpClient_a8058a98456f2d95cc84c8a0f90e54289_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTcpClient_a125d2277f401cbdebadb9689a5933e18}\label{classTcpClient_a125d2277f401cbdebadb9689a5933e18}} 
+\index{TcpClient@{TcpClient}!````~TcpClient@{$\sim$TcpClient}}
+\index{````~TcpClient@{$\sim$TcpClient}!TcpClient@{TcpClient}}
+\doxysubsubsection{\texorpdfstring{$\sim$TcpClient()}{~TcpClient()}}
+{\footnotesize\ttfamily Tcp\+Client\+::$\sim$\+Tcp\+Client (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTcpClient_a125d2277f401cbdebadb9689a5933e18_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTcpClient_ae6181c682c1c87d9edc30e3055798744}\label{classTcpClient_ae6181c682c1c87d9edc30e3055798744}} 
+\index{TcpClient@{TcpClient}!connect@{connect}}
+\index{connect@{connect}!TcpClient@{TcpClient}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily void Tcp\+Client\+::connect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTcpClient_ae6181c682c1c87d9edc30e3055798744_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTcpClient_aeacc1c1995c85305d6a63eb529915077}\label{classTcpClient_aeacc1c1995c85305d6a63eb529915077}} 
+\index{TcpClient@{TcpClient}!connection@{connection}}
+\index{connection@{connection}!TcpClient@{TcpClient}}
+\doxysubsubsection{\texorpdfstring{connection()}{connection()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTcpConnection}{Tcp\+Connection}}$\ast$ Tcp\+Client\+::connection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classTcpClient_a0b7b3ecc473a0621902693414bd5d8c8}\label{classTcpClient_a0b7b3ecc473a0621902693414bd5d8c8}} 
+\index{TcpClient@{TcpClient}!disconnect@{disconnect}}
+\index{disconnect@{disconnect}!TcpClient@{TcpClient}}
+\doxysubsubsection{\texorpdfstring{disconnect()}{disconnect()}}
+{\footnotesize\ttfamily void Tcp\+Client\+::disconnect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTcpClient_a0b7b3ecc473a0621902693414bd5d8c8_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTcpClient_a220c8fb0c81ac09a0bdcbcb5f7c2907e}\label{classTcpClient_a220c8fb0c81ac09a0bdcbcb5f7c2907e}} 
+\index{TcpClient@{TcpClient}!enableRetry@{enableRetry}}
+\index{enableRetry@{enableRetry}!TcpClient@{TcpClient}}
+\doxysubsubsection{\texorpdfstring{enableRetry()}{enableRetry()}}
+{\footnotesize\ttfamily void Tcp\+Client\+::enable\+Retry (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTcpClient_a220c8fb0c81ac09a0bdcbcb5f7c2907e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTcpClient_af6329705b4a4ff5db9f5aaccb49b443b}\label{classTcpClient_af6329705b4a4ff5db9f5aaccb49b443b}} 
+\index{TcpClient@{TcpClient}!getLoop@{getLoop}}
+\index{getLoop@{getLoop}!TcpClient@{TcpClient}}
+\doxysubsubsection{\texorpdfstring{getLoop()}{getLoop()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEventLoop}{Event\+Loop}}$\ast$ Tcp\+Client\+::get\+Loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classTcpClient_ac96bc08739109d5200e7517c657726dd}\label{classTcpClient_ac96bc08739109d5200e7517c657726dd}} 
+\index{TcpClient@{TcpClient}!name@{name}}
+\index{name@{name}!TcpClient@{TcpClient}}
+\doxysubsubsection{\texorpdfstring{name()}{name()}}
+{\footnotesize\ttfamily const std\+::string\& Tcp\+Client\+::name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classTcpClient_ae032dcb3bf7258687d8893ead185275e}\label{classTcpClient_ae032dcb3bf7258687d8893ead185275e}} 
+\index{TcpClient@{TcpClient}!newConnection@{newConnection}}
+\index{newConnection@{newConnection}!TcpClient@{TcpClient}}
+\doxysubsubsection{\texorpdfstring{newConnection()}{newConnection()}}
+{\footnotesize\ttfamily void Tcp\+Client\+::new\+Connection (\begin{DoxyParamCaption}\item[{int}]{sockfd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTcpClient_ae032dcb3bf7258687d8893ead185275e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTcpClient_ae032dcb3bf7258687d8893ead185275e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTcpClient_a9f7a2ebbaa398b33b8ddec6037f35b3f}\label{classTcpClient_a9f7a2ebbaa398b33b8ddec6037f35b3f}} 
+\index{TcpClient@{TcpClient}!removeConnection@{removeConnection}}
+\index{removeConnection@{removeConnection}!TcpClient@{TcpClient}}
+\doxysubsubsection{\texorpdfstring{removeConnection()}{removeConnection()}}
+{\footnotesize\ttfamily void Tcp\+Client\+::remove\+Connection (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classTcpConnection}{Tcp\+Connection}} $\ast$\&}]{conn }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTcpClient_a9f7a2ebbaa398b33b8ddec6037f35b3f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTcpClient_a9f7a2ebbaa398b33b8ddec6037f35b3f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTcpClient_ab733fe06059d570ca135ef7a50932544}\label{classTcpClient_ab733fe06059d570ca135ef7a50932544}} 
+\index{TcpClient@{TcpClient}!retry@{retry}}
+\index{retry@{retry}!TcpClient@{TcpClient}}
+\doxysubsubsection{\texorpdfstring{retry()}{retry()}}
+{\footnotesize\ttfamily bool Tcp\+Client\+::retry (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classTcpClient_a6dab84e46ff7aaf6cbed0bc7e00b2d67}\label{classTcpClient_a6dab84e46ff7aaf6cbed0bc7e00b2d67}} 
+\index{TcpClient@{TcpClient}!setConnectionCallback@{setConnectionCallback}}
+\index{setConnectionCallback@{setConnectionCallback}!TcpClient@{TcpClient}}
+\doxysubsubsection{\texorpdfstring{setConnectionCallback()}{setConnectionCallback()}}
+{\footnotesize\ttfamily void Tcp\+Client\+::set\+Connection\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Callbacks_8h_a5ae081a0a16388ee27fc7bf36292b9f6}{Connection\+Callback}}}]{cb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTcpClient_a6dab84e46ff7aaf6cbed0bc7e00b2d67_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTcpClient_a6063821340908b935f88a4200972664f}\label{classTcpClient_a6063821340908b935f88a4200972664f}} 
+\index{TcpClient@{TcpClient}!setMessageCallback@{setMessageCallback}}
+\index{setMessageCallback@{setMessageCallback}!TcpClient@{TcpClient}}
+\doxysubsubsection{\texorpdfstring{setMessageCallback()}{setMessageCallback()}}
+{\footnotesize\ttfamily void Tcp\+Client\+::set\+Message\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Callbacks_8h_a7774a95b3b90575a31d8053224f9126a}{Message\+Callback}}}]{cb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classTcpClient_a6063821340908b935f88a4200972664f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classTcpClient_a47b3fecb7980bc3b005ec4593cd449b0}\label{classTcpClient_a47b3fecb7980bc3b005ec4593cd449b0}} 
+\index{TcpClient@{TcpClient}!setWriteCompleteCallback@{setWriteCompleteCallback}}
+\index{setWriteCompleteCallback@{setWriteCompleteCallback}!TcpClient@{TcpClient}}
+\doxysubsubsection{\texorpdfstring{setWriteCompleteCallback()}{setWriteCompleteCallback()}}
+{\footnotesize\ttfamily void Tcp\+Client\+::set\+Write\+Complete\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{Callbacks_8h_a826cae2589e8be77f9075215547bfb6c}{Write\+Complete\+Callback}}}]{cb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classTcpClient_ad9f51e51cdc53deafc7bd97854ad6dec}\label{classTcpClient_ad9f51e51cdc53deafc7bd97854ad6dec}} 
+\index{TcpClient@{TcpClient}!stop@{stop}}
+\index{stop@{stop}!TcpClient@{TcpClient}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily void Tcp\+Client\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classTcpClient_ade6dda4005c8f2683635f9f73b60cccc}\label{classTcpClient_ade6dda4005c8f2683635f9f73b60cccc}} 
+\index{TcpClient@{TcpClient}!m\_connect@{m\_connect}}
+\index{m\_connect@{m\_connect}!TcpClient@{TcpClient}}
+\doxysubsubsection{\texorpdfstring{m\_connect}{m\_connect}}
+{\footnotesize\ttfamily std\+::atomic\+\_\+bool Tcp\+Client\+::m\+\_\+connect\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTcpClient_a36d6c866214d67138f5f3186635d2e50}\label{classTcpClient_a36d6c866214d67138f5f3186635d2e50}} 
+\index{TcpClient@{TcpClient}!m\_connection@{m\_connection}}
+\index{m\_connection@{m\_connection}!TcpClient@{TcpClient}}
+\doxysubsubsection{\texorpdfstring{m\_connection}{m\_connection}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTcpConnection}{Tcp\+Connection}}$\ast$ Tcp\+Client\+::m\+\_\+connection\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTcpClient_a73168186dc8de10d14f6aa38849c164e}\label{classTcpClient_a73168186dc8de10d14f6aa38849c164e}} 
+\index{TcpClient@{TcpClient}!m\_connectionCallback@{m\_connectionCallback}}
+\index{m\_connectionCallback@{m\_connectionCallback}!TcpClient@{TcpClient}}
+\doxysubsubsection{\texorpdfstring{m\_connectionCallback}{m\_connectionCallback}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Callbacks_8h_a5ae081a0a16388ee27fc7bf36292b9f6}{Connection\+Callback}} Tcp\+Client\+::m\+\_\+connection\+Callback\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTcpClient_aacb64ab483a1fa2b349efe57ce9d93bb}\label{classTcpClient_aacb64ab483a1fa2b349efe57ce9d93bb}} 
+\index{TcpClient@{TcpClient}!m\_connector@{m\_connector}}
+\index{m\_connector@{m\_connector}!TcpClient@{TcpClient}}
+\doxysubsubsection{\texorpdfstring{m\_connector}{m\_connector}}
+{\footnotesize\ttfamily \mbox{\hyperlink{TcpClient_8h_ac440853cfb71c12805cbbd452fa4f515}{Connector\+Ptr}} Tcp\+Client\+::m\+\_\+connector\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTcpClient_afdbcc70747950119ff690d13bdce2fcd}\label{classTcpClient_afdbcc70747950119ff690d13bdce2fcd}} 
+\index{TcpClient@{TcpClient}!m\_loop@{m\_loop}}
+\index{m\_loop@{m\_loop}!TcpClient@{TcpClient}}
+\doxysubsubsection{\texorpdfstring{m\_loop}{m\_loop}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEventLoop}{Event\+Loop}}$\ast$ Tcp\+Client\+::m\+\_\+loop\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTcpClient_a8c11c6b0bf9c7b2ab0b7001cb1014068}\label{classTcpClient_a8c11c6b0bf9c7b2ab0b7001cb1014068}} 
+\index{TcpClient@{TcpClient}!m\_messageCallback@{m\_messageCallback}}
+\index{m\_messageCallback@{m\_messageCallback}!TcpClient@{TcpClient}}
+\doxysubsubsection{\texorpdfstring{m\_messageCallback}{m\_messageCallback}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Callbacks_8h_a7774a95b3b90575a31d8053224f9126a}{Message\+Callback}} Tcp\+Client\+::m\+\_\+message\+Callback\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTcpClient_a4a223723c7f7848ea4d46f60455306a6}\label{classTcpClient_a4a223723c7f7848ea4d46f60455306a6}} 
+\index{TcpClient@{TcpClient}!m\_mutex@{m\_mutex}}
+\index{m\_mutex@{m\_mutex}!TcpClient@{TcpClient}}
+\doxysubsubsection{\texorpdfstring{m\_mutex}{m\_mutex}}
+{\footnotesize\ttfamily std\+::mutex Tcp\+Client\+::m\+\_\+mutex\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTcpClient_afe23443d59bf66f4d19c4face6f1d1c1}\label{classTcpClient_afe23443d59bf66f4d19c4face6f1d1c1}} 
+\index{TcpClient@{TcpClient}!m\_name@{m\_name}}
+\index{m\_name@{m\_name}!TcpClient@{TcpClient}}
+\doxysubsubsection{\texorpdfstring{m\_name}{m\_name}}
+{\footnotesize\ttfamily const std\+::string Tcp\+Client\+::m\+\_\+name\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTcpClient_adf55c7eeb8638803b4f92ff2f96aa792}\label{classTcpClient_adf55c7eeb8638803b4f92ff2f96aa792}} 
+\index{TcpClient@{TcpClient}!m\_nextConnId@{m\_nextConnId}}
+\index{m\_nextConnId@{m\_nextConnId}!TcpClient@{TcpClient}}
+\doxysubsubsection{\texorpdfstring{m\_nextConnId}{m\_nextConnId}}
+{\footnotesize\ttfamily int Tcp\+Client\+::m\+\_\+next\+Conn\+Id\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTcpClient_a1f80fc78232b09f9dbafaca3a19616d4}\label{classTcpClient_a1f80fc78232b09f9dbafaca3a19616d4}} 
+\index{TcpClient@{TcpClient}!m\_retry@{m\_retry}}
+\index{m\_retry@{m\_retry}!TcpClient@{TcpClient}}
+\doxysubsubsection{\texorpdfstring{m\_retry}{m\_retry}}
+{\footnotesize\ttfamily std\+::atomic\+\_\+bool Tcp\+Client\+::m\+\_\+retry\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTcpClient_a95aa2420b05b83a8388ea690d5ab845a}\label{classTcpClient_a95aa2420b05b83a8388ea690d5ab845a}} 
+\index{TcpClient@{TcpClient}!m\_writeCompleteCallback@{m\_writeCompleteCallback}}
+\index{m\_writeCompleteCallback@{m\_writeCompleteCallback}!TcpClient@{TcpClient}}
+\doxysubsubsection{\texorpdfstring{m\_writeCompleteCallback}{m\_writeCompleteCallback}}
+{\footnotesize\ttfamily \mbox{\hyperlink{Callbacks_8h_a826cae2589e8be77f9075215547bfb6c}{Write\+Complete\+Callback}} Tcp\+Client\+::m\+\_\+write\+Complete\+Callback\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+net/\mbox{\hyperlink{TcpClient_8h}{Tcp\+Client.\+h}}\item 
+net/\mbox{\hyperlink{TcpClient_8cpp}{Tcp\+Client.\+cpp}}\end{DoxyCompactItemize}

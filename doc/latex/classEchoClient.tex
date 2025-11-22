@@ -1,0 +1,121 @@
+\hypertarget{classEchoClient}{}\doxysection{Echo\+Client Class Reference}
+\label{classEchoClient}\index{EchoClient@{EchoClient}}
+
+
+Collaboration diagram for Echo\+Client\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classEchoClient__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEchoClient_ab12049ad8144a51f783b2f1db7b62c64}{Echo\+Client}} (\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$loop, const \mbox{\hyperlink{classInetAddress}{Inet\+Address}} \&listen\+Addr, const std\+::string \&name)
+\item 
+void \mbox{\hyperlink{classEchoClient_a216d2d2c59cba8f439cf47e0d7fe0fe3}{connect}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classEchoClient_a3b8173f096e96d7814dcc2f6938ecc93}{on\+Connection}} (const \mbox{\hyperlink{classTcpConnection}{Tcp\+Connection}} $\ast$\&conn)
+\item 
+void \mbox{\hyperlink{classEchoClient_ad4af7fa7210163eca756c0a6373658b5}{on\+Message}} (const \mbox{\hyperlink{classTcpConnection}{Tcp\+Connection}} $\ast$\&conn, \mbox{\hyperlink{classBuffer}{Buffer}} $\ast$buf, \mbox{\hyperlink{classTimestamp}{Timestamp}} time)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTcpClient}{Tcp\+Client}} \mbox{\hyperlink{classEchoClient_a365e78dbd67539ef5b66ee2ba4ecab1f}{m\+\_\+client}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classEchoClient_ab12049ad8144a51f783b2f1db7b62c64}\label{classEchoClient_ab12049ad8144a51f783b2f1db7b62c64}} 
+\index{EchoClient@{EchoClient}!EchoClient@{EchoClient}}
+\index{EchoClient@{EchoClient}!EchoClient@{EchoClient}}
+\doxysubsubsection{\texorpdfstring{EchoClient()}{EchoClient()}}
+{\footnotesize\ttfamily Echo\+Client\+::\+Echo\+Client (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$}]{loop,  }\item[{const \mbox{\hyperlink{classInetAddress}{Inet\+Address}} \&}]{listen\+Addr,  }\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEchoClient_ab12049ad8144a51f783b2f1db7b62c64_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classEchoClient_a216d2d2c59cba8f439cf47e0d7fe0fe3}\label{classEchoClient_a216d2d2c59cba8f439cf47e0d7fe0fe3}} 
+\index{EchoClient@{EchoClient}!connect@{connect}}
+\index{connect@{connect}!EchoClient@{EchoClient}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily void Echo\+Client\+::connect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{classEchoClient_a216d2d2c59cba8f439cf47e0d7fe0fe3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{classEchoClient_a216d2d2c59cba8f439cf47e0d7fe0fe3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classEchoClient_a3b8173f096e96d7814dcc2f6938ecc93}\label{classEchoClient_a3b8173f096e96d7814dcc2f6938ecc93}} 
+\index{EchoClient@{EchoClient}!onConnection@{onConnection}}
+\index{onConnection@{onConnection}!EchoClient@{EchoClient}}
+\doxysubsubsection{\texorpdfstring{onConnection()}{onConnection()}}
+{\footnotesize\ttfamily void Echo\+Client\+::on\+Connection (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classTcpConnection}{Tcp\+Connection}} $\ast$\&}]{conn }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEchoClient_a3b8173f096e96d7814dcc2f6938ecc93_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classEchoClient_ad4af7fa7210163eca756c0a6373658b5}\label{classEchoClient_ad4af7fa7210163eca756c0a6373658b5}} 
+\index{EchoClient@{EchoClient}!onMessage@{onMessage}}
+\index{onMessage@{onMessage}!EchoClient@{EchoClient}}
+\doxysubsubsection{\texorpdfstring{onMessage()}{onMessage()}}
+{\footnotesize\ttfamily void Echo\+Client\+::on\+Message (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classTcpConnection}{Tcp\+Connection}} $\ast$\&}]{conn,  }\item[{\mbox{\hyperlink{classBuffer}{Buffer}} $\ast$}]{buf,  }\item[{\mbox{\hyperlink{classTimestamp}{Timestamp}}}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEchoClient_ad4af7fa7210163eca756c0a6373658b5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEchoClient_ad4af7fa7210163eca756c0a6373658b5_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classEchoClient_a365e78dbd67539ef5b66ee2ba4ecab1f}\label{classEchoClient_a365e78dbd67539ef5b66ee2ba4ecab1f}} 
+\index{EchoClient@{EchoClient}!m\_client@{m\_client}}
+\index{m\_client@{m\_client}!EchoClient@{EchoClient}}
+\doxysubsubsection{\texorpdfstring{m\_client}{m\_client}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTcpClient}{Tcp\+Client}} Echo\+Client\+::m\+\_\+client\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+examples/\mbox{\hyperlink{test__client_8cpp}{test\+\_\+client.\+cpp}}\end{DoxyCompactItemize}

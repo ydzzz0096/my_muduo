@@ -1,0 +1,114 @@
+\hypertarget{classQpsClient}{}\doxysection{Qps\+Client Class Reference}
+\label{classQpsClient}\index{QpsClient@{QpsClient}}
+
+
+Collaboration diagram for Qps\+Client\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classQpsClient__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classQpsClient_ad379af0745311d3998110168a0e8b758}{Qps\+Client}} (\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$loop, const \mbox{\hyperlink{classInetAddress}{Inet\+Address}} \&server\+Addr, const std\+::string \&name)
+\item 
+void \mbox{\hyperlink{classQpsClient_ae4c6b8152f4874ca5af294bd0bdb2ac0}{connect}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classQpsClient_aca035e08e0da0c33f7be6fa9d6142337}{on\+Connection}} (const \mbox{\hyperlink{classTcpConnection}{Tcp\+Connection}} $\ast$\&conn)
+\item 
+void \mbox{\hyperlink{classQpsClient_ac654227c32ca4835bff53eec564cf023}{on\+Message}} (const \mbox{\hyperlink{classTcpConnection}{Tcp\+Connection}} $\ast$\&conn, \mbox{\hyperlink{classBuffer}{Buffer}} $\ast$buf, \mbox{\hyperlink{classTimestamp}{Timestamp}} time)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTcpClient}{Tcp\+Client}} \mbox{\hyperlink{classQpsClient_a2a6f3d3db487385e41b6b5197dda9213}{client\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classQpsClient_ad379af0745311d3998110168a0e8b758}\label{classQpsClient_ad379af0745311d3998110168a0e8b758}} 
+\index{QpsClient@{QpsClient}!QpsClient@{QpsClient}}
+\index{QpsClient@{QpsClient}!QpsClient@{QpsClient}}
+\doxysubsubsection{\texorpdfstring{QpsClient()}{QpsClient()}}
+{\footnotesize\ttfamily Qps\+Client\+::\+Qps\+Client (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$}]{loop,  }\item[{const \mbox{\hyperlink{classInetAddress}{Inet\+Address}} \&}]{server\+Addr,  }\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classQpsClient_ad379af0745311d3998110168a0e8b758_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classQpsClient_ae4c6b8152f4874ca5af294bd0bdb2ac0}\label{classQpsClient_ae4c6b8152f4874ca5af294bd0bdb2ac0}} 
+\index{QpsClient@{QpsClient}!connect@{connect}}
+\index{connect@{connect}!QpsClient@{QpsClient}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily void Qps\+Client\+::connect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=329pt]{classQpsClient_ae4c6b8152f4874ca5af294bd0bdb2ac0_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classQpsClient_aca035e08e0da0c33f7be6fa9d6142337}\label{classQpsClient_aca035e08e0da0c33f7be6fa9d6142337}} 
+\index{QpsClient@{QpsClient}!onConnection@{onConnection}}
+\index{onConnection@{onConnection}!QpsClient@{QpsClient}}
+\doxysubsubsection{\texorpdfstring{onConnection()}{onConnection()}}
+{\footnotesize\ttfamily void Qps\+Client\+::on\+Connection (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classTcpConnection}{Tcp\+Connection}} $\ast$\&}]{conn }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classQpsClient_aca035e08e0da0c33f7be6fa9d6142337_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classQpsClient_ac654227c32ca4835bff53eec564cf023}\label{classQpsClient_ac654227c32ca4835bff53eec564cf023}} 
+\index{QpsClient@{QpsClient}!onMessage@{onMessage}}
+\index{onMessage@{onMessage}!QpsClient@{QpsClient}}
+\doxysubsubsection{\texorpdfstring{onMessage()}{onMessage()}}
+{\footnotesize\ttfamily void Qps\+Client\+::on\+Message (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classTcpConnection}{Tcp\+Connection}} $\ast$\&}]{conn,  }\item[{\mbox{\hyperlink{classBuffer}{Buffer}} $\ast$}]{buf,  }\item[{\mbox{\hyperlink{classTimestamp}{Timestamp}}}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classQpsClient_ac654227c32ca4835bff53eec564cf023_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classQpsClient_ac654227c32ca4835bff53eec564cf023_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classQpsClient_a2a6f3d3db487385e41b6b5197dda9213}\label{classQpsClient_a2a6f3d3db487385e41b6b5197dda9213}} 
+\index{QpsClient@{QpsClient}!client\_@{client\_}}
+\index{client\_@{client\_}!QpsClient@{QpsClient}}
+\doxysubsubsection{\texorpdfstring{client\_}{client\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTcpClient}{Tcp\+Client}} Qps\+Client\+::client\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+examples/\mbox{\hyperlink{test__qps_8cpp}{test\+\_\+qps.\+cpp}}\end{DoxyCompactItemize}

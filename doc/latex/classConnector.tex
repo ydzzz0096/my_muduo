@@ -1,0 +1,467 @@
+\hypertarget{classConnector}{}\doxysection{Connector Class Reference}
+\label{classConnector}\index{Connector@{Connector}}
+
+
+负责主动发起 TCP 连接的类。 核心逻辑：  
+
+
+
+
+{\ttfamily \#include $<$Connector.\+h$>$}
+
+
+
+Inheritance diagram for Connector\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{classConnector__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Connector\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classConnector__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classConnector_a72d28fa199c5a8c7e4c5cfc0a18c4aca}{New\+Connection\+Callback}} = std\+::function$<$ void(int sockfd)$>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classConnector_a0d4a1d7efe840c2117f6277374db2d90}{Connector}} (\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$loop, const \mbox{\hyperlink{classInetAddress}{Inet\+Address}} \&server\+Addr)
+\item 
+\mbox{\hyperlink{classConnector_a0f084edc18ed6e3a25314689d5bf9244}{$\sim$\+Connector}} ()
+\item 
+void \mbox{\hyperlink{classConnector_a1ee4cc68abaa0a75fcb5d4672fffb76b}{set\+New\+Connection\+Callback}} (const \mbox{\hyperlink{classConnector_a72d28fa199c5a8c7e4c5cfc0a18c4aca}{New\+Connection\+Callback}} \&cb)
+\item 
+void \mbox{\hyperlink{classConnector_a1eeba016e3e207a111a2eca12dced818}{start}} ()
+\item 
+void \mbox{\hyperlink{classConnector_ab1db811faff8ef01d5f6867a545f158c}{restart}} ()
+\item 
+void \mbox{\hyperlink{classConnector_a477a156699c09463cbf4b011070c962c}{stop}} ()
+\item 
+const \mbox{\hyperlink{classInetAddress}{Inet\+Address}} \& \mbox{\hyperlink{classConnector_a427989ed556b19aaa03814ebc9a2c180}{server\+Address}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{classConnector_a01251ea5eb13ef2825f6c73160d8edf7}{States}} \{ \mbox{\hyperlink{classConnector_a01251ea5eb13ef2825f6c73160d8edf7a20c9b2fa20b4f6397b4b95327fa815a6}{k\+Disconnected}}
+, \mbox{\hyperlink{classConnector_a01251ea5eb13ef2825f6c73160d8edf7afff9bf62c60b3df3a778222289e7e5b5}{k\+Connecting}}
+, \mbox{\hyperlink{classConnector_a01251ea5eb13ef2825f6c73160d8edf7ab9549279523d07873a736d895923494f}{k\+Connected}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classConnector_ab2d87e7406c7465db287a8cfc6ee4ab9}{set\+State}} (\mbox{\hyperlink{classConnector_a01251ea5eb13ef2825f6c73160d8edf7}{States}} s)
+\item 
+void \mbox{\hyperlink{classConnector_a0e1df4a695ea99e779a29c8302e283b9}{start\+In\+Loop}} ()
+\item 
+void \mbox{\hyperlink{classConnector_a370d1351ea92ae8591424ab1262f8718}{stop\+In\+Loop}} ()
+\item 
+void \mbox{\hyperlink{classConnector_a08bee4361a470f332041565d6d04fd8b}{connect}} ()
+\item 
+void \mbox{\hyperlink{classConnector_a695acc928c606f3145ab586c0f89695b}{connecting}} (int sockfd)
+\item 
+void \mbox{\hyperlink{classConnector_a35eaa56c4243aed5ac3d326655e5be01}{handle\+Write}} ()
+\item 
+void \mbox{\hyperlink{classConnector_ab2da335b8503af6e000ed9ef682b4bef}{handle\+Error}} ()
+\item 
+void \mbox{\hyperlink{classConnector_a9ffde4b0f8807c7c97abd2517fb98a83}{reset\+Channel}} ()
+\item 
+void \mbox{\hyperlink{classConnector_ad74b397727c4874db00229fa85fb53b7}{retry}} (int sockfd)
+\item 
+int \mbox{\hyperlink{classConnector_a2b9d84a279c2e6b57185468dadda746b}{remove\+And\+Reset\+Channel}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$ \mbox{\hyperlink{classConnector_a31993ace1d4c837e36d3efcd1185d2e0}{m\+\_\+loop}}
+\item 
+\mbox{\hyperlink{classInetAddress}{Inet\+Address}} \mbox{\hyperlink{classConnector_adbf797e641c94fd0f4949e53bd517b76}{m\+\_\+server\+Addr}}
+\item 
+std\+::atomic\+\_\+bool \mbox{\hyperlink{classConnector_ae8584b21b887fc051145357608697209}{m\+\_\+connect}}
+\item 
+std\+::atomic$<$ \mbox{\hyperlink{classConnector_a01251ea5eb13ef2825f6c73160d8edf7}{States}} $>$ \mbox{\hyperlink{classConnector_aa0db91b36d5b5fd32222f0c578c2315f}{m\+\_\+state}}
+\item 
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classChannel}{Channel}} $>$ \mbox{\hyperlink{classConnector_a76015b147abca3c7b53a00e4c4134f4e}{m\+\_\+channel}}
+\item 
+\mbox{\hyperlink{classConnector_a72d28fa199c5a8c7e4c5cfc0a18c4aca}{New\+Connection\+Callback}} \mbox{\hyperlink{classConnector_a02aa20972f2578e3cea7e8dde4e07db4}{m\+\_\+new\+Connection\+Callback}}
+\item 
+int \mbox{\hyperlink{classConnector_a18a490fdc2e5e2f77652a008220c8ccc}{m\+\_\+retry\+Delay\+Ms}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const int \mbox{\hyperlink{classConnector_a976d245762fbee2e3c4d65b19e428f26}{k\+Max\+Retry\+Delay\+Ms}} = 30 $\ast$ 1000
+\item 
+static const int \mbox{\hyperlink{classConnector_af98eb8a0e20b9089834a63fb4f7897fd}{k\+Init\+Retry\+Delay\+Ms}} = 500
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+负责主动发起 TCP 连接的类。 核心逻辑： 
+
+
+\begin{DoxyEnumerate}
+\item 调用 \+::connect。
+\item 如果返回 EINPROGRESS，则注册 \mbox{\hyperlink{classChannel}{Channel}} 监听 EPOLLOUT (可写) 事件。
+\item 当 \mbox{\hyperlink{classChannel}{Channel}} 可写时，通过 getsockopt(\+SO\+\_\+\+ERROR) 检查连接是否真的成功。
+\item 如果成功，回调 New\+Connection\+Callback；如果失败，执行重连逻辑。 
+\end{DoxyEnumerate}
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classConnector_a72d28fa199c5a8c7e4c5cfc0a18c4aca}\label{classConnector_a72d28fa199c5a8c7e4c5cfc0a18c4aca}} 
+\index{Connector@{Connector}!NewConnectionCallback@{NewConnectionCallback}}
+\index{NewConnectionCallback@{NewConnectionCallback}!Connector@{Connector}}
+\doxysubsubsection{\texorpdfstring{NewConnectionCallback}{NewConnectionCallback}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classConnector_a72d28fa199c5a8c7e4c5cfc0a18c4aca}{Connector\+::\+New\+Connection\+Callback}} =  std\+::function$<$void(int sockfd)$>$}
+
+
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classConnector_a01251ea5eb13ef2825f6c73160d8edf7}\label{classConnector_a01251ea5eb13ef2825f6c73160d8edf7}} 
+\index{Connector@{Connector}!States@{States}}
+\index{States@{States}!Connector@{Connector}}
+\doxysubsubsection{\texorpdfstring{States}{States}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{classConnector_a01251ea5eb13ef2825f6c73160d8edf7}{Connector\+::\+States}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{kDisconnected@{kDisconnected}!Connector@{Connector}}\index{Connector@{Connector}!kDisconnected@{kDisconnected}}}\mbox{\Hypertarget{classConnector_a01251ea5eb13ef2825f6c73160d8edf7a20c9b2fa20b4f6397b4b95327fa815a6}\label{classConnector_a01251ea5eb13ef2825f6c73160d8edf7a20c9b2fa20b4f6397b4b95327fa815a6}} 
+k\+Disconnected&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{kConnecting@{kConnecting}!Connector@{Connector}}\index{Connector@{Connector}!kConnecting@{kConnecting}}}\mbox{\Hypertarget{classConnector_a01251ea5eb13ef2825f6c73160d8edf7afff9bf62c60b3df3a778222289e7e5b5}\label{classConnector_a01251ea5eb13ef2825f6c73160d8edf7afff9bf62c60b3df3a778222289e7e5b5}} 
+k\+Connecting&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{kConnected@{kConnected}!Connector@{Connector}}\index{Connector@{Connector}!kConnected@{kConnected}}}\mbox{\Hypertarget{classConnector_a01251ea5eb13ef2825f6c73160d8edf7ab9549279523d07873a736d895923494f}\label{classConnector_a01251ea5eb13ef2825f6c73160d8edf7ab9549279523d07873a736d895923494f}} 
+k\+Connected&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classConnector_a0d4a1d7efe840c2117f6277374db2d90}\label{classConnector_a0d4a1d7efe840c2117f6277374db2d90}} 
+\index{Connector@{Connector}!Connector@{Connector}}
+\index{Connector@{Connector}!Connector@{Connector}}
+\doxysubsubsection{\texorpdfstring{Connector()}{Connector()}}
+{\footnotesize\ttfamily Connector\+::\+Connector (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEventLoop}{Event\+Loop}} $\ast$}]{loop,  }\item[{const \mbox{\hyperlink{classInetAddress}{Inet\+Address}} \&}]{server\+Addr }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classConnector_a0f084edc18ed6e3a25314689d5bf9244}\label{classConnector_a0f084edc18ed6e3a25314689d5bf9244}} 
+\index{Connector@{Connector}!````~Connector@{$\sim$Connector}}
+\index{````~Connector@{$\sim$Connector}!Connector@{Connector}}
+\doxysubsubsection{\texorpdfstring{$\sim$Connector()}{~Connector()}}
+{\footnotesize\ttfamily Connector\+::$\sim$\+Connector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classConnector_a08bee4361a470f332041565d6d04fd8b}\label{classConnector_a08bee4361a470f332041565d6d04fd8b}} 
+\index{Connector@{Connector}!connect@{connect}}
+\index{connect@{connect}!Connector@{Connector}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily void Connector\+::connect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classConnector_a08bee4361a470f332041565d6d04fd8b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classConnector_a08bee4361a470f332041565d6d04fd8b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classConnector_a695acc928c606f3145ab586c0f89695b}\label{classConnector_a695acc928c606f3145ab586c0f89695b}} 
+\index{Connector@{Connector}!connecting@{connecting}}
+\index{connecting@{connecting}!Connector@{Connector}}
+\doxysubsubsection{\texorpdfstring{connecting()}{connecting()}}
+{\footnotesize\ttfamily void Connector\+::connecting (\begin{DoxyParamCaption}\item[{int}]{sockfd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classConnector_a695acc928c606f3145ab586c0f89695b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classConnector_a695acc928c606f3145ab586c0f89695b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classConnector_ab2da335b8503af6e000ed9ef682b4bef}\label{classConnector_ab2da335b8503af6e000ed9ef682b4bef}} 
+\index{Connector@{Connector}!handleError@{handleError}}
+\index{handleError@{handleError}!Connector@{Connector}}
+\doxysubsubsection{\texorpdfstring{handleError()}{handleError()}}
+{\footnotesize\ttfamily void Connector\+::handle\+Error (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classConnector_ab2da335b8503af6e000ed9ef682b4bef_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classConnector_ab2da335b8503af6e000ed9ef682b4bef_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classConnector_a35eaa56c4243aed5ac3d326655e5be01}\label{classConnector_a35eaa56c4243aed5ac3d326655e5be01}} 
+\index{Connector@{Connector}!handleWrite@{handleWrite}}
+\index{handleWrite@{handleWrite}!Connector@{Connector}}
+\doxysubsubsection{\texorpdfstring{handleWrite()}{handleWrite()}}
+{\footnotesize\ttfamily void Connector\+::handle\+Write (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classConnector_a35eaa56c4243aed5ac3d326655e5be01_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classConnector_a35eaa56c4243aed5ac3d326655e5be01_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classConnector_a2b9d84a279c2e6b57185468dadda746b}\label{classConnector_a2b9d84a279c2e6b57185468dadda746b}} 
+\index{Connector@{Connector}!removeAndResetChannel@{removeAndResetChannel}}
+\index{removeAndResetChannel@{removeAndResetChannel}!Connector@{Connector}}
+\doxysubsubsection{\texorpdfstring{removeAndResetChannel()}{removeAndResetChannel()}}
+{\footnotesize\ttfamily int Connector\+::remove\+And\+Reset\+Channel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classConnector_a2b9d84a279c2e6b57185468dadda746b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classConnector_a2b9d84a279c2e6b57185468dadda746b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classConnector_a9ffde4b0f8807c7c97abd2517fb98a83}\label{classConnector_a9ffde4b0f8807c7c97abd2517fb98a83}} 
+\index{Connector@{Connector}!resetChannel@{resetChannel}}
+\index{resetChannel@{resetChannel}!Connector@{Connector}}
+\doxysubsubsection{\texorpdfstring{resetChannel()}{resetChannel()}}
+{\footnotesize\ttfamily void Connector\+::reset\+Channel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classConnector_a9ffde4b0f8807c7c97abd2517fb98a83_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classConnector_ab1db811faff8ef01d5f6867a545f158c}\label{classConnector_ab1db811faff8ef01d5f6867a545f158c}} 
+\index{Connector@{Connector}!restart@{restart}}
+\index{restart@{restart}!Connector@{Connector}}
+\doxysubsubsection{\texorpdfstring{restart()}{restart()}}
+{\footnotesize\ttfamily void Connector\+::restart (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classConnector_ab1db811faff8ef01d5f6867a545f158c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classConnector_ad74b397727c4874db00229fa85fb53b7}\label{classConnector_ad74b397727c4874db00229fa85fb53b7}} 
+\index{Connector@{Connector}!retry@{retry}}
+\index{retry@{retry}!Connector@{Connector}}
+\doxysubsubsection{\texorpdfstring{retry()}{retry()}}
+{\footnotesize\ttfamily void Connector\+::retry (\begin{DoxyParamCaption}\item[{int}]{sockfd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classConnector_ad74b397727c4874db00229fa85fb53b7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classConnector_ad74b397727c4874db00229fa85fb53b7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classConnector_a427989ed556b19aaa03814ebc9a2c180}\label{classConnector_a427989ed556b19aaa03814ebc9a2c180}} 
+\index{Connector@{Connector}!serverAddress@{serverAddress}}
+\index{serverAddress@{serverAddress}!Connector@{Connector}}
+\doxysubsubsection{\texorpdfstring{serverAddress()}{serverAddress()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classInetAddress}{Inet\+Address}}\& Connector\+::server\+Address (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classConnector_a1ee4cc68abaa0a75fcb5d4672fffb76b}\label{classConnector_a1ee4cc68abaa0a75fcb5d4672fffb76b}} 
+\index{Connector@{Connector}!setNewConnectionCallback@{setNewConnectionCallback}}
+\index{setNewConnectionCallback@{setNewConnectionCallback}!Connector@{Connector}}
+\doxysubsubsection{\texorpdfstring{setNewConnectionCallback()}{setNewConnectionCallback()}}
+{\footnotesize\ttfamily void Connector\+::set\+New\+Connection\+Callback (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classConnector_a72d28fa199c5a8c7e4c5cfc0a18c4aca}{New\+Connection\+Callback}} \&}]{cb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classConnector_ab2d87e7406c7465db287a8cfc6ee4ab9}\label{classConnector_ab2d87e7406c7465db287a8cfc6ee4ab9}} 
+\index{Connector@{Connector}!setState@{setState}}
+\index{setState@{setState}!Connector@{Connector}}
+\doxysubsubsection{\texorpdfstring{setState()}{setState()}}
+{\footnotesize\ttfamily void Connector\+::set\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classConnector_a01251ea5eb13ef2825f6c73160d8edf7}{States}}}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classConnector_ab2d87e7406c7465db287a8cfc6ee4ab9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classConnector_a1eeba016e3e207a111a2eca12dced818}\label{classConnector_a1eeba016e3e207a111a2eca12dced818}} 
+\index{Connector@{Connector}!start@{start}}
+\index{start@{start}!Connector@{Connector}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void Connector\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classConnector_a1eeba016e3e207a111a2eca12dced818_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classConnector_a0e1df4a695ea99e779a29c8302e283b9}\label{classConnector_a0e1df4a695ea99e779a29c8302e283b9}} 
+\index{Connector@{Connector}!startInLoop@{startInLoop}}
+\index{startInLoop@{startInLoop}!Connector@{Connector}}
+\doxysubsubsection{\texorpdfstring{startInLoop()}{startInLoop()}}
+{\footnotesize\ttfamily void Connector\+::start\+In\+Loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classConnector_a0e1df4a695ea99e779a29c8302e283b9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classConnector_a0e1df4a695ea99e779a29c8302e283b9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classConnector_a477a156699c09463cbf4b011070c962c}\label{classConnector_a477a156699c09463cbf4b011070c962c}} 
+\index{Connector@{Connector}!stop@{stop}}
+\index{stop@{stop}!Connector@{Connector}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily void Connector\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classConnector_a477a156699c09463cbf4b011070c962c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classConnector_a370d1351ea92ae8591424ab1262f8718}\label{classConnector_a370d1351ea92ae8591424ab1262f8718}} 
+\index{Connector@{Connector}!stopInLoop@{stopInLoop}}
+\index{stopInLoop@{stopInLoop}!Connector@{Connector}}
+\doxysubsubsection{\texorpdfstring{stopInLoop()}{stopInLoop()}}
+{\footnotesize\ttfamily void Connector\+::stop\+In\+Loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classConnector_a370d1351ea92ae8591424ab1262f8718_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{classConnector_a370d1351ea92ae8591424ab1262f8718_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classConnector_af98eb8a0e20b9089834a63fb4f7897fd}\label{classConnector_af98eb8a0e20b9089834a63fb4f7897fd}} 
+\index{Connector@{Connector}!kInitRetryDelayMs@{kInitRetryDelayMs}}
+\index{kInitRetryDelayMs@{kInitRetryDelayMs}!Connector@{Connector}}
+\doxysubsubsection{\texorpdfstring{kInitRetryDelayMs}{kInitRetryDelayMs}}
+{\footnotesize\ttfamily const int Connector\+::k\+Init\+Retry\+Delay\+Ms = 500\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classConnector_a976d245762fbee2e3c4d65b19e428f26}\label{classConnector_a976d245762fbee2e3c4d65b19e428f26}} 
+\index{Connector@{Connector}!kMaxRetryDelayMs@{kMaxRetryDelayMs}}
+\index{kMaxRetryDelayMs@{kMaxRetryDelayMs}!Connector@{Connector}}
+\doxysubsubsection{\texorpdfstring{kMaxRetryDelayMs}{kMaxRetryDelayMs}}
+{\footnotesize\ttfamily const int Connector\+::k\+Max\+Retry\+Delay\+Ms = 30 $\ast$ 1000\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classConnector_a76015b147abca3c7b53a00e4c4134f4e}\label{classConnector_a76015b147abca3c7b53a00e4c4134f4e}} 
+\index{Connector@{Connector}!m\_channel@{m\_channel}}
+\index{m\_channel@{m\_channel}!Connector@{Connector}}
+\doxysubsubsection{\texorpdfstring{m\_channel}{m\_channel}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classChannel}{Channel}}$>$ Connector\+::m\+\_\+channel\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classConnector_ae8584b21b887fc051145357608697209}\label{classConnector_ae8584b21b887fc051145357608697209}} 
+\index{Connector@{Connector}!m\_connect@{m\_connect}}
+\index{m\_connect@{m\_connect}!Connector@{Connector}}
+\doxysubsubsection{\texorpdfstring{m\_connect}{m\_connect}}
+{\footnotesize\ttfamily std\+::atomic\+\_\+bool Connector\+::m\+\_\+connect\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classConnector_a31993ace1d4c837e36d3efcd1185d2e0}\label{classConnector_a31993ace1d4c837e36d3efcd1185d2e0}} 
+\index{Connector@{Connector}!m\_loop@{m\_loop}}
+\index{m\_loop@{m\_loop}!Connector@{Connector}}
+\doxysubsubsection{\texorpdfstring{m\_loop}{m\_loop}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEventLoop}{Event\+Loop}}$\ast$ Connector\+::m\+\_\+loop\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classConnector_a02aa20972f2578e3cea7e8dde4e07db4}\label{classConnector_a02aa20972f2578e3cea7e8dde4e07db4}} 
+\index{Connector@{Connector}!m\_newConnectionCallback@{m\_newConnectionCallback}}
+\index{m\_newConnectionCallback@{m\_newConnectionCallback}!Connector@{Connector}}
+\doxysubsubsection{\texorpdfstring{m\_newConnectionCallback}{m\_newConnectionCallback}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classConnector_a72d28fa199c5a8c7e4c5cfc0a18c4aca}{New\+Connection\+Callback}} Connector\+::m\+\_\+new\+Connection\+Callback\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classConnector_a18a490fdc2e5e2f77652a008220c8ccc}\label{classConnector_a18a490fdc2e5e2f77652a008220c8ccc}} 
+\index{Connector@{Connector}!m\_retryDelayMs@{m\_retryDelayMs}}
+\index{m\_retryDelayMs@{m\_retryDelayMs}!Connector@{Connector}}
+\doxysubsubsection{\texorpdfstring{m\_retryDelayMs}{m\_retryDelayMs}}
+{\footnotesize\ttfamily int Connector\+::m\+\_\+retry\+Delay\+Ms\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classConnector_adbf797e641c94fd0f4949e53bd517b76}\label{classConnector_adbf797e641c94fd0f4949e53bd517b76}} 
+\index{Connector@{Connector}!m\_serverAddr@{m\_serverAddr}}
+\index{m\_serverAddr@{m\_serverAddr}!Connector@{Connector}}
+\doxysubsubsection{\texorpdfstring{m\_serverAddr}{m\_serverAddr}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classInetAddress}{Inet\+Address}} Connector\+::m\+\_\+server\+Addr\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classConnector_aa0db91b36d5b5fd32222f0c578c2315f}\label{classConnector_aa0db91b36d5b5fd32222f0c578c2315f}} 
+\index{Connector@{Connector}!m\_state@{m\_state}}
+\index{m\_state@{m\_state}!Connector@{Connector}}
+\doxysubsubsection{\texorpdfstring{m\_state}{m\_state}}
+{\footnotesize\ttfamily std\+::atomic$<$\mbox{\hyperlink{classConnector_a01251ea5eb13ef2825f6c73160d8edf7}{States}}$>$ Connector\+::m\+\_\+state\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+net/\mbox{\hyperlink{Connector_8h}{Connector.\+h}}\item 
+net/\mbox{\hyperlink{Connector_8cpp}{Connector.\+cpp}}\end{DoxyCompactItemize}

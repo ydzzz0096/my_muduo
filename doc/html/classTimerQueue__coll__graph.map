@@ -1,0 +1,7 @@
+<map id="TimerQueue" name="TimerQueue">
+<area shape="rect" id="node1" title="定时器队列，基于 timerfd 实现。 这是一个内部类，不应该暴露给用户。 它持有 Timer 列表，并负责管理 timerfd，当最早的定时器到期时触发 handleRead。" alt="" coords="138,1217,326,1471"/>
+<area shape="rect" id="node2" href="$classnoncopyable.html" title=" " alt="" coords="245,35,387,156"/>
+<area shape="rect" id="node3" href="$classEventLoop.html" title=" " alt="" coords="34,248,235,663"/>
+<area shape="rect" id="node5" href="$classChannel.html" title=" " alt="" coords="154,725,345,1155"/>
+<area shape="rect" id="node4" href="$classTimestamp.html" title=" " alt="" coords="5,5,221,185"/>
+</map>

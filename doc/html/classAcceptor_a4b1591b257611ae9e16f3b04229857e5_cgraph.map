@@ -1,0 +1,10 @@
+<map id="Acceptor::handleRead" name="Acceptor::handleRead">
+<area shape="rect" id="node1" title=" " alt="" coords="5,39,169,65"/>
+<area shape="rect" id="node2" href="$classSocket.html#a1692211c9536c49bf94ed0e7d53599e7" title=" " alt="" coords="273,9,389,36"/>
+<area shape="rect" id="node4" href="$classEventLoop.html#a023018c12b5ac17adf4c7bf2ca227458" title=" " alt="" coords="217,64,444,91"/>
+<area shape="rect" id="node3" href="$classInetAddress.html#acf5824839648cf19a0eca9350dc5f68c" title=" " alt="" coords="497,5,685,32"/>
+<area shape="rect" id="node5" href="$classEventLoop.html#a01aeec7f46ce30af1f89aee90889e8aa" title=" " alt="" coords="492,57,691,98"/>
+<area shape="rect" id="node8" href="$classEventLoop.html#a3a7b79d0d7d4568de3b8d2fda49634bc" title=" " alt="" coords="493,123,690,149"/>
+<area shape="rect" id="node6" href="$namespaceCurrentThread.html#a93f6303138c2c47d6fdde598d0d70363" title=" " alt="" coords="739,93,879,120"/>
+<area shape="rect" id="node7" href="$namespaceCurrentThread.html#a2f12d49683afaeba299342048eac0f89" title=" " alt="" coords="927,93,1108,120"/>
+</map>

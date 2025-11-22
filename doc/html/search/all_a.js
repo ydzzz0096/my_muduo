@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['kadded_117',['kAdded',['../EpollPoller_8cpp.html#a0ac79a6288b3e6f9239708bb243ad523',1,'EpollPoller.cpp']]],
+  ['kcheapprepend_118',['kCheapPrepend',['../classBuffer.html#a06e13ba0cc14e08cca5faaf0697b97e2',1,'Buffer']]],
+  ['kconnected_119',['kConnected',['../classConnector.html#a01251ea5eb13ef2825f6c73160d8edf7ab9549279523d07873a736d895923494f',1,'Connector::kConnected()'],['../classTcpConnection.html#a2074e0c4f7caf6c2796425729e0e448fa3199d77306e63991e97d23f74d32caf9',1,'TcpConnection::kConnected()']]],
+  ['kconnecting_120',['kConnecting',['../classConnector.html#a01251ea5eb13ef2825f6c73160d8edf7afff9bf62c60b3df3a778222289e7e5b5',1,'Connector::kConnecting()'],['../classTcpConnection.html#a2074e0c4f7caf6c2796425729e0e448fad34dad2a458272fcdb37f2a3d972b794',1,'TcpConnection::kConnecting()']]],
+  ['kdeleted_121',['kDeleted',['../EpollPoller_8cpp.html#a89e2cf9e51f64226955fdb5fe6760324',1,'EpollPoller.cpp']]],
+  ['kdisconnected_122',['kDisconnected',['../classConnector.html#a01251ea5eb13ef2825f6c73160d8edf7a20c9b2fa20b4f6397b4b95327fa815a6',1,'Connector::kDisconnected()'],['../classTcpConnection.html#a2074e0c4f7caf6c2796425729e0e448faed86fe08f23b1a0b0cfa10d88874eb5c',1,'TcpConnection::kDisconnected()']]],
+  ['kdisconnecting_123',['kDisconnecting',['../classTcpConnection.html#a2074e0c4f7caf6c2796425729e0e448fa6cf224191680f0a1a371ee8fe0a90be5',1,'TcpConnection']]],
+  ['kiniteventlistsize_124',['kInitEventListSize',['../classEpollPoller.html#a39d1633f4056503f91bb4da5d50e0e89',1,'EpollPoller']]],
+  ['kinitialsize_125',['kInitialSize',['../classBuffer.html#a6a439baee907c99f2e3ef7b372e05cc5',1,'Buffer']]],
+  ['kinitretrydelayms_126',['kInitRetryDelayMs',['../classConnector.html#af98eb8a0e20b9089834a63fb4f7897fd',1,'Connector']]],
+  ['kmaxretrydelayms_127',['kMaxRetryDelayMs',['../classConnector.html#a976d245762fbee2e3c4d65b19e428f26',1,'Connector']]],
+  ['kmicrosecondspersecond_128',['kMicroSecondsPerSecond',['../classTimestamp.html#a336fc18fea3f1e7eea4fb2d587e32e4d',1,'Timestamp']]],
+  ['knew_129',['kNew',['../EpollPoller_8cpp.html#ab5e42b80f196f7cc607d96bff646cc13',1,'EpollPoller.cpp']]],
+  ['knoneevent_130',['kNoneEvent',['../classChannel.html#a70761f0745723108829a896dfaf668b3',1,'Channel']]],
+  ['knoreuseport_131',['kNoReusePort',['../classTcpServer.html#a0f207f57066ca54d36868aefbfd344e9ac033b53a22e37214416d70951286903d',1,'TcpServer']]],
+  ['kpolltimems_132',['kPollTimeMs',['../EventLoop_8cpp.html#aadf64cafb3b17c5f9fd42db3c481210d',1,'EventLoop.cpp']]],
+  ['kreadevent_133',['kReadEvent',['../classChannel.html#a1751fd904820dc30ef498b42df124e6a',1,'Channel']]],
+  ['kreuseport_134',['kReusePort',['../classTcpServer.html#a0f207f57066ca54d36868aefbfd344e9ada586e0a9ba8a6417616b2eca5b4139b',1,'TcpServer']]],
+  ['kwriteevent_135',['kWriteEvent',['../classChannel.html#ab2e442c2213208d213f34fa0bd153f7a',1,'Channel']]]
+];

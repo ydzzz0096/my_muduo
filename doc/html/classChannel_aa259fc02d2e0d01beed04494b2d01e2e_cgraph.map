@@ -1,0 +1,10 @@
+<map id="Channel::disableReading" name="Channel::disableReading">
+<area shape="rect" id="node1" title=" " alt="" coords="5,42,188,69"/>
+<area shape="rect" id="node2" href="$classChannel.html#a46a6b75a6034ebac72a4868ed943ad05" title=" " alt="" coords="236,42,364,69"/>
+<area shape="rect" id="node3" href="$classEventLoop.html#a66b075c2fc9b6886f4ad663d05663b65" title=" " alt="" coords="412,42,608,69"/>
+<area shape="rect" id="node4" href="$classEventLoop.html#a023018c12b5ac17adf4c7bf2ca227458" title=" " alt="" coords="656,42,883,69"/>
+<area shape="rect" id="node5" href="$classEventLoop.html#a01aeec7f46ce30af1f89aee90889e8aa" title=" " alt="" coords="931,5,1129,47"/>
+<area shape="rect" id="node8" href="$classEventLoop.html#a3a7b79d0d7d4568de3b8d2fda49634bc" title=" " alt="" coords="931,71,1129,98"/>
+<area shape="rect" id="node6" href="$namespaceCurrentThread.html#a93f6303138c2c47d6fdde598d0d70363" title=" " alt="" coords="1177,42,1317,69"/>
+<area shape="rect" id="node7" href="$namespaceCurrentThread.html#a2f12d49683afaeba299342048eac0f89" title=" " alt="" coords="1365,42,1547,69"/>
+</map>

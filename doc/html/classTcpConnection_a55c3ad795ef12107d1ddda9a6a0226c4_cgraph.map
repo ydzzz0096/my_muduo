@@ -1,0 +1,8 @@
+<map id="TcpConnection::shutdownInLoop" name="TcpConnection::shutdownInLoop">
+<area shape="rect" id="node1" title=" " alt="" coords="5,42,236,69"/>
+<area shape="rect" id="node2" href="$classEventLoop.html#a023018c12b5ac17adf4c7bf2ca227458" title=" " alt="" coords="284,42,511,69"/>
+<area shape="rect" id="node3" href="$classEventLoop.html#a01aeec7f46ce30af1f89aee90889e8aa" title=" " alt="" coords="559,5,757,47"/>
+<area shape="rect" id="node6" href="$classEventLoop.html#a3a7b79d0d7d4568de3b8d2fda49634bc" title=" " alt="" coords="559,71,757,98"/>
+<area shape="rect" id="node4" href="$namespaceCurrentThread.html#a93f6303138c2c47d6fdde598d0d70363" title=" " alt="" coords="805,42,945,69"/>
+<area shape="rect" id="node5" href="$namespaceCurrentThread.html#a2f12d49683afaeba299342048eac0f89" title=" " alt="" coords="993,42,1175,69"/>
+</map>

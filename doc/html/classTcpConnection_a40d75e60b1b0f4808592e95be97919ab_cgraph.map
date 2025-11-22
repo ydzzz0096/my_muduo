@@ -1,0 +1,9 @@
+<map id="TcpConnection::handleClose" name="TcpConnection::handleClose">
+<area shape="rect" id="node1" title=" " alt="" coords="5,67,209,94"/>
+<area shape="rect" id="node2" href="$classEventLoop.html#a023018c12b5ac17adf4c7bf2ca227458" title=" " alt="" coords="257,42,484,69"/>
+<area shape="rect" id="node7" href="$classTcpConnection.html#a9531f4a7bc35a783fc9dd59a96eb9a4b" title=" " alt="" coords="281,93,460,119"/>
+<area shape="rect" id="node3" href="$classEventLoop.html#a01aeec7f46ce30af1f89aee90889e8aa" title=" " alt="" coords="532,5,731,47"/>
+<area shape="rect" id="node6" href="$classEventLoop.html#a3a7b79d0d7d4568de3b8d2fda49634bc" title=" " alt="" coords="533,71,730,98"/>
+<area shape="rect" id="node4" href="$namespaceCurrentThread.html#a93f6303138c2c47d6fdde598d0d70363" title=" " alt="" coords="779,42,919,69"/>
+<area shape="rect" id="node5" href="$namespaceCurrentThread.html#a2f12d49683afaeba299342048eac0f89" title=" " alt="" coords="967,42,1148,69"/>
+</map>

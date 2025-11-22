@@ -1,0 +1,213 @@
+\hypertarget{classThreadPool}{}\doxysection{Thread\+Pool Class Reference}
+\label{classThreadPool}\index{ThreadPool@{ThreadPool}}
+
+
+{\ttfamily \#include $<$Thread\+Pool.\+h$>$}
+
+
+
+Inheritance diagram for Thread\+Pool\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=186pt]{classThreadPool__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Thread\+Pool\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classThreadPool__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classThreadPool_a9ccb63332c10a0b36c7475f5e8629010}{Task}} = std\+::function$<$ void()$>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classThreadPool_a65c4b17a977756cb0a3ac85dc80dafb4}{Thread\+Pool}} (int thread\+Num, const std\+::string \&name=std\+::string(\char`\"{}Thread\+Pool\char`\"{}))
+\item 
+\mbox{\hyperlink{classThreadPool_a44d3d2ab618970605e684efc216655eb}{$\sim$\+Thread\+Pool}} ()
+\item 
+void \mbox{\hyperlink{classThreadPool_a74e85ff1e6605531acdd8e0e3cf903df}{start}} ()
+\item 
+void \mbox{\hyperlink{classThreadPool_acf30acaca7f8f97e145407a32e5b8883}{add\+Task}} (\mbox{\hyperlink{classThreadPool_a9ccb63332c10a0b36c7475f5e8629010}{Task}} task)
+\item 
+void \mbox{\hyperlink{classThreadPool_a465c5f0162edf2b529e473b5873494eb}{shutdown}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classThreadPool_a294b94bfb40ae6e575735b6e35579b81}{thread\+Func}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classThreadPool_aea5ecaadbeb40c68b709695e33b7df35}{m\+\_\+name}}
+\item 
+int \mbox{\hyperlink{classThreadPool_afa6dd133135f42becb0fe9d19d41fe18}{m\+\_\+thread\+Num}}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classThread}{Thread}} $>$ $>$ \mbox{\hyperlink{classThreadPool_af99a028e62c21d19b7d972f9448674d6}{m\+\_\+threads}}
+\item 
+\mbox{\hyperlink{classLockQueue}{Lock\+Queue}}$<$ \mbox{\hyperlink{classThreadPool_a9ccb63332c10a0b36c7475f5e8629010}{Task}} $>$ \mbox{\hyperlink{classThreadPool_aa22be5cd548d4329a93f6a09cb23d99c}{m\+\_\+task\+Queue}}
+\item 
+std\+::atomic\+\_\+bool \mbox{\hyperlink{classThreadPool_a7aa48675568ab94e766acaa5ae24844e}{m\+\_\+started}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classThreadPool_a9ccb63332c10a0b36c7475f5e8629010}\label{classThreadPool_a9ccb63332c10a0b36c7475f5e8629010}} 
+\index{ThreadPool@{ThreadPool}!Task@{Task}}
+\index{Task@{Task}!ThreadPool@{ThreadPool}}
+\doxysubsubsection{\texorpdfstring{Task}{Task}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classThreadPool_a9ccb63332c10a0b36c7475f5e8629010}{Thread\+Pool\+::\+Task}} =  std\+::function$<$void()$>$}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classThreadPool_a65c4b17a977756cb0a3ac85dc80dafb4}\label{classThreadPool_a65c4b17a977756cb0a3ac85dc80dafb4}} 
+\index{ThreadPool@{ThreadPool}!ThreadPool@{ThreadPool}}
+\index{ThreadPool@{ThreadPool}!ThreadPool@{ThreadPool}}
+\doxysubsubsection{\texorpdfstring{ThreadPool()}{ThreadPool()}}
+{\footnotesize\ttfamily Thread\+Pool\+::\+Thread\+Pool (\begin{DoxyParamCaption}\item[{int}]{thread\+Num,  }\item[{const std\+::string \&}]{name = {\ttfamily std\+:\+:string(\char`\"{}ThreadPool\char`\"{})} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classThreadPool_a44d3d2ab618970605e684efc216655eb}\label{classThreadPool_a44d3d2ab618970605e684efc216655eb}} 
+\index{ThreadPool@{ThreadPool}!````~ThreadPool@{$\sim$ThreadPool}}
+\index{````~ThreadPool@{$\sim$ThreadPool}!ThreadPool@{ThreadPool}}
+\doxysubsubsection{\texorpdfstring{$\sim$ThreadPool()}{~ThreadPool()}}
+{\footnotesize\ttfamily Thread\+Pool\+::$\sim$\+Thread\+Pool (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classThreadPool_a44d3d2ab618970605e684efc216655eb_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classThreadPool_acf30acaca7f8f97e145407a32e5b8883}\label{classThreadPool_acf30acaca7f8f97e145407a32e5b8883}} 
+\index{ThreadPool@{ThreadPool}!addTask@{addTask}}
+\index{addTask@{addTask}!ThreadPool@{ThreadPool}}
+\doxysubsubsection{\texorpdfstring{addTask()}{addTask()}}
+{\footnotesize\ttfamily void Thread\+Pool\+::add\+Task (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classThreadPool_a9ccb63332c10a0b36c7475f5e8629010}{Task}}}]{task }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{classThreadPool_acf30acaca7f8f97e145407a32e5b8883_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{classThreadPool_acf30acaca7f8f97e145407a32e5b8883_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classThreadPool_a465c5f0162edf2b529e473b5873494eb}\label{classThreadPool_a465c5f0162edf2b529e473b5873494eb}} 
+\index{ThreadPool@{ThreadPool}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!ThreadPool@{ThreadPool}}
+\doxysubsubsection{\texorpdfstring{shutdown()}{shutdown()}}
+{\footnotesize\ttfamily void Thread\+Pool\+::shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classThreadPool_a465c5f0162edf2b529e473b5873494eb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{classThreadPool_a465c5f0162edf2b529e473b5873494eb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classThreadPool_a74e85ff1e6605531acdd8e0e3cf903df}\label{classThreadPool_a74e85ff1e6605531acdd8e0e3cf903df}} 
+\index{ThreadPool@{ThreadPool}!start@{start}}
+\index{start@{start}!ThreadPool@{ThreadPool}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void Thread\+Pool\+::start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classThreadPool_a74e85ff1e6605531acdd8e0e3cf903df_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=257pt]{classThreadPool_a74e85ff1e6605531acdd8e0e3cf903df_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classThreadPool_a294b94bfb40ae6e575735b6e35579b81}\label{classThreadPool_a294b94bfb40ae6e575735b6e35579b81}} 
+\index{ThreadPool@{ThreadPool}!threadFunc@{threadFunc}}
+\index{threadFunc@{threadFunc}!ThreadPool@{ThreadPool}}
+\doxysubsubsection{\texorpdfstring{threadFunc()}{threadFunc()}}
+{\footnotesize\ttfamily void Thread\+Pool\+::thread\+Func (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{classThreadPool_a294b94bfb40ae6e575735b6e35579b81_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classThreadPool_a294b94bfb40ae6e575735b6e35579b81_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classThreadPool_aea5ecaadbeb40c68b709695e33b7df35}\label{classThreadPool_aea5ecaadbeb40c68b709695e33b7df35}} 
+\index{ThreadPool@{ThreadPool}!m\_name@{m\_name}}
+\index{m\_name@{m\_name}!ThreadPool@{ThreadPool}}
+\doxysubsubsection{\texorpdfstring{m\_name}{m\_name}}
+{\footnotesize\ttfamily std\+::string Thread\+Pool\+::m\+\_\+name\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classThreadPool_a7aa48675568ab94e766acaa5ae24844e}\label{classThreadPool_a7aa48675568ab94e766acaa5ae24844e}} 
+\index{ThreadPool@{ThreadPool}!m\_started@{m\_started}}
+\index{m\_started@{m\_started}!ThreadPool@{ThreadPool}}
+\doxysubsubsection{\texorpdfstring{m\_started}{m\_started}}
+{\footnotesize\ttfamily std\+::atomic\+\_\+bool Thread\+Pool\+::m\+\_\+started\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classThreadPool_aa22be5cd548d4329a93f6a09cb23d99c}\label{classThreadPool_aa22be5cd548d4329a93f6a09cb23d99c}} 
+\index{ThreadPool@{ThreadPool}!m\_taskQueue@{m\_taskQueue}}
+\index{m\_taskQueue@{m\_taskQueue}!ThreadPool@{ThreadPool}}
+\doxysubsubsection{\texorpdfstring{m\_taskQueue}{m\_taskQueue}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classLockQueue}{Lock\+Queue}}$<$\mbox{\hyperlink{classThreadPool_a9ccb63332c10a0b36c7475f5e8629010}{Task}}$>$ Thread\+Pool\+::m\+\_\+task\+Queue\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classThreadPool_afa6dd133135f42becb0fe9d19d41fe18}\label{classThreadPool_afa6dd133135f42becb0fe9d19d41fe18}} 
+\index{ThreadPool@{ThreadPool}!m\_threadNum@{m\_threadNum}}
+\index{m\_threadNum@{m\_threadNum}!ThreadPool@{ThreadPool}}
+\doxysubsubsection{\texorpdfstring{m\_threadNum}{m\_threadNum}}
+{\footnotesize\ttfamily int Thread\+Pool\+::m\+\_\+thread\+Num\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classThreadPool_af99a028e62c21d19b7d972f9448674d6}\label{classThreadPool_af99a028e62c21d19b7d972f9448674d6}} 
+\index{ThreadPool@{ThreadPool}!m\_threads@{m\_threads}}
+\index{m\_threads@{m\_threads}!ThreadPool@{ThreadPool}}
+\doxysubsubsection{\texorpdfstring{m\_threads}{m\_threads}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classThread}{Thread}}$>$ $>$ Thread\+Pool\+::m\+\_\+threads\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+base/\mbox{\hyperlink{ThreadPool_8h}{Thread\+Pool.\+h}}\item 
+base/\mbox{\hyperlink{ThreadPool_8cpp}{Thread\+Pool.\+cpp}}\end{DoxyCompactItemize}

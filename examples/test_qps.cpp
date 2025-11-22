@@ -10,16 +10,19 @@
 #include <vector>
 #include <atomic>
 #include <iostream>
+#include <thread>
+#include <memory>
 #include <unistd.h>
 #include <signal.h>
 
-// 全局统计量
+// === 全局统计量 (原子操作，天然线程安全) ===
 std::atomic<int64_t> g_totalMessages(0);
 std::atomic<int64_t> g_totalBytes(0);
 
-// 消息内容（固定长度）
-std::string g_message = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // 36 bytes
+// 消息内容 (固定 36 字节)
+std::string g_message = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
+// === 压测客户端类 ===
 class QpsClient
 {
 public:
@@ -30,7 +33,7 @@ public:
             std::bind(&QpsClient::onConnection, this, std::placeholders::_1));
         client_.setMessageCallback(
             std::bind(&QpsClient::onMessage, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
-        // 压测时不需要重连，断开就断开了
+        // 压测追求极限性能，通常不开启重连，断了就断了
     }
 
     void connect()
@@ -43,28 +46,30 @@ private:
     {
         if (conn->connected())
         {
-            // 连接成功，发送第一条消息，启动 Ping-Pong
+            // 连接建立，立刻发送第一条消息
             conn->send(g_message);
         }
         else
         {
-            LOG_ERROR << "Client Disconnected";
+            // 压测结束或异常断开，不打印 Error 避免刷屏
+            // LOG_ERROR << "Client Disconnected"; 
         }
     }
 
     void onMessage(const TcpConnectionPtr& conn, Buffer* buf, Timestamp time)
     {
-        // 统计数据
+        // 统计：原子加
         g_totalMessages++;
         g_totalBytes += buf->readableBytes();
         
-        // 取出数据并立刻发回去 (Ping-Pong)
+        // Ping-Pong：收到什么发什么
         conn->send(buf->retrieveAllAsString());
     }
 
     TcpClient client_;
 };
 
+// === 统计线程 (每秒打印一次总数据) ===
 void statsFunc()
 {
     int64_t oldMessages = 0;
@@ -73,7 +78,7 @@ void statsFunc()
 
     while (true)
     {
-        sleep(1); // 每秒统计一次
+        sleep(1); 
         
         int64_t newMessages = g_totalMessages;
         int64_t newBytes = g_totalBytes;
@@ -81,13 +86,12 @@ void statsFunc()
         
         int64_t deltaMessages = newMessages - oldMessages;
         int64_t deltaBytes = newBytes - oldBytes;
-        double deltaSeconds = static_cast<double>(now - startTime) / 1000000.0;
+        
+        // 计算真正的 MiB/s
+        double throughput = static_cast<double>(deltaBytes) / (1024 * 1024);
 
-        // 打印 QPS 和 吞吐量 (MiB/s)
-        // 注意：这里我们直接用 printf/cout，因为日志系统可能被关了
-        printf("QPS: %8ld, Throughput: %8.3f MiB/s\n", 
-               deltaMessages, 
-               static_cast<double>(deltaBytes) / (1024*1024));
+        printf("Total QPS: %8ld, Throughput: %8.3f MiB/s\n", 
+               deltaMessages, throughput);
 
         oldMessages = newMessages;
         oldBytes = newBytes;
@@ -95,51 +99,77 @@ void statsFunc()
     }
 }
 
-int main(int argc, char* argv[])
+// === 工作线程 (每个线程跑一个 EventLoop) ===
+void threadFunc(const InetAddress& serverAddr, int connectionsPerThread, int threadIdx)
 {
-    // 【重要】忽略 SIGPIPE，防止服务器断开导致压测客户端崩溃
-    signal(SIGPIPE, SIG_IGN);
-
-    // 【重要】关闭无关日志，避免影响性能结果
-    Logger::getInstance().setLogLevel(ERROR);
-
-    if (argc != 4)
-    {
-        printf("Usage: %s <ip> <port> <connections>\n", argv[0]);
-        return 1;
-    }
-
-    std::string ip = argv[1];
-    uint16_t port = static_cast<uint16_t>(atoi(argv[2]));
-    int connectionNum = atoi(argv[3]);
-
-    printf("Starting Benchmark: Server=%s:%d, Connections=%d, MsgSize=%lu\n", 
-           ip.c_str(), port, connectionNum, g_message.size());
-
-    EventLoop loop;
-    InetAddress serverAddr(port, ip);
+    EventLoop loop; // 每个线程独立的 Loop
     
-    // 创建指定数量的客户端
     std::vector<std::unique_ptr<QpsClient>> clients;
-    for (int i = 0; i < connectionNum; ++i)
+    clients.reserve(connectionsPerThread);
+
+    for (int i = 0; i < connectionsPerThread; ++i)
     {
         char buf[32];
-        snprintf(buf, sizeof buf, "Client-%d", i);
+        snprintf(buf, sizeof buf, "Client-T%d-%d", threadIdx, i);
         clients.emplace_back(new QpsClient(&loop, serverAddr, buf));
     }
 
-    // 启动所有客户端
     for (auto& client : clients)
     {
         client->connect();
     }
 
-    // 启动统计线程
-    std::thread statsThread(statsFunc);
-    statsThread.detach();
+    loop.loop(); // 在此阻塞
+}
 
-    // 启动事件循环
-    loop.loop();
+int main(int argc, char* argv[])
+{
+    // 1. 忽略 SIGPIPE
+    signal(SIGPIPE, SIG_IGN);
+
+    // 2. 全局静音 (只打印 ERROR)
+    Logger::getInstance().setLogLevel(ERROR);
+
+    if (argc != 5)
+    {
+        printf("Usage: %s <ip> <port> <threads> <connections>\n", argv[0]);
+        printf("Example: %s 127.0.0.1 8000 8 1000\n", argv[0]);
+        return 1;
+    }
+
+    std::string ip = argv[1];
+    uint16_t port = static_cast<uint16_t>(atoi(argv[2]));
+    int threadCount = atoi(argv[3]);       // 线程数
+    int totalConnections = atoi(argv[4]);  // 总连接数
+
+    // 计算每个线程分摊多少连接
+    int connectionsPerThread = totalConnections / threadCount;
+    
+    printf("Starting Benchmark:\n");
+    printf("  Server: %s:%d\n", ip.c_str(), port);
+    printf("  Threads: %d\n", threadCount);
+    printf("  Total Connections: %d (%d per thread)\n", totalConnections, connectionsPerThread);
+    printf("  Message Size: %lu bytes\n", g_message.size());
+    printf("------------------------------------------------\n");
+
+    InetAddress serverAddr(port, ip);
+
+    // 3. 启动统计线程
+    std::thread stats(statsFunc);
+    stats.detach();
+
+    // 4. 启动工作线程
+    std::vector<std::thread> threads;
+    for (int i = 0; i < threadCount; ++i)
+    {
+        threads.emplace_back(threadFunc, serverAddr, connectionsPerThread, i);
+    }
+
+    // 5. 等待所有线程 (实际上压测不会主动停止，这里会一直阻塞)
+    for (auto& t : threads)
+    {
+        t.join();
+    }
 
     return 0;
 }
