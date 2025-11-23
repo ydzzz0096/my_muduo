@@ -5,7 +5,7 @@
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
 [![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20WSL2-lightgrey.svg)]()
 
-> **核心亮点**: 在单机环境（WSL2）下，Echo Ping-Pong 压测 **QPS 突破 110 万**，吞吐量达 **39 MB/s**。
+> **核心亮点**: 在单机环境（WSL2）下，Echo Ping-Pong 压测 **QPS 突破 120 万**，吞吐量达 **40 MB/s**。
 
 ## 📖 项目简介 (Introduction)
 
@@ -89,8 +89,6 @@ MyMuduo 采用典型的 **主从 Reactor 多线程架构**：
 3.  新连接建立后，封装为 **TcpConnection**，并通过轮询算法派发给某个 **SubLoop** (I/O 线程)。
 4.  **TcpConnection** 在其所属的 `SubLoop` 中处理所有读写事件，利用 **Channel** 和 **Poller** 与 `epoll` 内核交互。
 
-*(此处建议放一张您用 Doxygen 生成的类协作图，或者自己画的架构图)*
-> ![Architecture Diagram](doc/images/architecture.png)
 
 ## 🛠️ 构建与运行 (Build & Run)
 
