@@ -1,112 +1,281 @@
-# MyMuduo - A High-Performance C++ Network Library
+# MyMuduo
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Language](https://img.shields.io/badge/language-C%2B%2B11-orange.svg)](https://en.cppreference.com/)
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
-[![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20WSL2-lightgrey.svg)]()
+MyMuduo是一个基于C++11实现的高性能网络库，参考了陈硕的Muduo库，提供了事件驱动、非阻塞I/O的网络编程框架。
 
-> **核心亮点**: 在单机环境（WSL2）下，Echo Ping-Pong 压测 **QPS 突破 120 万**，吞吐量达 **40 MB/s**。
+## 项目结构
 
-## 📖 项目简介 (Introduction)
+```
+MyMuduo/
+├── base/            # 基础工具类
+│   ├── noncopyable.h        # 不可复制类
+│   ├── Timestamp.h          # 时间戳类
+│   ├── Thread.h             # 线程类
+│   ├── CurrentThread.h      # 当前线程工具
+│   ├── Logger.h             # 日志类
+│   ├── ThreadPool.h         # 线程池
+│   ├── LockQueue.h          # 线程安全队列
+│   └── *.cpp                # 实现文件
+├── net/             # 网络核心模块
+│   ├── EventLoop.h          # 事件循环
+│   ├── Channel.h            # 通道类
+│   ├── Poller.h             # 事件分发器
+│   ├── EpollPoller.h        # epoll实现
+│   ├── TcpServer.h          # TCP服务器
+│   ├── TcpConnection.h      # TCP连接
+│   ├── Acceptor.h           # 连接器
+│   ├── TcpClient.h          # TCP客户端
+│   ├── Buffer.h             # 缓冲区
+│   ├── InetAddress.h        # 网络地址
+│   ├── Socket.h             # 套接字
+│   ├── TimerQueue.h         # 定时器队列
+│   ├── EventLoopThread.h    # 事件循环线程
+│   ├── EventLoopThreadPool.h # 事件循环线程池
+│   ├── Connector.h          # 客户端连接器
+│   ├── Callbacks.h          # 回调函数定义
+│   └── *.cpp                # 实现文件
+├── release/         # 发布目录
+│   ├── include/             # 头文件
+│   └── lib/                 # 静态库
+├── doc/             # 文档
+├── CMakeLists.txt   # 构建配置
+├── autobuild.sh     # 自动构建脚本
+└── README.md        # 项目说明文档
+```
 
-**MyMuduo** 是一个基于 **Reactor 模型** 的高性能 C++11 网络库。
+## 核心功能
 
-本项目是陈硕先生 `muduo` 网络库的核心重构与实现。我摒弃了原库中对 Boost 库的依赖，完全使用 **现代 C++ (C++11/14)** 特性（如 `std::function`, `std::shared_ptr`, `std::thread` 等）进行了重写。
+1. **事件驱动模型**：基于Reactor模式，使用epoll进行事件分发
+2. **非阻塞I/O**：提高网络通信效率
+3. **多线程支持**：通过EventLoopThreadPool实现多线程处理
+4. **定时器**：支持高精度定时器
+5. **缓冲区**：高效的网络缓冲区实现
+6. **日志系统**：支持不同级别的日志输出
+7. **线程池**：用于处理耗时任务
 
-该项目旨在深入探索高性能网络编程的核心原理，包括非阻塞 I/O、事件驱动循环、多线程模型以及高并发场景下的资源管理。它不仅仅是一个玩具项目，更是一个具备**工业级架构**、支持**高并发**、**断线重连**和**异步日志**的完整网络解决方案。
+## 技术特性
 
-## 🚀 核心特性 (Key Features)
+- **C++11**：充分利用C++11的新特性，如智能指针、lambda表达式、移动语义等
+- **跨平台**：支持Linux平台
+- **高性能**：采用非阻塞I/O和事件驱动，适合高并发场景
+- **可扩展性**：模块化设计，易于扩展
+- **线程安全**：提供线程安全的工具类
 
-* **底层模型**: 采用 **Epoll LT** (水平触发) + **非阻塞 I/O** (Non-blocking I/O)，这是目前 Linux 下最成熟的高并发处理方案。
-* **线程模型**: 实现了 **Multi-Reactors** (主从 Reactor) + **One Loop Per Thread** 模型。
-    * **MainLoop**: 主线程只负责 `accept` 新连接，处理高优先级的连接建立。
-    * **SubLoops**: 固定数量的 I/O 子线程池，通过**轮询 (Round-Robin)** 策略分担已连接 Socket 的读写事件，充分利用多核 CPU。
-* **并发优化**:
-    * 利用 Linux 特有的 **`eventfd`** 实现高效的线程间唤醒与通信，替代了传统的管道/Socket对。
-    * 实现了基于**生产者-消费者模型**的任务队列，支持跨线程任务派发 (`runInLoop`/`queueInLoop`)，将 I/O 操作严格限制在所属线程内，实现了**无锁化 (Lock-free)** 的 I/O 处理路径。
-* **内存与资源管理**:
-    * 全面遵循 **RAII** (资源获取即初始化) 原则管理 Socket、Thread 等资源，杜绝内存泄漏。
-    * 巧妙利用 `std::shared_ptr` 和 `std::weak_ptr` (结合 **`tie` 机制**)，解决了多线程环境下对象生命周期模糊导致的**竞态条件** (Race Condition) 和悬空指针问题。
-* **高性能组件**:
-    * **Buffer**: 实现了应用层缓冲区，利用 `readv` 进行分散读 (Scatter Read)，在栈上分配临时空间，最大限度减少系统调用 (`read`) 次数。
-    * **AsyncLogging**: 实现了**双缓冲区** (Double Buffering) 技术的前端/后端分离异步日志，将磁盘 I/O 从业务线程中剥离，确保业务处理的低延迟。
-    * **TimerQueue**: 基于 `timerfd` 和 `std::set` 实现了高精度的定时器队列，支持一次性和周期性任务。
+## 快速开始
 
-## 📊 性能测试 (Benchmark)
+### 环境依赖
 
-本项目经过了严苛的压力测试。使用 Ping-Pong 模式（客户端发送数据 -> 服务器回显 -> 客户端收到立刻再次发送）验证吞吐量与并发能力。
+- C++11及以上
+- CMake 3.0及以上
+- Linux操作系统
 
-### 测试环境
-* **OS**: Ubuntu 22.04 (WSL2 on Windows 11)
-* **CPU**: Intel Core i9-13900H (14 Cores, 20 Threads)
-* **Compiler**: g++ 11.4.0 (Optimization: -O3)
-* **Memory**: 8GB (WSL limit)
-
-### 测试结果
-在开启 **8 个并发客户端进程**（模拟 1000+ 并发连接），每个进程疯狂发送 36 bytes 消息的场景下，服务器表现如下：
-
-| Metric | Result |
-| :--- | :--- |
-| **Total QPS** | **1,200,000+** |
-| **Throughput** | **40 MiB/s+** |
-
-> **压测截图**:
->
-> ![Benchmark Screenshot](doc/images/benchmark.png)
-> *（图：8进程并发压测，单机 QPS 突破 120 万）*
-
-**(注：测试禁用了日志输出以模拟生产环境性能)**
-### 📉 并发与资源消耗 (Concurrency & Resources)
-
-除了高吞吐量，本项目还经过了 C10K/C20K (2万并发) 稳定性测试，验证了在高并发场景下极低的资源占用。
-
-**测试环境**:
-* Client: Python 脚本模拟 20,000 个空闲 TCP 连接。
-* Server: WSL2 (Ubuntu 22.04), Limit `ulimit -n 65535`。
-
-**测试结果**:
-* **并发连接数**: 成功维持 **20,000+** 个同时在线连接。
-* **内存占用**:
-    * 初始 RSS: ~3.6 MB
-    * 20k 连接后 RSS: ~33.3 MB
-    * **平均每连接消耗**: **~1.5 KB** (应用层内存)
-
-> **数据证据**:
->
-> 1. **连接数验证** (`ss -s` 显示 20k+ established):
-> ![Connections](doc/images/benchmark_c10k_connections.png)
->
-> 2. **内存消耗监控** (RSS 从 3680KB 涨至 34080KB):
-> ![Memory Usage](doc/images/benchmark_c10k_memory.png)
-
-
-## 🏗️ 系统架构 (Architecture)
-
-MyMuduo 采用典型的 **主从 Reactor 多线程架构**：
-
-1.  **TcpServer** 作为外观 (Facade)，管理 `Acceptor` 和 `EventLoopThreadPool`。
-2.  **Acceptor** 运行在 `MainLoop` 中，专门监听新连接。
-3.  新连接建立后，封装为 **TcpConnection**，并通过轮询算法派发给某个 **SubLoop** (I/O 线程)。
-4.  **TcpConnection** 在其所属的 `SubLoop` 中处理所有读写事件，利用 **Channel** 和 **Poller** 与 `epoll` 内核交互。
-
-
-## 🛠️ 构建与运行 (Build & Run)
-
-### 环境要求
-* Linux Kernel version >= 2.6.28 (支持 `timerfd`, `eventfd`)
-* CMake >= 3.0
-* GCC >= 4.8 (支持 C++11)
-
-### 编译步骤
+### 编译项目
 
 ```bash
-# 1. 克隆仓库
-git clone https://github.com/ydzzz0096/my_muduo.git
-cd my_muduo
+# 进入项目目录
+cd MyMuduo
 
-# 2. 创建构建目录
-mkdir build && cd build
+# 运行自动构建脚本
+./autobuild.sh
+```
 
-# 3. 编译 (推荐使用 Release 模式以获得最佳性能)
-cmake -DCMAKE_BUILD_TYPE=Release ..
-make -j4
+### 使用示例
+
+#### TCP服务器示例
+
+```cpp
+#include "net/TcpServer.h"
+#include "net/EventLoop.h"
+#include <iostream>
+
+using namespace muduo;
+
+class EchoServer {
+public:
+    EchoServer(EventLoop* loop, const InetAddress& listenAddr)
+        : server_(loop, listenAddr, "EchoServer") {
+        server_.setConnectionCallback(
+            [this](const TcpConnectionPtr& conn) {
+                std::cout << "Connection " << conn->name() << " established" << std::endl;
+            });
+        server_.setMessageCallback(
+            [this](const TcpConnectionPtr& conn, Buffer* buf, Timestamp time) {
+                std::string msg = buf->retrieveAllAsString();
+                std::cout << "Received message: " << msg << std::endl;
+                conn->send(msg);
+            });
+        server_.setThreadNum(4); // 设置4个线程
+    }
+
+    void start() {
+        server_.start();
+    }
+
+private:
+    TcpServer server_;
+};
+
+int main() {
+    EventLoop loop;
+    InetAddress listenAddr(8080);
+    EchoServer server(&loop, listenAddr);
+    server.start();
+    loop.loop();
+    return 0;
+}
+```
+
+#### TCP客户端示例
+
+```cpp
+#include "net/TcpClient.h"
+#include "net/EventLoop.h"
+#include <iostream>
+
+using namespace muduo;
+
+class EchoClient {
+public:
+    EchoClient(EventLoop* loop, const InetAddress& serverAddr)
+        : client_(loop, serverAddr, "EchoClient") {
+        client_.setConnectionCallback(
+            [this](const TcpConnectionPtr& conn) {
+                if (conn->connected()) {
+                    std::cout << "Connected to server" << std::endl;
+                    conn->send("Hello, Muduo!");
+                } else {
+                    std::cout << "Disconnected from server" << std::endl;
+                }
+            });
+        client_.setMessageCallback(
+            [this](const TcpConnectionPtr& conn, Buffer* buf, Timestamp time) {
+                std::string msg = buf->retrieveAllAsString();
+                std::cout << "Received message: " << msg << std::endl;
+            });
+    }
+
+    void connect() {
+        client_.connect();
+    }
+
+private:
+    TcpClient client_;
+};
+
+int main() {
+    EventLoop loop;
+    InetAddress serverAddr("127.0.0.1", 8080);
+    EchoClient client(&loop, serverAddr);
+    client.connect();
+    loop.loop();
+    return 0;
+}
+```
+
+## 核心类说明
+
+### 1. EventLoop
+
+事件循环类，每个线程最多只能有一个EventLoop对象。它负责监听文件描述符上的I/O事件，并分发给对应的处理函数。
+
+### 2. Channel
+
+通道类，负责管理单个文件描述符的事件，如可读、可写等。每个Channel只属于一个EventLoop。
+
+### 3. Poller
+
+事件分发器的抽象基类，EpollPoller是其具体实现，使用epoll系统调用进行事件分发。
+
+### 4. TcpServer
+
+TCP服务器类，负责监听端口、接受新连接，并管理已建立的连接。
+
+### 5. TcpConnection
+
+TCP连接类，管理一个已建立的TCP连接，处理数据的读写。
+
+### 6. Buffer
+
+缓冲区类，用于高效处理网络数据的读写。
+
+### 7. InetAddress
+
+网络地址类，封装了IPv4地址和端口。
+
+### 8. Socket
+
+套接字类，封装了socket相关的系统调用。
+
+### 9. EventLoopThread
+
+事件循环线程类，在单独的线程中运行EventLoop。
+
+### 10. EventLoopThreadPool
+
+事件循环线程池，管理多个EventLoopThread，用于处理多连接。
+
+## 性能测试
+
+### C10K测试
+
+C10K测试验证了MyMuduo在处理10000个并发连接时的性能表现：
+
+- **连接数**：10000个并发连接
+- **内存使用**：约3.4MB RSS
+- **CPU使用率**：约0.7%
+
+![C10K Connections](doc/images/benchmark_c10k_connections.png)
+![C10K Memory](doc/images/benchmark_c10k_memory.png)
+![C10K Run](doc/images/benchmark_c10k_run.png)
+
+### QPS测试
+
+QPS测试验证了MyMuduo在处理高并发请求时的性能表现：
+
+- **线程数**：8线程
+- **连接数**：1000个
+- **消息大小**：36字节
+- **QPS**：最高达到129,966
+- **吞吐量**：约44.127 MiB/s
+
+![QPS Benchmark](doc/images/benchmark.png)
+
+### 测试结论
+
+- **高并发**：轻松支持10000个并发连接，内存使用低
+- **高性能**：QPS达到120,000+，吞吐量超过40 MiB/s
+- **稳定性**：测试过程中系统稳定，无崩溃或异常
+- **可扩展性**：通过多线程，可以充分利用多核CPU资源
+
+## 性能特性
+
+- **高并发**：基于epoll的事件驱动模型，支持高并发连接
+- **低延迟**：非阻塞I/O，减少线程阻塞时间
+- **高吞吐量**：高效的缓冲区设计，减少内存拷贝
+- **可伸缩性**：通过线程池，可以根据硬件资源调整处理能力
+
+## 适用场景
+
+- 高性能服务器
+- 网络代理
+- 实时通信系统
+- 游戏服务器
+- 任何需要高并发网络通信的场景
+
+## 注意事项
+
+1. 每个线程最多只能有一个EventLoop对象
+2. EventLoop对象通常在创建它的线程中运行
+3. 避免在I/O线程中执行耗时操作，应将耗时操作放入线程池
+4. 注意线程安全，避免在多线程中共享非线程安全的对象
+
+## 项目亮点
+
+1. **清晰的架构设计**：基于Reactor模式，层次分明
+2. **高效的事件处理**：使用epoll进行事件分发，性能优异
+3. **优雅的代码风格**：代码可读性强，注释详细
+4. **完善的工具类**：提供了丰富的基础工具类
+5. **良好的扩展性**：模块化设计，易于扩展和定制
+
+## 总结
+
+MyMuduo是一个高性能、可靠的网络库，提供了事件驱动、非阻塞I/O的网络编程框架。它适用于各种高并发网络应用场景，是学习网络编程和C++11特性的优秀资源。

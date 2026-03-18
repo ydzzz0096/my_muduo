@@ -21,4 +21,7 @@ add_subdirectory(net)
 # 将 examples 子目录包含进来
 add_subdirectory(examples)
 
+# 将 test 子目录包含进来
+add_subdirectory(test)
+
 

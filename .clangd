@@ -1,0 +1,6 @@
+CompileFlags:
+  Add:
+    - -I/home/wyc/projects/项目/MyMuduo/net
+    - -I/home/wyc/projects/项目/MyMuduo/base
+    - -I/home/wyc/projects/项目/MyMuduo
+    - -std=c++17
