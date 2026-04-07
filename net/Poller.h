@@ -24,7 +24,7 @@ public:
     virtual bool hasChannel(Channel *channel) const;
     static Poller *newDefaultPoller(EventLoop *loop);
 
-    // 区分static,子类会继承这个变量,但是不是共享同一个,会自己创造一份
+    // 区分static,子类会继承这个变量,但不是共享同一个,会自己创造一份
 protected:
     using ChannelMap = std::map<int, Channel *>; // fd和Channel的映射
     ChannelMap m_channels;

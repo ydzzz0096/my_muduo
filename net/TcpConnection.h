@@ -91,7 +91,7 @@ private:
     const InetAddress m_localAddr;
     const InetAddress m_peerAddr;
 
-    ConnectionCallback m_connectionCallback; // 有新连接时的回调
+    ConnectionCallback m_connectionCallback; // m_connectionCallback 的设计意图是 通知上层应用连接状态的变化 ，而不仅仅是连接建立时的通知。
     MessageCallback m_messageCallback;       // 有读写消息时的回调
     WriteCompleteCallback m_writeCompleteCallback; // 消息发送完成以后的回调
     HighWaterMarkCallback m_highWaterMarkCallback;

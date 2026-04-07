@@ -1,175 +1,151 @@
-// examples/test_qps.cpp
-
-#include "net/TcpClient.h"
-#include "net/EventLoop.h"
-#include "net/InetAddress.h"
 #include "base/Logger.h"
 #include "base/Timestamp.h"
-#include "base/Thread.h"
+#include "net/EventLoop.h"
+#include "net/InetAddress.h"
+#include "net/TcpClient.h"
 
-#include <vector>
 #include <atomic>
-#include <iostream>
-#include <thread>
 #include <memory>
-#include <unistd.h>
 #include <signal.h>
+#include <thread>
+#include <unistd.h>
+#include <vector>
 
-// === 全局统计量 (原子操作，天然线程安全) ===
+// === 全局统计量 (原子操作) ===
 std::atomic<int64_t> g_totalMessages(0);
 std::atomic<int64_t> g_totalBytes(0);
+std::atomic<int64_t> g_totalLatency(0); // 新增：总往返时延（微秒）
 
 // 消息内容 (固定 36 字节)
 std::string g_message = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 // === 压测客户端类 ===
-class QpsClient
-{
+class QpsClient {
 public:
-    QpsClient(EventLoop* loop, const InetAddress& serverAddr, const std::string& name)
-        : client_(loop, serverAddr, name)
-    {
-        client_.setConnectionCallback(
-            std::bind(&QpsClient::onConnection, this, std::placeholders::_1));
-        client_.setMessageCallback(
-            std::bind(&QpsClient::onMessage, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
-        // 压测追求极限性能，通常不开启重连，断了就断了
-    }
+  QpsClient(EventLoop *loop, const InetAddress &serverAddr,
+            const std::string &name)
+      : client_(loop, serverAddr, name), lastSendTime_(0) {
+    client_.setConnectionCallback(
+        std::bind(&QpsClient::onConnection, this, std::placeholders::_1));
+    client_.setMessageCallback(
+        std::bind(&QpsClient::onMessage, this, std::placeholders::_1,
+                  std::placeholders::_2, std::placeholders::_3));
+  }
 
-    void connect()
-    {
-        client_.connect();
-    }
+  void connect() { client_.connect(); }
 
 private:
-    void onConnection(const TcpConnectionPtr& conn)
-    {
-        if (conn->connected())
-        {
-            // 连接建立，立刻发送第一条消息
-            conn->send(g_message);
-        }
-        else
-        {
-            // 压测结束或异常断开，不打印 Error 避免刷屏
-            // LOG_ERROR << "Client Disconnected"; 
-        }
+  void onConnection(const TcpConnectionPtr &conn) {
+    if (conn->connected()) {
+      // 记录发送瞬间的时间戳
+      lastSendTime_ = Timestamp::now().microSecondsSinceEpoch();
+      conn->send(g_message);
+    }
+  }
+
+  void onMessage(const TcpConnectionPtr &conn, Buffer *buf, Timestamp time) {
+    // 1. 计算当前这一个往返的时延
+    int64_t now = Timestamp::now().microSecondsSinceEpoch();
+    if (lastSendTime_ > 0) {
+      g_totalLatency += (now - lastSendTime_);
     }
 
-    void onMessage(const TcpConnectionPtr& conn, Buffer* buf, Timestamp time)
-    {
-        // 统计：原子加
-        g_totalMessages++;
-        g_totalBytes += buf->readableBytes();
-        
-        // Ping-Pong：收到什么发什么
-        conn->send(buf->retrieveAllAsString());
-    }
+    // 2. 更新统计数据
+    g_totalMessages++;
+    g_totalBytes += buf->readableBytes();
 
-    TcpClient client_;
+    // 3. 准备下一次发送，更新时间戳实现 Ping-Pong 闭环
+    lastSendTime_ = Timestamp::now().microSecondsSinceEpoch();
+    conn->send(buf->retrieveAllAsString());
+  }
+
+  TcpClient client_;
+  int64_t lastSendTime_; // 每个连接记录自己的上次发送时间
 };
 
-// === 统计线程 (每秒打印一次总数据) ===
-void statsFunc()
-{
-    int64_t oldMessages = 0;
-    int64_t oldBytes = 0;
-    int64_t startTime = Timestamp::now().microSecondsSinceEpoch();
+// === 统计线程 ===
+void statsFunc() {
+  int64_t oldMessages = 0;
+  int64_t oldBytes = 0;
+  int64_t oldLatency = 0;
 
-    while (true)
-    {
-        sleep(1); 
-        
-        int64_t newMessages = g_totalMessages;
-        int64_t newBytes = g_totalBytes;
-        int64_t now = Timestamp::now().microSecondsSinceEpoch();
-        
-        int64_t deltaMessages = newMessages - oldMessages;
-        int64_t deltaBytes = newBytes - oldBytes;
-        
-        // 计算真正的 MiB/s
-        double throughput = static_cast<double>(deltaBytes) / (1024 * 1024);
+  while (true) {
+    sleep(1);
 
-        printf("Total QPS: %8ld, Throughput: %8.3f MiB/s\n", 
-               deltaMessages, throughput);
+    int64_t newMessages = g_totalMessages;
+    int64_t newBytes = g_totalBytes;
+    int64_t newLatency = g_totalLatency;
 
-        oldMessages = newMessages;
-        oldBytes = newBytes;
-        startTime = now;
+    int64_t deltaMessages = newMessages - oldMessages;
+    int64_t deltaBytes = newBytes - oldBytes;
+    int64_t deltaLatency = newLatency - oldLatency;
+
+    double throughput = static_cast<double>(deltaBytes) / (1024 * 1024);
+
+    // 计算平均时延 (单位：毫秒 ms)
+    double avgLatencyMs = 0.0;
+    if (deltaMessages > 0) {
+      avgLatencyMs = static_cast<double>(deltaLatency) / deltaMessages / 1000.0;
     }
+
+    printf("Total QPS: %8ld, Throughput: %8.3f MiB/s, Avg Latency: %6.3f ms\n",
+           deltaMessages, throughput, avgLatencyMs);
+
+    oldMessages = newMessages;
+    oldBytes = newBytes;
+    oldLatency = newLatency;
+  }
 }
 
-// === 工作线程 (每个线程跑一个 EventLoop) ===
-void threadFunc(const InetAddress& serverAddr, int connectionsPerThread, int threadIdx)
-{
-    EventLoop loop; // 每个线程独立的 Loop
-    
-    std::vector<std::unique_ptr<QpsClient>> clients;
-    clients.reserve(connectionsPerThread);
+// === 工作线程与 Main 函数保持不变 ===
+void threadFunc(const InetAddress &serverAddr, int connectionsPerThread,
+                int threadIdx) {
+  EventLoop loop;
+  std::vector<std::unique_ptr<QpsClient>> clients;
+  clients.reserve(connectionsPerThread);
 
-    for (int i = 0; i < connectionsPerThread; ++i)
-    {
-        char buf[32];
-        snprintf(buf, sizeof buf, "Client-T%d-%d", threadIdx, i);
-        clients.emplace_back(new QpsClient(&loop, serverAddr, buf));
-    }
+  for (int i = 0; i < connectionsPerThread; ++i) {
+    char buf[32];
+    snprintf(buf, sizeof buf, "Client-T%d-%d", threadIdx, i);
+    clients.emplace_back(new QpsClient(&loop, serverAddr, buf));
+  }
 
-    for (auto& client : clients)
-    {
-        client->connect();
-    }
+  for (auto &client : clients) {
+    client->connect();
+  }
 
-    loop.loop(); // 在此阻塞
+  loop.loop();
 }
 
-int main(int argc, char* argv[])
-{
-    // 1. 忽略 SIGPIPE
-    signal(SIGPIPE, SIG_IGN);
+int main(int argc, char *argv[]) {
+  signal(SIGPIPE, SIG_IGN);
+  Logger::getInstance().setLogLevel(ERROR);
 
-    // 2. 全局静音 (只打印 ERROR)
-    Logger::getInstance().setLogLevel(ERROR);
+  if (argc != 5) {
+    printf("Usage: %s <ip> <port> <threads> <connections>\n", argv[0]);
+    return 1;
+  }
 
-    if (argc != 5)
-    {
-        printf("Usage: %s <ip> <port> <threads> <connections>\n", argv[0]);
-        printf("Example: %s 127.0.0.1 8000 8 1000\n", argv[0]);
-        return 1;
-    }
+  std::string ip = argv[1];
+  uint16_t port = static_cast<uint16_t>(atoi(argv[2]));
+  int threadCount = atoi(argv[3]);
+  int totalConnections = atoi(argv[4]);
+  int connectionsPerThread = totalConnections / threadCount;
 
-    std::string ip = argv[1];
-    uint16_t port = static_cast<uint16_t>(atoi(argv[2]));
-    int threadCount = atoi(argv[3]);       // 线程数
-    int totalConnections = atoi(argv[4]);  // 总连接数
+  printf("Starting Latency & QPS Benchmark...\n");
+  InetAddress serverAddr(port, ip);
 
-    // 计算每个线程分摊多少连接
-    int connectionsPerThread = totalConnections / threadCount;
-    
-    printf("Starting Benchmark:\n");
-    printf("  Server: %s:%d\n", ip.c_str(), port);
-    printf("  Threads: %d\n", threadCount);
-    printf("  Total Connections: %d (%d per thread)\n", totalConnections, connectionsPerThread);
-    printf("  Message Size: %lu bytes\n", g_message.size());
-    printf("------------------------------------------------\n");
+  std::thread stats(statsFunc);
+  stats.detach();
 
-    InetAddress serverAddr(port, ip);
+  std::vector<std::thread> threads;
+  for (int i = 0; i < threadCount; ++i) {
+    threads.emplace_back(threadFunc, serverAddr, connectionsPerThread, i);
+  }
 
-    // 3. 启动统计线程
-    std::thread stats(statsFunc);
-    stats.detach();
+  for (auto &t : threads) {
+    t.join();
+  }
 
-    // 4. 启动工作线程
-    std::vector<std::thread> threads;
-    for (int i = 0; i < threadCount; ++i)
-    {
-        threads.emplace_back(threadFunc, serverAddr, connectionsPerThread, i);
-    }
-
-    // 5. 等待所有线程 (实际上压测不会主动停止，这里会一直阻塞)
-    for (auto& t : threads)
-    {
-        t.join();
-    }
-
-    return 0;
+  return 0;
 }

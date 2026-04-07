@@ -24,7 +24,7 @@ public:
             std::bind(&EchoServer::onMessage, this,
                 std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
         
-        m_server.setThreadNum(10);
+        m_server.setThreadNum(8);
     }
 
     void start()

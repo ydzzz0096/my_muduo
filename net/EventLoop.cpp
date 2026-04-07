@@ -122,7 +122,7 @@ void EventLoop::wakeup()
         LOG_ERROR << "EventLoop::wakeup() writes " << n << " bytes instead of 8";
     }
 }
-
+// 清除wakeupFd可读状态
 void EventLoop::handleRead()
 {
     uint64_t one = 1;
